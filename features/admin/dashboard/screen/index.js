@@ -1,6 +1,5 @@
 import React from 'react'
-import { Row, Col, Card } from 'antd'
-import { ComplaintCurrent, ComplaintProgress } from '../components/card'
+import { TopSection, BottomSection } from '../components/section'
 
 const DashboardScreen = (props) => {
   const { } = props
@@ -8,10 +7,10 @@ const DashboardScreen = (props) => {
   return (
     <div>
       <section>
-
+        <TopSection />
       </section>
       <section className='mt-5'>
-
+        <BottomSection />
       </section>
     </div>
   )

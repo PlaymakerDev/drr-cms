@@ -6,7 +6,7 @@ const ComplaintCurrent = (props) => {
 
   return (
     <Card>
-      <Typography.Title level={4} className='!m-0'>เรื่องร้องเรียนร้องทุกข์ ภายในวันนี้</Typography.Title>
+      <Typography.Title level={5} className='!m-0'>เรื่องร้องเรียนร้องทุกข์ ภายในวันนี้</Typography.Title>
     </Card>
   )
 }
