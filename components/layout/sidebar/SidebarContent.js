@@ -29,9 +29,9 @@ const SidebarContent = (props) => {
           <li
             key={index}
             className={
-              item.path_list?.some((item) => item === pathname) ? 'text-white bg-[#0080FE] p-3 mb-2 rounded-md cursor-pointer' : pathname === item.path ?
-                'text-white bg-[#0080FE] p-3 mb-2 rounded-md cursor-pointer' :
-                'transition duration-300 text-white p-3 mb-2 rounded-md hover:bg-white hover:text-black cursor-pointer'
+              item.path_list?.some((item) => item === pathname) ? 'text-white bg-[#0080FE] p-3 mb-2 rounded-md cursor-pointer text-sm' : pathname === item.path ?
+                'text-white bg-[#0080FE] p-3 mb-2 rounded-md cursor-pointer text-sm' :
+                'transition duration-300 text-white p-3 mb-2 rounded-md hover:bg-white hover:text-black cursor-pointer text-sm'
             }
             onClick={() => reload()}
           >
@@ -45,9 +45,9 @@ const SidebarContent = (props) => {
         return (
           <Link href={item.path} key={index}>
             <li key={index} className={
-              item.path_list?.some((item) => item === pathname) ? 'text-white bg-[#0080FE] p-3 mb-2 rounded-md' : pathname === item.path ?
-                'text-white bg-[#0080FE] p-3 mb-2 rounded-md' :
-                'transition duration-300 text-white p-3 mb-2 rounded-md hover:bg-white hover:text-black'}>
+              item.path_list?.some((item) => item === pathname) ? 'text-white bg-[#0080FE] p-3 mb-2 rounded-md text-sm' : pathname === item.path ?
+                'text-white bg-[#0080FE] p-3 mb-2 rounded-md text-sm' :
+                'transition duration-300 text-white p-3 mb-2 rounded-md hover:bg-white hover:text-black text-sm'}>
               <div className='flex flex-wrap items-center gap-3'>
                 {/* <ContainerOutlined />{item.label} */}
                 {Icon(item.icon, {})}{item.label}

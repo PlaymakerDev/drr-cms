@@ -83,7 +83,7 @@ const Header = (props) => {
           />
           <div className='flex flex-col'>
             <h1 className='font-IBMPlexSansThaiBold font-bold'>กรมทางหลวงชนบท</h1>
-            <p className='text-sm font-IBMPlexSansThaiRegular text-[#FFFFFF80]'>DEPARTMENT OF RURAL ROADS</p>
+            <p className='text-sm text-[#FFFFFF80]'>DEPARTMENT OF RURAL ROADS</p>
           </div>
         </section>
         <section className={styles.horizontalMenu}>
@@ -94,8 +94,8 @@ const Header = (props) => {
         <section className={styles.navbarExtraMenu}>
           <div className='flex items-center gap-3'>
             <div className='flex flex-col items-end'>
-              <p className='text-sm font-IBMPlexSansThaiRegular'>26 ก.ค. 2567</p>
-              <p className='text-sm font-IBMPlexSansThaiRegular text-[#FFFFFF80]'>วันที่</p>
+              <p className='text-sm'>26 ก.ค. 2567</p>
+              <p className='text-sm text-[#FFFFFF80]'>วันที่</p>
             </div>
             <Avatar
               size={'large'}
@@ -105,8 +105,8 @@ const Header = (props) => {
           </div>
           <div className='flex items-center gap-3'>
             <div className='flex flex-col items-end'>
-              <p className='text-sm font-IBMPlexSansThaiRegular'>Admin User</p>
-              <p className='text-sm font-IBMPlexSansThaiRegular text-[#FFFFFF80]'>ผู้ดูแลระบบ</p>
+              <p className='text-sm'>Admin User</p>
+              <p className='text-sm text-[#FFFFFF80]'>ผู้ดูแลระบบ</p>
             </div>
             <Avatar
               size={'large'}
