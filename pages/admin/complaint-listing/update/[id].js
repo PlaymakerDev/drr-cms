@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HomePage = (props) => {
+const UpdatePage = (props) => {
   const {} = props
 
   return (
@@ -8,4 +8,4 @@ const HomePage = (props) => {
   )
 }
 
-export default React.memo(HomePage)
+export default React.memo(UpdatePage)
