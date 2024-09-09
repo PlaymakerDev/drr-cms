@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import styles from '@/styles/components/layout/Layout.module.css'
-import menu from '@/menu'
+// import menu from '@/menu'
 import DPTLogo from '@/public/images/dpt-logo.svg'
 
 const mappingTransaction = {
@@ -16,7 +16,7 @@ const mappingTransaction = {
 }
 
 const Header = (props) => {
-  const { setOpen } = props
+  const { menu, role, setOpen } = props
   const { pathname, reload } = useRouter()
 
   const Icon = useCallback((iconName, { ...props }) => {
@@ -28,7 +28,7 @@ const Header = (props) => {
   }, [])
 
   const renderMenuList = useMemo(() => {
-    const newList = menu['ADMIN']?.map((item, index) => {
+    const newList = menu[role]?.map((item, index) => {
       if (pathname === item.path) {
         return (
           <>
@@ -69,7 +69,7 @@ const Header = (props) => {
       }
     })
     return newList
-  }, [Icon, pathname, reload])
+  }, [Icon, pathname, reload, menu, role])
 
   return (
     <nav className='bg-secondary block'>

@@ -39,6 +39,7 @@ const Layout = (props) => {
       <header>
         <Header
           menu={menu}
+          role={'ADMIN'}
           setOpen={setOpen}
         />
       </header>
