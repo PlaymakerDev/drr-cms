@@ -1,67 +1,15 @@
 import React from 'react'
-import { Card, Typography,Col, Row,Avatar } from 'antd'
-import dynamic from "next/dynamic";
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import { Card, Typography, Col, Row, Avatar } from 'antd'
+import ComplaintProgressChart from '../chart/ComplaintProgressChart'
 
 const ComplaintProgress = (props) => {
   const { } = props
-
-  const series = [{
-    name: 'Net Profit',
-    data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-  }, {
-    name: 'Revenue',
-    data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-  }, {
-    name: 'Free Cash Flow',
-    data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-  }]
-
-  const options = {
-    chart: {
-      type: 'bar',
-      height: 350
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: '55%',
-        endingShape: 'rounded'
-      },
-    },
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ['transparent']
-    },
-    xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-    },
-    yaxis: {
-      title: {
-        text: '$ (thousands)'
-      }
-    },
-    fill: {
-      opacity: 1
-    },
-    tooltip: {
-      y: {
-        formatter: function (val) {
-          return "$ " + val + " thousands"
-        }
-      }
-    }
-  }
 
   return (
     <Card>
       <section className="flex justify-between items-center">
         <Typography.Title level={5} className="!m-0">
-          ผลการดำเนินงานร้องเรียนร้องทุกข์        
+          ผลการดำเนินงานร้องเรียนร้องทุกข์
         </Typography.Title>
         <Typography.Text underline className="!cursor-pointer">
           ดูข้อมูลเพิ่มเติม
@@ -81,7 +29,7 @@ const ComplaintProgress = (props) => {
                     // icon={<PhTruck />}
                     className='!bg-[#56E4EE]'
                     size={'large'}
-                    />
+                  />
                 </div>
                 <div className='flex flex-col'>
                   <Typography.Title level={5} className='!m-0'>175 ครั้ง</Typography.Title>
@@ -105,11 +53,9 @@ const ComplaintProgress = (props) => {
           </Col>
         </Row>
       </section>
-      {/* <Chart
-        series={series}
-        options={options}
-        type='bar'
-      /> */}
+      <section>
+        <ComplaintProgressChart />
+      </section>
     </Card>
   )
 }
