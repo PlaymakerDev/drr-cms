@@ -1,10 +1,13 @@
 import React from 'react'
+import { Layout } from '@/components/layout'
+import { ComplaintForm } from '@/features/admin/complaint-listing/overview/components'
+
 
 const CreatePage = (props) => {
   const { } = props
 
   return (
-    <div>index</div>
+    <Layout><ComplaintForm /></Layout>
   )
 }
 

@@ -7,7 +7,6 @@ const OverviewScreen = (props) => {
 
   return (
     <div>
-      <Typography.Title level={4} className='!text-primary-color'>สรุปรายงานประจำวัน</Typography.Title>
       <section>
         <FormSearchComplaintListing />
       </section>

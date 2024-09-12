@@ -31,6 +31,14 @@ const menu = [
     label_key: "report",
     default_color_icon: ''
   },
+  {
+    icon: "SettingOutlined",
+    path: "/admin/setting",
+    path_list: [],
+    label: "ตั้งค่า",
+    label_key: "setting",
+    default_color_icon: ''
+  },
 ]
 
 export default menu

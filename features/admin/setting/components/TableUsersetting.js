@@ -9,20 +9,22 @@ const TableUsersetting = (props) => {
     {
       Username: "adisai_t",
       Fname_Lname: "นายอถิศัย ทองไทย",
-      Department: "แขวงทางหลวงชนบท",
-      Province: "พังงา",
-      Role: "นายช่างโยธาอาวุโส",
-      Duty: "หัวหน้าหน่วยชั่งน้ำหนัก",
-      Group: "ผู้ใช้งาน"
+      Usage_rights: "ผู้ใช้งาน"
     },
     {
       Username: "adithep_t",
       Fname_Lname: "นายอดิเทพ ติระมาศวณิช",
-      Department: "แขวงทางหลวงชนบท",
-      Province: "อุบลราชธาณี",
-      Role: "ผู้อำนวยการแขวงทางหลวงชนบท",
-      Duty: "อื่นๆ",
-      Group: "ผู้ใช้งาน"
+      Usage_rights: "ผู้ใช้งาน"
+    },
+    {
+      Username: "adithep_t",
+      Fname_Lname: "นายอดิเทพ ติระมาศวณิช",
+      Usage_rights: "ผู้ใช้งาน"
+    },
+    {
+      Username: "adithep_t",
+      Fname_Lname: "นายอดิเทพ ติระมาศวณิช",
+      Usage_rights: "ผู้ใช้งาน"
     }
   ];
 
@@ -40,36 +42,10 @@ const TableUsersetting = (props) => {
       width: 200,
     },
     {
-      title: "หน่วยงาน",
-      key: "Department",
-      dataIndex: "Department",
-      width: 200,
-      render: (item, record) => {
-        return (
-          <Space direction="vertical">
-            <Typography.Text>{item}</Typography.Text>
-            <Typography.Text>{record.Province}</Typography.Text>
-          </Space>
-        )
-      }
-    },
-    {
-      title: "ตำแหน่ง",
-      key: "Role",
-      dataIndex: "Role",
-      width: 200,
-    },
-    {
-      title: "หน้าที่",
-      key: "Duty",
-      dataIndex: "Duty",
-      width: 200,
-    },
-    {
-      title: "กลุ่ม",
-      key: "Group",
-      dataIndex: "Group",
-      width: 100,
+      title: "สิทธิการใช้งาน",
+      key: "Usage_rights",
+      dataIndex: "Usage_rights",
+      width: 400,
     },
     {
       title: '',

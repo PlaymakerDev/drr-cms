@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Form, useForm, Field } from "@/components/form";
-import { Row, Col , Button , Card } from "antd";
+import { Row, Col , Button , Card, Typography } from "antd";
 import { SearchOutlined , PlusOutlined } from "@ant-design/icons";
 const FormSearchUsersetting = (props) => {
   const {} = props;
@@ -21,6 +21,23 @@ const FormSearchUsersetting = (props) => {
   return (
   <Card className="bg-transparent border-0">
     <Form form={form} handlerSubmit={[buildValue, handlerSubmit]}>
+    <Row align="middle" justify="space-between" gutter={16 } className="mb-4">
+        <Col>
+          <Typography.Title level={4} className="!text-[#FFFFFF] mb-0">
+          รายงาน
+          </Typography.Title>
+        </Col>
+        <Col>
+          <Button
+            type='primary'
+            size='large'
+            icon={<PlusOutlined />}
+            className='!w-full lg:!w-auto xl:!w-auto 2xl:!w-auto !bg-custom-blue'
+            >
+            เพิ่มข้อมูลผู้ใช้งาน
+          </Button>
+        </Col>
+      </Row>
       <Row gutter={[16, 16]} align={"middle"}>
         <Col xs={24} sm={24} md={12} lg={6} xl={6} xxl={4}>
           <Field.Input
@@ -37,25 +54,12 @@ const FormSearchUsersetting = (props) => {
               type="primary"
               size="large"
               icon={<SearchOutlined />}
-              className="!w-full md:!w-auto lg:!w-auto xl:!w-auto 2xl:!w-auto"
+              className="!w-full md:!w-auto lg:!w-auto xl:!w-auto 2xl:!w-auto !bg-custom-blue"
             >
               ค้นหา
             </Button>
           </fieldset>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={16} xl={16} xxl={18} className='!text-right'>
-            <fieldset>
-              <label className='block'>&nbsp;</label>
-              <Button
-                type='primary'
-                size='large'
-                icon={<PlusOutlined />}
-                className='!w-full lg:!w-auto xl:!w-auto 2xl:!w-auto'
-              >
-                เพิ่มข้อมูลผู้ใช้งาน
-              </Button>
-            </fieldset>
-          </Col>
       </Row>
     </Form>
   </Card>
