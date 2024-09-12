@@ -1,16 +1,17 @@
 import React from 'react'
 import dynamic from "next/dynamic";
+
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const ComplaintProgressChart = (props) => {
+const ComplaintComparisonChart = (props) => {
   const { } = props
 
   const series = [{
     name: 'กำลังดำเนินการ',
-    data: [95, 101, 150]
-  }, {
+    data: [542, 342]
+  },{
     name: 'ยุติ',
-    data: [45, 50, 139]
+    data: [479, 279]
   }]
 
   const options = {
@@ -19,13 +20,13 @@ const ComplaintProgressChart = (props) => {
     },
     plotOptions: {
       bar: {
-        horizontal: false,
-        columnWidth: '40%',
-        endingShape: 'rounded'
+        horizontal: true,  
+        barHeight: '70%', 
+        endingShape: 'rounded',
       },
     },
     dataLabels: {
-      enabled: false
+      enabled: true
     },
     stroke: {
       show: true,
@@ -33,12 +34,11 @@ const ComplaintProgressChart = (props) => {
       colors: ['transparent']
     },
     xaxis: {
-      categories: ['พฤษภาคม 65', 'มิถุนายน 65', 'กรกฏาคม 65'],
+      categories: ['ปี 2567', 'ปี 2566'],
     },
     fill: {
       opacity: 1
     },
-    
   }
 
   return (
@@ -46,11 +46,11 @@ const ComplaintProgressChart = (props) => {
       <Chart
         series={series}
         options={options}
-        height={180}
+        height={220}
         type='bar'
       />
     </div>
   )
 }
 
-export default React.memo(ComplaintProgressChart)
+export default React.memo(ComplaintComparisonChart)

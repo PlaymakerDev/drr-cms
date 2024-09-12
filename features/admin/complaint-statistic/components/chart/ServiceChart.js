@@ -2,7 +2,7 @@ import React from 'react'
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const ComplaintProgressChart = (props) => {
+const ServiceChart = (props) => {
   const { } = props
 
   const series = [{
@@ -46,11 +46,11 @@ const ComplaintProgressChart = (props) => {
       <Chart
         series={series}
         options={options}
-        height={180}
+        height={250}
         type='bar'
       />
     </div>
   )
 }
 
-export default React.memo(ComplaintProgressChart)
+export default React.memo(ServiceChart)

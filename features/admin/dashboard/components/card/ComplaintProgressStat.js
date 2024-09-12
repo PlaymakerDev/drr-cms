@@ -10,16 +10,17 @@ const ComplaintProgressStat = (props) => {
         showInfo={false}
         percent={100}
         success={{
-          percent: 30
+          percent: 70,
         }}
+        strokeWidth={15}
       />
       <Flex
         justify='space-between'
         align='center'
         wrap
       >
-        <Typography.Text>กำลังดำเนินการ 286 รายการ</Typography.Text>
-        <Typography.Text>ยุติ 15 รายการ</Typography.Text>
+        <Typography.Text>🟢 กำลังดำเนินการ 286 รายการ</Typography.Text>
+        <Typography.Text>🔵 ยุติ 15 รายการ</Typography.Text>
       </Flex>
     </Card>
   )

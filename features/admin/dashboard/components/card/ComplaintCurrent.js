@@ -1,7 +1,10 @@
 import { Card, Typography, Progress } from "antd";
 import Image from 'next/image';
 import React from "react";
+import Hotline from '@/public/images/Hotline.svg'
 import Traffic from '@/public/images/Traffic.svg'
+import Facebook from '@/public/images/Facebook.svg'
+import { ComplaintCurrentChart } from "../chart";
 
 
 const ComplaintCurrent = (props) => {
@@ -18,8 +21,8 @@ const ComplaintCurrent = (props) => {
         </Typography.Text>
       </section>
       <div className="flex items-center justify-around">
-        <section className="">
-          <Progress type="circle" percent={100} format={() => "ทั้งหมด 312"} />
+        <section>
+          <ComplaintCurrentChart />
         </section>
         <section className="space-y-3">
           <Typography.Title level={5} className="!m-0">
@@ -28,8 +31,8 @@ const ComplaintCurrent = (props) => {
           <figure className="flex space-x-20"> 
               <div className="flex flex-col space-y-2">
                   <Image
-                    src={Traffic}
-                    alt='dpt-logo'
+                    src={Hotline}
+                    alt='hotline'
                     width={80}
                     height={80}
                   />
@@ -42,7 +45,7 @@ const ComplaintCurrent = (props) => {
               <div className="flex flex-col space-y-2">
                   <Image
                     src={Traffic}
-                    alt='dpt-logo'
+                    alt='traffic'
                     width={80}
                     height={80}
                   />
@@ -54,8 +57,8 @@ const ComplaintCurrent = (props) => {
               </div>
               <div className="flex flex-col space-y-2">
                   <Image
-                    src={Traffic}
-                    alt='dpt-logo'
+                    src={Facebook}
+                    alt='facebook'
                     width={80}
                     height={80}
                   />
