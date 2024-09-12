@@ -13,9 +13,9 @@ const ComplaintCurrent = (props) => {
   return (
     <Card >
       <section className="flex justify-between items-center">
-        <Typography.Title level={5} className="!m-0">
+        <Typography.Text className="!m-0 text-xl font-bold">
           เรื่องร้องเรียนร้องทุกข์ ภายในวันนี้
-        </Typography.Title>
+        </Typography.Text>
         <Typography.Text underline className="!cursor-pointer">
           ดูข้อมูลเพิ่มเติม
         </Typography.Text>

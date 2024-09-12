@@ -1,6 +1,5 @@
 import React from 'react'
 import dynamic from "next/dynamic";
-
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ComplaintByDepartmentChart = (props) => {
@@ -25,15 +24,19 @@ const ComplaintByDepartmentChart = (props) => {
       bar: {
         horizontal: true,  
         barHeight: '80%',
-        endingShape: 'rounded'
+        endingShape: 'rounded',
+        dataLabels: {
+          position: 'top',
+        },
       },
     },
     dataLabels: {
-      enabled: true
+      enabled: true,
+      offsetX: -6,
     },
     stroke: {
       show: true,
-      width: 2,
+      width: 1,
       colors: ['transparent']
     },
     xaxis: {
@@ -50,7 +53,7 @@ const ComplaintByDepartmentChart = (props) => {
       <Chart
         series={series}
         options={options}
-        height={200}
+        height={220}
         type='bar'
       />
     </div>

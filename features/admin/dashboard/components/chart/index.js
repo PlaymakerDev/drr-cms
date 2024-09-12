@@ -4,3 +4,4 @@ export { default as ComplaintByDepartmentChart } from './ComplaintByDepartmentCh
 export { default as ComplaintComparisonChart } from './ComplaintComparisonChart'
 export { default as ComplaintCurrentChart } from './ComplaintCurrentChart'
 export { default as ComplaintTypeTotalChart } from './ComplaintTypeTotalChart'
+export { default as ComplaintTop3 } from './ComplaintTop3'
