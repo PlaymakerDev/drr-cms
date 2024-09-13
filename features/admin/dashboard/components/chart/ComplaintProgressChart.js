@@ -21,11 +21,15 @@ const ComplaintProgressChart = (props) => {
       bar: {
         horizontal: false,
         columnWidth: '40%',
-        endingShape: 'rounded'
+        endingShape: 'rounded',
+        dataLabels: {
+          position: 'top',
+        },
       },
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
+      offsetX: -6,
     },
     stroke: {
       show: true,

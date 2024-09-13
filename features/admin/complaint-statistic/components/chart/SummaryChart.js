@@ -1,6 +1,5 @@
 import React from "react";
 import dynamic from "next/dynamic";
-
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const SummaryChart = (props) => {
@@ -26,10 +25,14 @@ const SummaryChart = (props) => {
         horizontal: true,
         barHeight: "80%",
         endingShape: "rounded",
+        dataLabels: {
+          position: 'top',
+        },
       },
     },
     dataLabels: {
       enabled: true,
+      offsetX: -6,
     },
     stroke: {
       show: true,
@@ -55,7 +58,7 @@ const SummaryChart = (props) => {
 
   return (
     <div>
-      <Chart series={series} options={options} height={670} type="bar" />
+      <Chart series={series} options={options} height={660} type="bar" />
     </div>
   );
 };

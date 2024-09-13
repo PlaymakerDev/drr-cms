@@ -21,7 +21,8 @@ const ServiceChart = (props) => {
       bar: {
         horizontal: false,
         columnWidth: '40%',
-        endingShape: 'rounded'
+        endingShape: 'rounded',
+        
       },
     },
     dataLabels: {

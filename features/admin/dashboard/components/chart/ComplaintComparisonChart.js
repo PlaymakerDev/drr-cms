@@ -1,6 +1,5 @@
 import React from 'react'
 import dynamic from "next/dynamic";
-
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ComplaintComparisonChart = (props) => {
@@ -23,10 +22,14 @@ const ComplaintComparisonChart = (props) => {
         horizontal: true,  
         barHeight: '70%', 
         endingShape: 'rounded',
+        dataLabels: {
+          position: 'top',
+        },
       },
     },
     dataLabels: {
-      enabled: true
+      enabled: true,
+      offsetX: -6,
     },
     stroke: {
       show: true,

@@ -7,7 +7,7 @@ const ComplaintDayTotalChart = (props) => {
 
   const series = [{
     name: 'แท่ง',
-    data: [105, 65, 60, 63, 42, 25, 38, 42]
+    data: [105, 65, 60, 63, 42, 185, 38, 42]
   }]
 
   const options = {
@@ -18,7 +18,10 @@ const ComplaintDayTotalChart = (props) => {
       bar: {
         horizontal: false,
         columnWidth: '50%',
-        endingShape: 'rounded'
+        endingShape: 'rounded',
+        dataLabels: {
+          position: 'top',
+        },
       },
     },
     dataLabels: {
@@ -45,7 +48,7 @@ const ComplaintDayTotalChart = (props) => {
       <Chart
         series={series}
         options={options}
-        height={150}
+        height={130}
         type='bar'
       />
     </div>

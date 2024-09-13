@@ -1,11 +1,35 @@
 import React from 'react';
-import ApexCharts from 'react-apexcharts';
+import dynamic from 'next/dynamic';
+const ApexCharts = dynamic(() => { return import('react-apexcharts'); }, { ssr: false });
 
 const DonutChart = () => {
   const options = {
     chart: {
       width: 330,
       type: 'donut',
+    },
+    plotOptions:{
+        pie: {
+          donut:{
+            labels: {
+              show: true,
+              value: {
+                fontSize: '24px',
+                fontWeight: 'bold',
+                offsetY: 5,
+              },
+              total: {
+                show: true,
+                label: 'ทั้งหมด',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                formatter: function (w) {
+                  return 312;
+                } 
+              }
+            }
+          }
+        }
     },
     dataLabels: {
       enabled: false
