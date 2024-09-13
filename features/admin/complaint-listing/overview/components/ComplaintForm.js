@@ -20,7 +20,6 @@ const ComplaintForm = (props) => {
   }, []);
 
   const handleCancel = () => {
-    // Implement cancel logic here
     console.log("Cancel clicked");
   };
 
@@ -34,24 +33,25 @@ const ComplaintForm = (props) => {
         <Row align="middle" justify="space-between" gutter={16} className="mb-4">
           <Col>
             <Typography.Title level={4} className="!text-[#FFFFFF] mb-0">
-              รายการรับเรื่องร้องเรียน
+              แบบรับเรื่องร้องเรียน
             </Typography.Title>
           </Col>
-          <Col>
+          <Col className="flex flex-col items-end">
+            <Typography.Text className="!text-[gray]">ผู้บันทึกข้อมูล</Typography.Text>
             <Typography className="!text-[#FFFFFF] mb-0">
-              พนักงานทั่วไป 67001
+              พนักงานทั่วไป 67001 แสนดี มั่นคง
             </Typography>
           </Col>
         </Row>
 
-        <Typography className="!text-[#FFFFFF] mb-0">
+        <Typography className="!text-[#FFFFFF] mb-0 mb-3">               
           รายละเอียดผู้ร้องเรียน
         </Typography>
 
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={12} xxl={6}>
             <Field.Select
-              label="แหล่งที่มาข้อมูล :"
+              label={<span className="text-white-label">แหล่งที่มาข้อมูล :</span>}
               name="datasource"
               placeholder="แหล่งที่มาข้อมูล"
               hideRequired
@@ -59,7 +59,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={12} xxl={6}>
             <Field.DatePicker
-              label="รับเรื่องวันที่ :"
+              label={<span className="text-white-label">รับเรื่องวันที่ :</span>}
               name="receive"
               placeholder="รับเรื่องวันที่"
               hideRequired
@@ -78,7 +78,7 @@ const ComplaintForm = (props) => {
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="ชื่อ"
+              label={<span className="text-white-label">ชื่อ</span>}
               name="name"
               placeholder="ชื่อ"
               hideRequired
@@ -86,7 +86,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="นามสกุล"
+              label={<span className="text-white-label">นามสกุล</span>}
               name="surname"
               placeholder="นามสกุล"
               hideRequired
@@ -94,7 +94,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="เบอร์โทรศัพท์(ผู้ร้องเรียน)"
+              label={<span className="text-white-label">เบอร์โทรศัพท์(ผู้ร้องเรียน)</span>}
               name="phone"
               placeholder="เบอร์โทรศัพท์"
               hideRequired
@@ -102,7 +102,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="ข้อมูลผู้ติดต่อเพิ่มเติม"
+              label={<span className="text-white-label">ข้อมูลผู้ติดต่อเพิ่มเติม</span>}
               name="additionalContact"
               placeholder="ข้อมูลผู้ติดต่อเพิ่มเติม"
               hideRequired
@@ -115,7 +115,7 @@ const ComplaintForm = (props) => {
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={12} xxl={6}>
             <Field.Select
-              label="หมวดหมู่"
+              label={<span className="text-white-label">หมวดหมู่</span>}
               name="complaintType"
               placeholder="หมวดหมู่"
               hideRequired
@@ -123,7 +123,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={12}>
             <Field.Select
-              label="ประเภทเรื่องร้องทุกข์"
+              label={<span className="text-white-label">ประเภทเรื่องร้องทุกข์</span>}
               name="complaintTypeDetails"
               placeholder="ประเภทเรื่องร้องทุกข์"
               hideRequired
@@ -134,7 +134,7 @@ const ComplaintForm = (props) => {
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="จังหวัด"
+              label={<span className="text-white-label">จังหวัด</span>}
               name="name"
               placeholder="จังหวัด"
               hideRequired
@@ -142,7 +142,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="อำเภอ"
+              label={<span className="text-white-label">อำเภอ</span>}
               name="surname"
               placeholder="อำเภอ"
               hideRequired
@@ -150,7 +150,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="ตำบล"
+              label={<span className="text-white-label">ตำบล</span>}
               name="phone"
               placeholder="ตำบล"
               hideRequired
@@ -158,7 +158,7 @@ const ComplaintForm = (props) => {
           </Col>
           <Col xs={24} sm={6}>
             <Field.Input
-              label="สายทาง"
+              label={<span className="text-white-label">สายทาง</span>}
               name="additionalContact"
               placeholder="สายทาง"
               hideRequired
@@ -169,7 +169,7 @@ const ComplaintForm = (props) => {
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={12}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7925591393205!2d100.77853867586487!3d13.731005397773034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d66308ce98ffd%3A0xcb43a76f038c38ca!2z4LiE4LiT4Liw4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Liq4Liy4Lij4Liq4LiZ4LmA4LiX4LioIOC4quC4luC4suC4muC4seC4meC5gOC4l-C4hOC5guC4meC5guC4peC4ouC4teC4nuC4o-C4sOC4iOC4reC4oeC5gOC4geC4peC5ieC4suC5gOC4iOC5ieC4suC4hOC4uOC4k-C4l-C4q-C4suC4o-C4peC4suC4lOC4geC4o-C4sOC4muC4seC4hyAoSVRLTUlUTCk!5e0!3m2!1sth!2sth!4v1723785863387!5m2!1sth!2sth"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=100.7657%2C13.7162%2C100.7913%2C13.7458&amp;layer=mapnik"
               width="100%"
               height="200"
               frameBorder="0"
@@ -185,7 +185,7 @@ const ComplaintForm = (props) => {
             <Row gutter={[16, 16]} align={"middle"}>
               <Col xs={24} sm={12}>
                 <Field.Input
-                  label="ละติจูด"
+                  label={<span className="text-white-label">ละติจูด</span>}
                   name="latitude"
                   placeholder="ละติจูด"
                   hideRequired
@@ -193,7 +193,7 @@ const ComplaintForm = (props) => {
               </Col>
               <Col xs={24} sm={12}>
                 <Field.Select
-                  label="ลองติจูด"
+                  label={<span className="text-white-label">ลองติจูด</span>}
                   name="longitude"
                   placeholder="ลองติจูด"
                   hideRequired
@@ -201,7 +201,7 @@ const ComplaintForm = (props) => {
               </Col>
               <Col xs={24} sm={12} xxl={24}>
                 <Field.TextArea
-                  label="บริเวณ"
+                  label={<span className="text-white-label">บริเวณ</span>}
                   name="locationDetails"
                   placeholder="บริเวณ"
                   hideRequired
@@ -211,29 +211,29 @@ const ComplaintForm = (props) => {
           </Col>
         </Row>
 
-
-
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={12}>
             <Field.Select
-              label="แจ้ง สำนัก/กอง"
+              label={<span className="text-white-label">แจ้ง สำนัก/กอง</span>}
               name="department"
               placeholder="แจ้ง สำนัก/กอง"
               hideRequired
             />
           </Col>
-          <Col xs={24} sm={12} md={24} lg={24} xl={18} xxl={3}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+            <div className="container">
+              <Typography.Title level={5} className="!m-0 !text-[#FFFFFF]">ไฟล์ประกอบการร้องเรียน</Typography.Title>
+              <Typography.Text className="!text-[gray]">เลือกไฟล์เพื่ออัปโหลดรายการเอกสารที่เกี่ยวข้อง (รองรับไฟล์ .pdf, .jpg, .png เท่านั้น ไฟล์ขนาดไม่เกิน 10 MB)</Typography.Text>
+            </div>
             <Field.Upload
               name='file'
-              maxCount={1}
-              accept="image/png, image/jpeg"
+              maxCount={5}
+              accept="image/png, image/jpeg, application/pdf"
               listType='picture-card'
               maxSizeLimit={10000000}
               beforeUpload={(file) => {
-                // DEFAULT VALUES
                 const allowList = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
                 const maxFileSize = 10000000;
-                // CHECK
                 const isListAvailable = allowList.some(item => item === file.type);
                 const isLt10 = file.size < maxFileSize;
                 if (!isListAvailable) {
@@ -242,38 +242,30 @@ const ComplaintForm = (props) => {
                 if (!isLt10) {
                   message.error('ไม่สามารถอัปโหลดไฟล์ได้ ไฟล์ที่อัปโหลดมีขนาดเกิน 10 MB');
                 }
-                // RETURN UPLOAD.LIST_IGNORE
                 return ((isListAvailable && isLt10) || Upload.LIST_IGNORE) || false;
               }}
-              label='เลือกรูปภาพ'
-              description={
-                <div className='flex flex-col flex-wrap justify-center mt-3'>
-                  <Typography.Text className='!text-sm'>รองรับรูปแบบไฟล์ .png .jpeg .jpg ขนาดไม่เกิน 10MB</Typography.Text>
-                </div>
-              }
+              label={<span className="text-white-label">เลือกไฟล์</span>}
             />
           </Col>
+            <Col xs={24} sm={12} xxl={8}>
+              <Field.Input
+                label={<span className="text-white-label">เลขที่เอกสาร</span>}
+                name="longitude"
+                placeholder="เลขที่เอกสาร"
+                hideRequired
+              />
+            </Col>
         </Row>
 
-        <Row gutter={[16, 16]} align={"middle"}>
-          <Col xs={24} sm={12}>
-            <Field.Input
-              label="เลขที่เอกสาร"
-              name="longitude"
-              placeholder="เลขที่เอกสาร"
-              hideRequired
-            />
-          </Col>
-        </Row>
-
-        <Typography className="!text-[#FFFFFF] mb-0">ผลการดำเนินการ</Typography>
+        <Typography className="!text-[#FFFFFF] mb-3">ผลการดำเนินการ</Typography>
 
         <Row>
-          <Col xs={24} sm={12} xxl={4}>
+          <Col xs={24} sm={6}>
             <Field.Input
-              label="วันที่ยุติ"
-              name="longitude"
-              placeholder="วันที่ยุติ"
+              label={<span className="text-white-label">วันยุติ</span>}
+              name="name"
+              placeholder="วันยุติ"
+              disabled
               hideRequired
             />
           </Col>
@@ -282,24 +274,28 @@ const ComplaintForm = (props) => {
         <Row gutter={[16, 16]} align={"middle"}>
           <Col xs={24} sm={12}>
             <Field.TextArea
-              label="คำชี้แจง/ผลปฏิบัติ"
+              label={<span className="text-white-label">คำชี้แจง/ผลปฏิบัติ</span>}
               name="details"
               placeholder="คำชี้แจง/ผลปฏิบัติ"
+              disabled
               hideRequired
             />
           </Col>
-          <Col xs={24} sm={12} md={24} lg={24} xl={18} xxl={3}>
+          <Col xs={24} sm={12} md={24} lg={12} xl={12} xxl={12}>
+            <div className="container">
+              <Typography.Title level={5} className="!m-0 !text-[#FFFFFF]">ไฟล์ประกอบการร้องเรียน</Typography.Title>
+              <Typography.Text className="!text-[gray]">เลือกไฟล์เพื่ออัปโหลดรายการเอกสารที่เกี่ยวข้อง (รองรับไฟล์ .pdf, .jpg, .png เท่านั้น ไฟล์ขนาดไม่เกิน 10 MB)</Typography.Text>
+            </div>
             <Field.Upload
               name='file'
-              maxCount={1}
-              accept="image/png, image/jpeg"
+              maxCount={5}
+              accept="image/png, image/jpeg, application/pdf"
               listType='picture-card'
               maxSizeLimit={10000000}
+              disabled
               beforeUpload={(file) => {
-                // DEFAULT VALUES
                 const allowList = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
                 const maxFileSize = 10000000;
-                // CHECK
                 const isListAvailable = allowList.some(item => item === file.type);
                 const isLt10 = file.size < maxFileSize;
                 if (!isListAvailable) {
@@ -308,20 +304,13 @@ const ComplaintForm = (props) => {
                 if (!isLt10) {
                   message.error('ไม่สามารถอัปโหลดไฟล์ได้ ไฟล์ที่อัปโหลดมีขนาดเกิน 10 MB');
                 }
-                // RETURN UPLOAD.LIST_IGNORE
                 return ((isListAvailable && isLt10) || Upload.LIST_IGNORE) || false;
               }}
-              label='เลือกรูปภาพ'
-              description={
-                <div className='flex flex-col flex-wrap justify-center mt-3'>
-                  <Typography.Text className='!text-sm'>รองรับรูปแบบไฟล์ .png .jpeg .jpg ขนาดไม่เกิน 10MB</Typography.Text>
-                </div>
-              }
+              label={<span className="text-white-label">เลือกไฟล์</span>}
             />
           </Col>
         </Row>
 
-        {/* Button Row */}
         <Row justify="end" className="mt-4">
           <Col>
             <Button onClick={handleCancel} className="mr-2">ยกเลิก</Button>

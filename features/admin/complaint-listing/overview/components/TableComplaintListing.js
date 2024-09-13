@@ -1,9 +1,11 @@
 import React from "react";
-import { Table , Space , Typography } from "antd";
+import { Table , Space , Typography, ConfigProvider } from "antd";
 import { EditFilled, DeleteOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 
 const TableComplaintListing = (props) => {
   const { } = props;
+  const router = useRouter()
 
   const data = [
     {
@@ -97,10 +99,10 @@ const TableComplaintListing = (props) => {
           <div className='inline-flex flex-wrap items-center gap-5'>
             <EditFilled
               className='!cursor-pointer'
-              // onClick={() =>}
+              onClick={() => router.push('/admin/complaint-listing/create')}
             />
             <DeleteOutlined
-              className='!cursor-pointer'
+              className='!cursor-pointer !text-[#FF4a4a]'
               // onClick={() =>}
             />
           </div>
@@ -109,12 +111,27 @@ const TableComplaintListing = (props) => {
     },
   ];
 
+  const themeConfig = {
+    token: {
+      colorPrimary: 'gray', // สีหลักที่ใช้ในแอปพลิเคชัน
+      colorTextBase: '#FFFFFF', // สีข้อความพื้นฐาน
+      colorBgContainer: '#030918', // สีพื้นหลังของคอนเทนเนอร์
+      colorBorderSecondary: '#989898', // สีกรอบรอง
+      colorBgTableHeader: '#26344b', // สีพื้นหลังของหัวตาราง
+      colorTextTableHeader: '#FFFFFF', // สีข้อความของหัวตาราง
+      headerSplitColor: 'transparent',
+      bodySortBg:'transparent',
+    },
+  };
+
   return (
-    <Table
+    <ConfigProvider theme={themeConfig}>
+      <Table
       dataSource={data}
       columns={columns}
       scroll={{ x: 1600 }}
-    />
+      />
+    </ConfigProvider>
   );
 };
 
