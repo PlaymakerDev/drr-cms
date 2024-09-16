@@ -1,13 +1,13 @@
 import React from "react";
 import { Layout } from "@/components/layout";
-import CreateScreen from "@/features/admin/setting/create/screen";
+import UserCreateScreen from "@/features/admin/setting/create/screen";
 
 const SettingUserPage = (props) => {
   const {} = props;
 
   return (
       <Layout>
-          <CreateScreen />
+          <UserCreateScreen />
       </Layout>
   );
 };

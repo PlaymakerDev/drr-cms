@@ -1,7 +1,7 @@
 import React from "react";
 import { FormSearchUsersetting, TableUsersetting } from "../components";
 
-const UsersettingScreen = (props) => {
+const UserManagementScreen = (props) => {
   const {} = props;
 
   return (
@@ -16,4 +16,4 @@ const UsersettingScreen = (props) => {
   );
 };
 
-export default React.memo(UsersettingScreen);
+export default React.memo(UserManagementScreen);

@@ -8,42 +8,42 @@ const TableResources = (props) => {
   const data = [
     {
       key: '1',
-      icon: Hotline,
+      icon: 'Hotline',
       Fname_Lname: "สายด่วน 1146",
     },
     {
       key: '2',
-      icon: Traffic,
+      icon: 'Traffic',
       Fname_Lname: "Traffic Fondue",
     },
     {
       key: '3',
-      icon: Facebook,
+      icon: 'Facebook',
       Fname_Lname: "Facebook",
     },
     {
       key: '4',
-      icon: GECC,
+      icon: 'GECC',
       Fname_Lname: "ศูนย์ราชการสะดวก",
     },
     {
       key: '5',
-      icon: WWW,
+      icon: 'WWW',
       Fname_Lname: "ศูนย์ราชการสะดวก",
     },
     {
       key: '6',
-      icon: WWW2,
+      icon: 'WWW2',
       Fname_Lname: "เว็ปไซต์สำนักงานปลัด สำนักนายกรัฐมนตรี",
     },
     {
       key: '7',
-      icon: Book,
+      icon: 'Book',
       Fname_Lname: "หนังสือภายนอก",
     },
     {
       key: '8',
-      icon: WWW3,
+      icon: 'WWW3',
       Fname_Lname: "แหล่งที่มา xxxxx",
     }
   ];

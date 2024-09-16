@@ -33,11 +33,12 @@ const menu = [
   },
   {
     icon: "SettingOutlined",
-    path: "/admin/setting",
+    // path: "/admin/setting",
+    path: "",
     path_list: [
       {
         label: 'จัดการผู้ใช้งาน',
-        path: '/admin/setting/components'
+        path: '/admin/setting/usermanagement'
       },
       {
         label: 'จัดการแหล่งที่มาข้อมูล',
