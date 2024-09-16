@@ -111,7 +111,7 @@ const TableComplaintListing = (props) => {
       ),
     },
     {
-      title: "หมวดหมู่",
+      title: "หมวดหมู่222",
       key: "category",
       dataIndex: "category",
       width: 200,
