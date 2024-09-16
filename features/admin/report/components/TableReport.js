@@ -56,6 +56,19 @@ const TableReport = (props) => {
       dataIndex: "month",
       width: 150,
       align: 'center',
+      onHeaderCell: () => {
+        return {
+          style: {
+            height: '50px',
+            lineHeight: '50px',
+          },
+        };
+      },
+      render: (month) => (
+        <div style={{ height: '70px', lineHeight: '70px' }}> 
+          {month}
+        </div>
+      ),
     },
     {
       title: "ยุติ(รายการ)",
@@ -63,6 +76,14 @@ const TableReport = (props) => {
       dataIndex: "terminate",
       width: 200,
       align: 'center',
+      onHeaderCell: () => {
+        return {
+          style: {
+            height: '50px',
+            lineHeight: '50px',
+          },
+        };
+      },
     },
     {
       title: "กำลังดำเนินการ(รายการ) ",
@@ -70,6 +91,14 @@ const TableReport = (props) => {
       dataIndex: "in_progress",
       width: 200,
       align: 'center',
+      onHeaderCell: () => {
+        return {
+          style: {
+            height: '50px',
+            lineHeight: '50px',
+          },
+        };
+      },
     },
     {
       title: "รายงานอธิบดี",
@@ -77,12 +106,21 @@ const TableReport = (props) => {
       dataIndex: "report",
       width: 200,
       align: 'center',
+      onHeaderCell: () => {
+        return {
+          style: {
+            height: '50px',
+            lineHeight: '50px',
+          },
+        };
+      },
       render: () => {
         return (
           <div className='inline-flex flex-wrap items-center gap-5'>
-            <FileTextOutlined 
+            <FileProtectOutlined
               className='!cursor-pointer'
-            />
+              style={{ fontSize: '32px' }}
+              />
           </div>
         );
       }
@@ -96,8 +134,9 @@ const TableReport = (props) => {
       render: () => {
         return (
           <div className='inline-flex flex-wrap items-center gap-5'>
-            <FileProtectOutlined
+            <FileTextOutlined 
               className='!cursor-pointer'
+              style={{ fontSize: '32px' }}
             />
           </div>
         );

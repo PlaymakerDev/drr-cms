@@ -70,11 +70,20 @@ const TableComplaintListing = (props) => {
       key: "document_number",
       dataIndex: "document_number",
       width: 150,
-      height: 200,
+      onHeaderCell: () => {
+        return {
+          style: {
+            height: '40px',
+            lineHeight: '40px',
+          },
+        };
+      },  
       render: (document_number) => (
         <Typography.Text
         underline
-        onClick={() => router.push('')}>
+        onClick={() => router.push('')}
+        style={{ height: '60px', lineHeight: '60px' }}
+        >
           {document_number}
         </Typography.Text>
       ),
@@ -84,14 +93,22 @@ const TableComplaintListing = (props) => {
       key: "notification_date",
       dataIndex: "notification_date",
       width: 200,
-      height: 200,
+      render: (notification_date) => (
+        <div style={{ height: '50px', lineHeight: '50px' }}> 
+          {notification_date}
+        </div>
+      ),
     },
     {
       title: "แหล่งที่มาข้อมูล ",
       key: "data_source",
       dataIndex: "data_source",
       width: 200,
-      height: 200,
+      render: (data_source) => (
+        <div style={{ height: '50px', lineHeight: '50px' }}>
+          {data_source}
+        </div>
+      ),
     },
     {
       title: "หมวดหมู่",
@@ -178,7 +195,7 @@ const TableComplaintListing = (props) => {
       <Table
         dataSource={data}
         columns={columns}
-        scroll={{ x: 1600 }}
+        scroll={{ x: 1600}}
       />
     </ConfigProvider>
   );
