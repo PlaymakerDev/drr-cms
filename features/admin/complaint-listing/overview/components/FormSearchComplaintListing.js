@@ -85,7 +85,7 @@
             />
           </Col>
               </Row>
-        <Row gutter={[16, 16]} align={"middle"}>
+        <Row gutter={[16, 16]} align={"middle"} className="mt-4">
           <Col xs={24} sm={24} md={12} lg={6} xl={6} xxl={3}>
             <Field.Select
               label={<span className="text-white-label">สถานะ:</span>}
