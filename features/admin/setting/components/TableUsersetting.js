@@ -1,5 +1,5 @@
 import React from "react";
-import { Table , Space , Typography } from "antd";
+import { Table , Space , Typography, ConfigProvider } from "antd";
 import { EditFilled, DeleteOutlined } from "@ant-design/icons";
 
 const TableUsersetting = (props) => {
@@ -33,19 +33,20 @@ const TableUsersetting = (props) => {
       title: "Username",
       key: "Username",
       dataIndex: "Username",
-      width: 150,
+      align: 'center',
+      width: 100,
     },
     {
       title: "ชื่อ-นามสกุล",
       key: "Fname_Lname",
       dataIndex: "Fname_Lname",
-      width: 200,
+      width: 150,
     },
     {
       title: "สิทธิการใช้งาน",
       key: "Usage_rights",
       dataIndex: "Usage_rights",
-      width: 400,
+      width: 200,
     },
     {
       title: '',
@@ -61,7 +62,7 @@ const TableUsersetting = (props) => {
               // onClick={() =>}
             />
             <DeleteOutlined
-              className='!cursor-pointer'
+              className='!cursor-pointer !text-[#FF4a4a]'
               // onClick={() =>}
             />
           </div>
@@ -70,12 +71,27 @@ const TableUsersetting = (props) => {
     },
   ];
 
+  const themeConfig = {
+    token: {
+      colorPrimary: 'gray', // สีหลักที่ใช้ในแอปพลิเคชัน
+      colorTextBase: '#FFFFFF', // สีข้อความพื้นฐาน
+      colorBgContainer: '#030918', // สีพื้นหลังของคอนเทนเนอร์
+      colorBorderSecondary: '#989898', // สีกรอบรอง
+      colorBgTableHeader: '#26344b', // สีพื้นหลังของหัวตาราง
+      colorTextTableHeader: '#FFFFFF', // สีข้อความของหัวตาราง
+      headerSplitColor: 'transparent',
+      bodySortBg:'transparent',
+    },
+  };
+
   return (
-    <Table
+    <ConfigProvider theme={themeConfig}>
+      <Table
       dataSource={data}
       columns={columns}
       scroll={{ x: 1600 }}
-    />
+      />
+    </ConfigProvider>
   );
 };
 

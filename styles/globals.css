@@ -17,6 +17,7 @@
   --background-primary-color: #030918;
   --background-secondary-color: #202635;
   --prop-color: #0080FE;
+  --button-color: #43BE6D;
 }
 
 html,
@@ -51,6 +52,10 @@ body {
 .prop-color {
   background-color: var(--prop-color);
 }
+.button-color {
+  background-color:#43BE6D;
+}
+
 
 @layer utilities {
   .text-balance {

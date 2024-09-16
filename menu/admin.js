@@ -34,11 +34,20 @@ const menu = [
   {
     icon: "SettingOutlined",
     path: "/admin/setting",
-    path_list: [],
-    label: "ตั้งค่า",
-    label_key: "setting",
-    default_color_icon: ''
-  },
+    path_list: [
+      {
+        label: 'จัดการผู้ใช้งาน',
+        path: '/admin/setting/components'
+      },
+      {
+        label: 'จัดการแหล่งที่มาข้อมูล',
+        path: '/admin/setting/resources'
+      },
+    ],
+      label: "ตั้งค่า",
+      label_key: "setting",
+      default_color_icon: ''
+    },
 ]
 
 export default menu

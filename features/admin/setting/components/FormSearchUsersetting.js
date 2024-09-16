@@ -2,8 +2,10 @@ import React, { useCallback } from "react";
 import { Form, useForm, Field } from "@/components/form";
 import { Row, Col , Button , Card, Typography } from "antd";
 import { SearchOutlined , PlusOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 const FormSearchUsersetting = (props) => {
   const {} = props;
+  const router = useRouter()
 
   const form = useForm({
     initialValue: {},
@@ -24,7 +26,7 @@ const FormSearchUsersetting = (props) => {
     <Row align="middle" justify="space-between" gutter={16 } className="mb-4">
         <Col>
           <Typography.Title level={4} className="!text-[#FFFFFF] mb-0">
-          รายงาน
+          จัดการผู้ใช้งาน
           </Typography.Title>
         </Col>
         <Col>
@@ -33,6 +35,7 @@ const FormSearchUsersetting = (props) => {
             size='large'
             icon={<PlusOutlined />}
             className='!w-full lg:!w-auto xl:!w-auto 2xl:!w-auto !bg-custom-blue'
+            onClick={() => router.push('/admin/setting/create')}
             >
             เพิ่มข้อมูลผู้ใช้งาน
           </Button>
@@ -41,7 +44,7 @@ const FormSearchUsersetting = (props) => {
       <Row gutter={[16, 16]} align={"middle"}>
         <Col xs={24} sm={24} md={12} lg={6} xl={6} xxl={4}>
           <Field.Input
-            label="ค้นหาข้อมูลผู้ใช้งาน"
+            label={<span className="text-white-label">ค้นหาข้อมูลผู้ใช้งาน</span>}
             name="user_name"
             placeholder=""
             hideRequired

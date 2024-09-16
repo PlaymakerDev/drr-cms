@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
-import { AppstoreOutlined, PieChartOutlined, TableOutlined, ProfileOutlined, CalendarOutlined, UserOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, PieChartOutlined, TableOutlined, ProfileOutlined, CalendarOutlined, UserOutlined, LogoutOutlined, MenuOutlined, SettingOutlined } from '@ant-design/icons'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -7,7 +7,8 @@ const mappingTransaction = {
   AppstoreOutlined,
   PieChartOutlined,
   TableOutlined,
-  ProfileOutlined
+  ProfileOutlined,
+  SettingOutlined
 }
 
 const SidebarContent = (props) => {
