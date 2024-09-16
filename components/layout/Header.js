@@ -29,7 +29,7 @@ const Header = (props) => {
   }, [])
 
   const renderMenuList = useMemo(() => {
-
+    console.log('-----------------------------------');
     const newList = menu[role]?.map((item, index) => {
 
       const menu = (
@@ -41,7 +41,7 @@ const Header = (props) => {
           ))}
         </Menu>
       );
-      
+
       const generateDropdown = () => {
         if (item.path_list.length > 0) {
           return (
@@ -61,17 +61,22 @@ const Header = (props) => {
           );
         }
       };
-      
-      if (pathname === item.path) {
+
+      const isPath = () => pathname.startsWith(item.path)
+
+      console.log('path now ', pathname, ' |  item path', item.path, ' | ispath ', isPath());
+
+      if (isPath()) {
         return (
           <>
             <li
               className={
-                item.path_list.some((item) => item === pathname) ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
-                  pathname === item.path ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' : 'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
+                isPath() ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                  pathname === item.path ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                    'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
               }
               onClick={() => {
-                if (item.path_list.length !== 0) {
+                if (item.path_list.length === 0) {
                   reload();
                 }
               }}
@@ -81,9 +86,9 @@ const Header = (props) => {
           </>
         )
       } else {
-        return (
-          <>
-            <Link href={item.path} key={index} legacyBehavior>
+        if (item.path_list.length > 0) {
+          return (
+            <>
               <li className={
                 item.path_list.some((item) => item === pathname) ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
                   pathname === item.path ?
@@ -92,9 +97,25 @@ const Header = (props) => {
               }>
                 {generateDropdown()}
               </li>
-            </Link>
-          </>
-        )
+            </>
+          )
+        } else {
+          return (
+            <>
+              <Link href={item.path} key={index} legacyBehavior>
+                <li className={
+                  item.path_list.some((item) => item === pathname) ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                    pathname === item.path ?
+                      'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                      'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
+                }>
+                  {generateDropdown()}
+                </li>
+              </Link>
+            </>
+          )
+        }
+
       }
     })
     return newList
