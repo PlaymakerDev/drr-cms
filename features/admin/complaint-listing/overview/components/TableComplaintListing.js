@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Space, Typography, ConfigProvider, Badge } from "antd";
 import { EditFilled, DeleteOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import { DeleteIcon, EditIcon } from "@/components/icon";
 
 const TableComplaintListing = (props) => {
   const { } = props;
@@ -100,7 +101,7 @@ const TableComplaintListing = (props) => {
       ),
     },
     {
-      title: "แหล่งที่มาข้อมูล111 ",
+      title: "แหล่งที่มาข้อมูล",
       key: "data_source",
       dataIndex: "data_source",
       width: 200,
@@ -111,7 +112,7 @@ const TableComplaintListing = (props) => {
       ),
     },
     {
-      title: "หมวดหมู่222",
+      title: "หมวดหมู่",
       key: "category",
       dataIndex: "category",
       width: 200,
@@ -163,14 +164,18 @@ const TableComplaintListing = (props) => {
       render: () => {
         return (
           <div className='inline-flex flex-wrap items-center gap-5'>
-            <EditFilled
+            
+            {/* <EditFilled
               className='!cursor-pointer'
+
               onClick={() => router.push('/admin/complaint-listing/create')}
+            /> */}
+            <EditIcon
+            className='!cursor-pointer'
+            onClick={() => router.push('/admin/complaint-listing/create')}
             />
-            <DeleteOutlined
-              className='!cursor-pointer !text-[#FF4a4a]'
-              // onClick={() =>}
-            />
+            <DeleteIcon/>
+            {/* onClick = {} */}
           </div>
         );
       },
