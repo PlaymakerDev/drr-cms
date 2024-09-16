@@ -1,5 +1,5 @@
-import React, { useMemo, useCallback } from 'react'
-import { Avatar } from 'antd';
+import React, { useMemo, useCallback, useState } from 'react'
+import { Avatar, Menu, Dropdown, Button } from 'antd';
 import { AppstoreOutlined, PieChartOutlined, TableOutlined, ProfileOutlined, CalendarOutlined, UserOutlined, LogoutOutlined, MenuOutlined, SettingOutlined } from '@ant-design/icons'
 import Image from 'next/image';
 import Link from 'next/link'
@@ -29,44 +29,93 @@ const Header = (props) => {
   }, [])
 
   const renderMenuList = useMemo(() => {
+    console.log('-----------------------------------');
     const newList = menu[role]?.map((item, index) => {
-      if (pathname === item.path) {
-        return (
-          <>
-            <li
-              className={
-                item.path_list.some((item) => item === pathname) ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
-                  pathname === item.path ?
-                    'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
-                    'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
-              }
-              onClick={() => reload()}
-            >
+
+      const menu = (
+        <Menu>
+          {item.path_list.map((item, index) => (
+            <Menu.Item key={index + 1}>
+              <Link href={item.path}>{item.label}</Link>
+            </Menu.Item>
+          ))}
+        </Menu>
+      );
+
+      const generateDropdown = () => {
+        if (item.path_list.length > 0) {
+          return (
+            <Dropdown overlay={menu} trigger={['click']}>
               <div className='flex flex-wrap items-center gap-3'>
                 {Icon(item.icon, {})}
                 {item.label}
               </div>
+            </Dropdown>
+          );
+        } else {
+          return (
+            <div className='flex flex-wrap items-center gap-3'>
+              {Icon(item.icon, {})}
+              {item.label}
+            </div>
+          );
+        }
+      };
+
+      const isPath = () => pathname.startsWith(item.path)
+
+      console.log('path now ', pathname, ' |  item path', item.path, ' | ispath ', isPath());
+
+      if (isPath()) {
+        return (
+          <>
+            <li
+              className={
+                isPath() ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                  pathname === item.path ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                    'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
+              }
+              onClick={() => {
+                if (item.path_list.length === 0) {
+                  reload();
+                }
+              }}
+            >
+              {generateDropdown()}
             </li>
           </>
         )
       } else {
-        return (
-          <>
-            <Link href={item.path} key={index} legacyBehavior>
+        if (item.path_list.length > 0) {
+          return (
+            <>
               <li className={
                 item.path_list.some((item) => item === pathname) ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
                   pathname === item.path ?
                     'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
                     'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
               }>
-                <div className='flex flex-wrap items-center gap-3'>
-                  {Icon(item.icon, {})}
-                  {item.label}
-                </div>
+                {generateDropdown()}
               </li>
-            </Link>
-          </>
-        )
+            </>
+          )
+        } else {
+          return (
+            <>
+              <Link href={item.path} key={index} legacyBehavior>
+                <li className={
+                  item.path_list.some((item) => item === pathname) ? 'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                    pathname === item.path ?
+                      'border-b-4 border-[#0080FE] px-2 cursor-pointer mx-3 text-[#0080FE] text-sm font-bold' :
+                      'transition duration-300 px-2 cursor-pointer mx-3 hover:text-[#0080FE] text-sm'
+                }>
+                  {generateDropdown()}
+                </li>
+              </Link>
+            </>
+          )
+        }
+
       }
     })
     return newList

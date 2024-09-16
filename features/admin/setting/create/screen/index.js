@@ -3,7 +3,7 @@ import { Row, Col, Typography } from 'antd'
 import { UserListSection, CreateUserSection } from '../components/content'
 import { FormSearchUser } from '../components/form'
 
-const CreateScreen = (props) => {
+const UserCreateScreen = (props) => {
   const { } = props
 
   return (
@@ -24,4 +24,4 @@ const CreateScreen = (props) => {
   )
 }
 
-export default React.memo(CreateScreen)
+export default React.memo(UserCreateScreen)
