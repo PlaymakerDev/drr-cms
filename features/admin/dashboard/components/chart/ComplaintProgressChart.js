@@ -29,7 +29,7 @@ const ComplaintProgressChart = (props) => {
     },
     dataLabels: {
       enabled: false,
-      offsetX: -6,
+      offsetX: -10,
     },
     stroke: {
       show: true,

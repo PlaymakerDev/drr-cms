@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Typography, Progress } from "antd";
-import { ComplaintTypeTotalChart } from "../chart";
+import { ComplaintTop3Left, ComplaintTop3Mid, ComplaintTop3Right, ComplaintTypeTotalChart } from "../chart";
 
 const ComplaintType = (props) => {
   const {} = props;
@@ -22,19 +22,22 @@ const ComplaintType = (props) => {
         </Typography.Title>
         <figure className="flex justify-around items-stretch">
           <div className="flex flex-col items-center flex-1 mx-2">
-            <Progress type="circle" percent={50} />
+            {/* <Progress type="circle" percent={50} /> */}
+            <ComplaintTop3Left />
             <Typography.Text className="mt-2 text-center">
               ไฟฟ้าส่องสว่าง/ดับ/ชำรุด/ติดตั้ง
             </Typography.Text>
           </div>
           <div className="flex flex-col items-center flex-1 mx-2">
-            <Progress type="circle" percent={25} />
+            {/* <Progress type="circle" percent={25} /> */}
+            <ComplaintTop3Mid />
             <Typography.Text className="mt-2 text-center">
               ถนนชำรุด
             </Typography.Text>
           </div>
           <div className="flex flex-col items-center flex-1 mx-2">
-            <Progress type="circle" percent={25} />
+            {/* <Progress type="circle" percent={25} /> */}
+            <ComplaintTop3Right />
             <Typography.Text className="mt-2 text-center">
               ป้ายจราจรเสียหาย/ชำรุด/ติดตั้ง
             </Typography.Text>

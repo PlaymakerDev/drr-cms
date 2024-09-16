@@ -40,7 +40,6 @@ const ComplaintCurrentChart = () => {
         stroke: {
           lineCap: 'round',
         },
-        size: '80%',
       },
     },
     labels: ['#', '#', '#'],
