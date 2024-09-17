@@ -29,7 +29,6 @@ const Header = (props) => {
   }, [])
 
   const renderMenuList = useMemo(() => {
-    console.log('-----------------------------------');
     const newList = menu[role]?.map((item, index) => {
 
       const menu = (
@@ -63,8 +62,6 @@ const Header = (props) => {
       };
 
       const isPath = () => pathname.startsWith(item.path)
-
-      console.log('path now ', pathname, ' |  item path', item.path, ' | ispath ', isPath());
 
       if (isPath()) {
         return (

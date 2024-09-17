@@ -1,19 +1,34 @@
 import React, { useCallback, useMemo } from 'react'
-import { AppstoreOutlined, PieChartOutlined, TableOutlined, ProfileOutlined, CalendarOutlined, UserOutlined, LogoutOutlined, MenuOutlined, SettingOutlined } from '@ant-design/icons'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import {
+  ProductOutlined,
+  HomeOutlined,
+  TruckOutlined,
+  FileTextOutlined,
+  SettingOutlined,
+  VideoCameraOutlined
+} from '@ant-design/icons'
+import { ConfigProvider, Menu } from 'antd';
+import { CCTVIcon, PaperIcon, TruckIcon } from '@/components/icon'
 
 const mappingTransaction = {
-  AppstoreOutlined,
-  PieChartOutlined,
-  TableOutlined,
-  ProfileOutlined,
-  SettingOutlined
+  // HomeOutlined,
+  // TruckOutlined,
+  // FileTextOutlined,
+  // SettingOutlined,
+  // VideoCameraOutlined
+  ProductOutlined,
+  TruckOutlined,
+  PaperIcon,
+  SettingOutlined,
+  CCTVIcon,
+  TruckIcon
 }
 
-const SidebarContent = (props) => {
-  const { menu, role, setOpen } = props
-  const { pathname, reload } = useRouter()
+const PageSidebar = (props) => {
+  const { menu } = props
+  const { pathname, push } = useRouter()
 
   const Icon = useCallback((iconName, { ...props }) => {
     const IconResult = mappingTransaction[iconName]
@@ -23,49 +38,52 @@ const SidebarContent = (props) => {
     return
   }, [])
 
-  const renderMenuList = useMemo(() => {
-    const newList = menu[role]?.map((item, index) => {
-      if (pathname === item.path) {
-        return (
-          <li
-            key={index}
-            className={
-              item.path_list?.some((item) => item === pathname) ? 'text-white bg-[#0080FE] p-3 mb-2 rounded-md cursor-pointer text-sm' : pathname === item.path ?
-                'text-white bg-[#0080FE] p-3 mb-2 rounded-md cursor-pointer text-sm' :
-                'transition duration-300 text-white p-3 mb-2 rounded-md hover:bg-white hover:text-black cursor-pointer text-sm'
+  const renderItems = useMemo(() => {
+    const newList = menu['ADMIN']?.map((item, index) => {
+      if (!!item.path_list?.length) {
+        return {
+          key: `${index + 1}.0`,
+          label: item.label,
+          icon: Icon(item.icon, {}),
+          path: item.path,
+          children: item?.path_list?.map((sub_item, sub_index) => {
+            return {
+              key: `${index + 1}.${sub_index + 1}`,
+              label: sub_item.label,
+              path: sub_item.path,
+              onClick: () => push(sub_item.path)
             }
-            onClick={() => reload()}
-          >
-            <div className='flex flex-wrap items-center gap-3'>
-              {/* <ContainerOutlined />{item.label} */}
-              {Icon(item.icon, {})}{item.label}
-            </div>
-          </li>
-        )
+          })
+        }
       } else {
-        return (
-          <Link href={item.path} key={index}>
-            <li key={index} className={
-              item.path_list?.some((item) => item === pathname) ? 'text-white bg-[#0080FE] p-3 mb-2 rounded-md text-sm' : pathname === item.path ?
-                'text-white bg-[#0080FE] p-3 mb-2 rounded-md text-sm' :
-                'transition duration-300 text-white p-3 mb-2 rounded-md hover:bg-white hover:text-black text-sm'}>
-              <div className='flex flex-wrap items-center gap-3'>
-                {/* <ContainerOutlined />{item.label} */}
-                {Icon(item.icon, {})}{item.label}
-              </div>
-            </li>
-          </Link>
-        )
+        return {
+          key: `${index + 1}.0`,
+          label: item.label,
+          icon: Icon(item.icon, {}),
+          path: item.path,
+          onClick: () => push(item.path)
+        }
       }
     })
     return newList
-  }, [Icon, menu, pathname, reload, role])
+  }, [menu, push, Icon])
+
+  // GET PATH LIST
+  const findIndex = renderItems?.find(item => item.path === pathname)
+  const findSubIndex = renderItems?.find(item => item.children?.find(sub_item => sub_item.path === pathname))
+  const getPath = findSubIndex?.children?.find(item => item.path === pathname)
 
   return (
-    <ul>
-      {renderMenuList || []}
-    </ul>
+    <Menu
+      defaultSelectedKeys={!!getPath ? [getPath?.key] : [findIndex?.key]}
+      defaultOpenKeys={!!getPath ? [findSubIndex?.key] : undefined}
+      items={renderItems}
+      theme='dark'
+      mode="inline"
+      className='!bg-transparent'
+    >
+    </Menu>
   )
 }
 
-export default React.memo(SidebarContent)
+export default React.memo(PageSidebar)
