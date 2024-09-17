@@ -55,7 +55,7 @@ const TableReport = (props) => {
       key: "month",
       dataIndex: "month",
       width: 150,
-      align: 'center',
+      // align: 'center',
       render: (item) => {
         if (item) {
           return item
