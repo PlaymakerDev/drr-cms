@@ -9,3 +9,14 @@
   border: 1px solid #606060;
 } */
 
+.ant-table-wrapper .ant-table {
+  background: #030918 !important;
+}
+
+.ant-table-wrapper .ant-table .ant-table-row:nth-child(odd) {
+  background: #101524 !important;
+}
+
+.ant-checkbox+span {
+  color: var(--primary-color) !important;
+}
