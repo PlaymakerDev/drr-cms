@@ -61,7 +61,6 @@ const Content = (props) => {
               placeholder='นามสกุล'
             />
           </Col>
-
           <Col xs={24} sm={24} md={8} lg={8} xl={8} xxl={8}>
             <Field.Select
               label='สิทธิ์การเข้าใช้งาน'

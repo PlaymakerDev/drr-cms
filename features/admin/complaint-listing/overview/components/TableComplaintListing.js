@@ -1,80 +1,29 @@
 import React, { useState, useMemo, useCallback } from "react";
-import { Table, Space, Typography, ConfigProvider, Badge, Modal, Divider, notification } from "antd";
-import { ExclamationCircleOutlined, CloseCircleFilled, CheckCircleFilled} from '@ant-design/icons';
+import { Table, Typography, Badge, Modal, message } from "antd";
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { useRouter } from "next/router";
 import { DeleteIcon, EditIcon } from "@/components/icon";
-import styles from "@/features/admin/complaint-listing/overview/styles/ModalStyles.module.css"
-
-const Context = React.createContext({
-  name: 'Default',
-});
-
 
 const TableComplaintListing = (props) => {
   const { } = props;
   const router = useRouter();
-  const [open, setOpen] = useState(false);
 
-
-  const showModal = () => {
-    setOpen(true);
-  };
-  const hideModal = () => {
-    setOpen(false);
-  };
-
-  const [api, contextHolder] = notification.useNotification();
-  const openNotificationError = (placement) => {
-    api.open({
-      message: 'ลบข้อมูลไม่สำเร็จ  กรุณาลองใหม่อีกครั้ง',
-      // description: 'This is the content of the notification.',
-      placement,
-      icon: <CloseCircleFilled className={styles.iconNotiseError}/>,
-      style:{width : '400px'}
-    });
-  };
-
-  const openNotificationSuccess = (placement) => {
-    api.open({
-      message: 'ลบข้อมูลสำเร็จ',
-      // description: 'This is the content of the notification.',
-      placement,
-      icon: <CheckCircleFilled  className={styles.iconNotiseSuccess}/>,
-      style:{width : '250px'}
-    });
-  };
-
-
-
-  const contextValue = useMemo(
-    () => ({
-      name: 'Ant Design',
-    }),
-    [],
-  );
-  // const openConfirmDelete = useCallback(() => {
-  //   Modal.confirm({
-  //     title: 'ยืนยันการลบข้อมูล',
-  //     icon: <ExclamationCircleOutlined />,
-  //     content: 'ท่านต้องการลบรายการเรื่องร้องเรียน',
-  //     okText: 'ยืนยัน',
-  //     cancelText: 'ยกเลิก',
-  //     onOk: async() => {
-  //       try {
-  //         // Simulate async action
-  //         await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
-  //         console.log("Ok button clicked, async action complete");
-  //       } catch (error) {
-  //         console.error("Error during async action", error);
-  //       }
-  //       Modal.destroyAll()
-  //     },
-  //     onCancel: () => {
-  //       Modal.destroyAll()
-  //     },
-  //   })
-  // }, [])
-
+  const openConfirmDelete = useCallback(() => {
+    Modal.confirm({
+      title: 'ยืนยันการลบข้อมูล',
+      icon: <ExclamationCircleOutlined />,
+      content: 'ท่านต้องการลบรายการเรื่องร้องเรียน',
+      okText: 'ยืนยัน',
+      cancelText: 'ยกเลิก',
+      onOk: () => {
+        message.success('ลบข้อมูลสำเร็จ')
+        Modal.destroyAll()
+      },
+      onCancel: () => {
+        Modal.destroyAll()
+      },
+    })
+  }, [])
 
   const data = [
     {
@@ -148,7 +97,7 @@ const TableComplaintListing = (props) => {
       width: 150,
       render: (item) => {
         if (item) {
-          return <Typography.Text className="!text-primary-color" underline onClick={() => router.push('')}>{item}</Typography.Text>
+          return <Typography.Text className="!text-primary-color !cursor-pointer" underline onClick={() => router.push('')}>{item}</Typography.Text>
         }
         return
       }
@@ -253,7 +202,7 @@ const TableComplaintListing = (props) => {
             />
             <DeleteIcon
               className='!cursor-pointer'
-              onClick={() => showModal()}
+              onClick={() => openConfirmDelete()}
             />
           </div>
         );
@@ -263,7 +212,6 @@ const TableComplaintListing = (props) => {
 
   return (
     <div>
-      {contextHolder}
       <Table
         columns={columns}
         dataSource={data || []}
@@ -280,32 +228,6 @@ const TableComplaintListing = (props) => {
         }}
         scroll={{ x: 1600 }}
       />
-      <Modal
-        title={
-          <span className={styles.modalTitle}>
-            <ExclamationCircleOutlined
-              className={styles.iconModal}
-            />
-            ยืนยันการบันทึกข้อมูล
-          </span>
-        }
-        open={open}
-        onOk={() => {
-          openNotificationSuccess('topRight'); // Trigger the notification
-          hideModal(); // Close the modal
-        }}
-        onCancel={() => {
-          openNotificationError('topRight'); // Trigger the notification
-          hideModal(); // Close the modal
-        }}
-      okText="ยืนยัน"
-      cancelText="ยกเลิก"
-      className={styles.customModal}
->
-      <p className={styles.modalContent}>
-        ท่านต้องการลบรายการเรื่องร้องเรียน
-      </p>
-    </Modal>
     </div >
   );
 };

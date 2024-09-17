@@ -2,9 +2,11 @@ import React, { useCallback } from 'react'
 import { useForm, Form } from '@/components/form'
 import { Button, Divider } from 'antd'
 import { ComplainantInformation, ComplaintContent, OperationProgress } from '../form'
+import { useRouter } from 'next/router'
 
 const FormContent = (props) => {
   const { } = props
+  const router = useRouter()
 
   const form = useForm({
     initialValue: {
@@ -74,6 +76,7 @@ const FormContent = (props) => {
             htmlType='button'
             size='large'
             className='!w-full lg:!w-auto !text-white'
+            onClick={() => router.back()}
           >
             ยกเลิก
           </Button>

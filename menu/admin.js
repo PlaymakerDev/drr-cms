@@ -37,11 +37,11 @@ const menu = [
     path_list: [
       {
         label: 'จัดการผู้ใช้งาน',
-        path: '/admin/setting/usermanagement'
+        path: '/admin/setting/manage-user/overview'
       },
       {
         label: 'จัดการแหล่งที่มาข้อมูล',
-        path: '/admin/setting/resources'
+        path: '/admin/setting/manage-information'
       },
     ],
       label: "ตั้งค่า",

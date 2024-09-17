@@ -17,7 +17,6 @@ const ComplainantInformation = (props) => {
               label={<Typography.Text className="!text-primary-color">แหล่งที่มาข้อมูล</Typography.Text>}
               name='info_source'
               placeholder='แหล่งที่มาข้อมูล'
-              className='!text-primary-color'
             />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
