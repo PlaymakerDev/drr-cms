@@ -9,7 +9,7 @@ const FormSearchComplaintListing = (props) => {
   const router = useRouter()
 
   const form = useForm({
-    initialValue: {},
+    initialValues: {},
     rules: {},
   });
 

@@ -10,6 +10,7 @@ import Password from './Password'
 import Segmented from './Segmented'
 import Search from './Search'
 import Upload from './Upload'
+import Upload2 from './Upload2'
 import InputPattern from './InputPattern'
 // import TextEditor from './TextEditor'
 
@@ -26,6 +27,7 @@ const Field = {
   Segmented,
   Search,
   Upload,
+  Upload2,
   InputPattern,
   // TextEditor
 }

@@ -139,7 +139,7 @@ const Header = (props) => {
           </ul>
         </section>
         <section className={styles.navbarExtraMenu}>
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-5'>
             <div className='flex flex-col items-end'>
               <p className='text-sm'>26 ก.ค. 2567</p>
               <p className='text-sm text-[#FFFFFF80]'>วันที่</p>
@@ -150,16 +150,16 @@ const Header = (props) => {
               className={`${styles.avatarIcon} !bg-[#FFFFFF30]`}
             />
           </div>
-          <div className='flex items-center gap-3'>
-            <div className='flex flex-col items-end'>
-              <p className='text-sm'>Admin User</p>
-              <p className='text-sm text-[#FFFFFF80]'>ผู้ดูแลระบบ</p>
-            </div>
+          <div className='flex items-center gap-5'>
             <Avatar
               size={'large'}
               icon={<UserOutlined />}
               className={`${styles.avatarIcon} !bg-[#FFFFFF30]`}
             />
+            <div className='flex flex-col items-start'>
+              <p className='text-sm'>Admin User</p>
+              <p className='text-sm text-[#FFFFFF80]'>ผู้ดูแลระบบ</p>
+            </div>
           </div>
           <div>
             <Avatar

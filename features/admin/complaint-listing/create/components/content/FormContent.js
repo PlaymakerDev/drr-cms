@@ -9,7 +9,7 @@ const FormContent = (props) => {
   const router = useRouter()
 
   const form = useForm({
-    initialValue: {
+    initialValues: {
       info_source: '',
       accept_date: '',
       annonymous: false,

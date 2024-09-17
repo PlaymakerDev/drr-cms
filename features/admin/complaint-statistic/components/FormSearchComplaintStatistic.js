@@ -7,7 +7,7 @@ const FormSearchComplaintStatistic = (props) => {
   const { } = props
 
   const form = useForm({
-    initialValue: {},
+    initialValues: {},
     rules: {},
   })
 

@@ -8,7 +8,7 @@ const FormSearchUsersetting = (props) => {
   const router = useRouter()
 
   const form = useForm({
-    initialValue: {},
+    initialValues: {},
     rules: {},
   });
 
