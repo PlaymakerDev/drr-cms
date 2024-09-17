@@ -21,6 +21,15 @@ const theme = {
     itemSelectedBg: '#0075E9',
     itemSelectedColor: '#FFFFFF'
   },
+  Modal: {
+    titleColor: 'rgba(0, 0, 0)',
+    iconColor: '#FF4D4F',
+    okButtonColor: '#52c41a',
+    okButtonBorderRadius: 0, 
+    okButtonHoverColor: '#389e0d',
+    cancelButtonColor: '#FF4D4F',
+    cancelButtonBorderRadius: 0, 
+  },
 }
 };
 
