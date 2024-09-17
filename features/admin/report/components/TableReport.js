@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, ConfigProvider } from "antd";
+import { Table } from "antd";
 import { FileTextOutlined, FileProtectOutlined } from "@ant-design/icons";
 
 const TableReport = (props) => {
@@ -10,43 +10,43 @@ const TableReport = (props) => {
       month: "มกราคม 2567",
       terminate: "250",
       in_progress: "412  ",
-      report: "",
-      summary: "FileTextOutlined",
+      report: true,
+      summary: true,
     },
     {
       month: "กุมภาพันธ์ 2567",
       terminate: "xxx",
       in_progress: "xxx",
-      report: "",
-      summary: "FileTextOutlined ",
+      report: true,
+      summary: true,
     },
     {
       month: "มีนาคม 2567",
       terminate: "xxx",
       in_progress: "xxx",
-      report: "",
-      summary: "FileTextOutlined ",
+      report: true,
+      summary: true,
     },
     {
       month: "เมษายน 2567",
       terminate: "xxx",
       in_progress: "xxx",
-      report: "",
-      summary: "FileTextOutlined ",
+      report: true,
+      summary: true,
     },
     {
       month: "พฤษภาคม 2567",
       terminate: "xxx",
       in_progress: "xxx",
-      report: "",
-      summary: "FileTextOutlined ",
+      report: true,
+      summary: true,
     },
     {
       month: "มิถุนายน 2567",
       terminate: "xxx",
       in_progress: "xxx",
-      report: "",
-      summary: "FileTextOutlined ",
+      report: true,
+      summary: true,
     },
   ];
   const columns = [
@@ -56,19 +56,12 @@ const TableReport = (props) => {
       dataIndex: "month",
       width: 150,
       align: 'center',
-      onHeaderCell: () => {
-        return {
-          style: {
-            height: '50px',
-            lineHeight: '50px',
-          },
-        };
+      render: (item) => {
+        if (item) {
+          return item
+        }
+        return '-'
       },
-      render: (month) => (
-        <div style={{ height: '70px', lineHeight: '70px' }}> 
-          {month}
-        </div>
-      ),
     },
     {
       title: "ยุติ(รายการ)",
@@ -76,13 +69,11 @@ const TableReport = (props) => {
       dataIndex: "terminate",
       width: 200,
       align: 'center',
-      onHeaderCell: () => {
-        return {
-          style: {
-            height: '50px',
-            lineHeight: '50px',
-          },
-        };
+      render: (item) => {
+        if (item) {
+          return item
+        }
+        return '-'
       },
     },
     {
@@ -91,13 +82,11 @@ const TableReport = (props) => {
       dataIndex: "in_progress",
       width: 200,
       align: 'center',
-      onHeaderCell: () => {
-        return {
-          style: {
-            height: '50px',
-            lineHeight: '50px',
-          },
-        };
+      render: (item) => {
+        if (item) {
+          return item
+        }
+        return '-'
       },
     },
     {
@@ -106,24 +95,16 @@ const TableReport = (props) => {
       dataIndex: "report",
       width: 200,
       align: 'center',
-      onHeaderCell: () => {
-        return {
-          style: {
-            height: '50px',
-            lineHeight: '50px',
-          },
-        };
-      },
-      render: () => {
-        return (
-          <div className='inline-flex flex-wrap items-center gap-5'>
+      render: (item) => {
+        if (item) {
+          return (
             <FileProtectOutlined
               className='!cursor-pointer'
-              style={{ fontSize: '32px' }}
-              />
-          </div>
-        );
-      }
+            />
+          )
+        }
+        return '-'
+      },
     },
     {
       title: "สรุปรายงาน",
@@ -131,45 +112,36 @@ const TableReport = (props) => {
       dataIndex: "summary",
       width: 100,
       align: 'center',
-      render: () => {
-        return (
-          <div className='inline-flex flex-wrap items-center gap-5'>
-            <FileTextOutlined 
+      render: (item) => {
+        if (item) {
+          return (
+            <FileTextOutlined
               className='!cursor-pointer'
-              style={{ fontSize: '32px' }}
             />
-          </div>
-        );
-      }
+          )
+        }
+        return '-'
+      },
     },
   ];
 
-  const themeConfig = {
-    token: {
-      colorPrimary: 'gray', // สีหลักที่ใช้ในแอปพลิเคชัน
-      colorTextBase: '#FFFFFF', // สีข้อความพื้นฐาน
-      colorBgContainer: '#030918', // สีพื้นหลังของคอนเทนเนอร์
-      colorBorderSecondary: '#989898', // สีกรอบรอง
-      colorBgTableHeader: '#26344b', // สีพื้นหลังของหัวตาราง
-      colorTextTableHeader: '#FFFFFF', // สีข้อความของหัวตาราง
-      headerSplitColor: 'transparent',
-      bodySortBg: 'transparent',
-    },
-  };
-
   return (
-    <ConfigProvider theme={themeConfig}>
-      <Table
-        dataSource={data}
-        columns={columns}
-        scroll={{ x: 1600 }}
-        pagination={{
-          position: ['bottomRight'],
-          pageSize: 10,
-          showTotal: (total, range) => ``,
-        }}
-      />
-    </ConfigProvider>
+    <Table
+      columns={columns}
+      dataSource={data || []}
+      // loading={loading}
+      pagination={{
+        defaultCurrent: 1,
+        defaultPageSize: 100,
+        // current: page,
+        // pageSize: perPage,
+        // total: Number(total) || 0,
+        // onChange: onChange,
+        showSizeChanger: false,
+        // position: ['bottomCenter']
+      }}
+      scroll={{ x: 1600 }}
+    />
   );
 };
 
