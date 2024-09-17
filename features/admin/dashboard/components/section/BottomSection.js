@@ -8,10 +8,10 @@ const BottomSection = (props) => {
 
   return (
     <Row gutter={[16, 16]}>
-      <Col xs={24} sm={24} md={12} lg={16} xl={16} xxl={16}>
+      <Col xs={24} sm={24} md={24} lg={24} xl={16} xxl={16}>
         <BottomLeftSection />
       </Col>
-      <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8}>
+      <Col xs={24} sm={24} md={24} lg={24} xl={8} xxl={8}>
         <section>
           <ComplaintComparison />
         </section>

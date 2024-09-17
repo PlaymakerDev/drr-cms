@@ -5,10 +5,16 @@ import Hotline from '@/public/images/Hotline.svg'
 import Traffic from '@/public/images/Traffic.svg'
 import Facebook from '@/public/images/Facebook.svg'
 import { ComplaintCurrentChart } from "../chart";
-
+import { useRouter } from "next/router";
 
 const ComplaintCurrent = (props) => {
   const {} = props;
+
+  const router = useRouter();
+
+  const Letgo = () => {
+    router.push("/admin/complaint-statistic");
+  };
 
   return (
     <Card >
@@ -16,7 +22,7 @@ const ComplaintCurrent = (props) => {
         <Typography.Text className="!m-0 text-xl font-bold">
           เรื่องร้องเรียนร้องทุกข์ ภายในวันนี้
         </Typography.Text>
-        <Typography.Text underline className="!cursor-pointer">
+        <Typography.Text underline className="!cursor-pointer" onClick={Letgo} >
           ดูข้อมูลเพิ่มเติม
         </Typography.Text>
       </section>

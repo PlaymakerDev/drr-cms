@@ -9,6 +9,7 @@ import WWW from "@/public/images/WWW.svg";
 import WWW2 from "@/public/images/WWW2.svg";
 import WWW3 from "@/public/images/WWW3.svg";
 import Book from "@/public/images/Book.svg";
+import Chart from "@/public/images/Chart.svg";
 import allinone from "@/public/images/allinone.svg";
 import Overall from "../modal/Overall";
 
@@ -17,7 +18,7 @@ const data = [
   { src: Traffic, alt: "traffic", title: "Traffic Fondue", count: 15 },
   { src: Facebook, alt: "facebook", title: "Facebook", count: 12 },
   { src: GECC, alt: "gecc", title: "ศูนย์ราชการสะดวก", count: 0 },
-  { src: WWW, alt: "www", title: "เว็บไซต์สำนักงานปลัดสำนักนายกรัฐมนตรี", count: 8 },
+  { src: WWW, alt: "www", title: "เว็บไซต์สำนักงานปลัดสำนักนายกรัฐมนตรี", count: 8,},
   { src: WWW2, alt: "www2", title: "เว็บไซต์กรมทางหลวงชนบท", count: 0 },
   { src: WWW3, alt: "www3", title: "เว็บไซต์กระทรวงคมนาคม", count: 0 },
   { src: Book, alt: "book", title: "หนังสือภายนอก", count: 1 },
@@ -55,11 +56,17 @@ const TotalComplaint = (props) => {
           <Typography.Text className="text-4xl font-bold">321</Typography.Text>
           <Typography.Text className="text-2xl">เรื่อง</Typography.Text>
         </div>
-        <Typography.Text>จำนวนเรื่องร้องเรียน</Typography.Text>
+        <div className="flex">
+          <Image src={Chart} alt={Chart} width={20} height={20} />
+          <Typography.Text>จำนวนเรื่องร้องเรียน</Typography.Text>
+        </div>
       </article>
       <div className="flex flex-wrap flex-1">
         {sortedData.map((item, index) => (
-          <article key={index} className="flex-1 flex flex-col items-center hover:bg-gray-100">
+          <article
+            key={index}
+            className="flex-1 flex flex-col items-center hover:bg-gray-100"
+          >
             <Image
               src={item.src}
               alt={item.alt}
@@ -72,7 +79,9 @@ const TotalComplaint = (props) => {
             </Typography.Text>
             <div className="flex-1" />
             <section className="flex items-end space-x-1 pt-6 pb-3">
-              <Typography.Text className="text-4xl font-bold">{item.count}</Typography.Text>
+              <Typography.Text className="text-4xl font-bold">
+                {item.count}
+              </Typography.Text>
               <Typography.Text className="text-lg font-bold">
                 รายการ
               </Typography.Text>
