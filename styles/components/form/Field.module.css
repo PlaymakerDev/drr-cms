@@ -6,7 +6,8 @@
 }
 
 .label {
-  color: rgba(59, 60, 75, 0.9);
+  /* color: rgba(59, 60, 75, 0.9); */
+  color: var(--primary-color);
   margin-bottom: 6px;
 }
 

@@ -3,12 +3,14 @@ import { FormSearchUsersetting, TableReport, TableUsersetting } from "../compone
 import { Typography } from "antd";
 
 const ReportScreen = (props) => {
-  const {} = props;
+  const { } = props;
 
   return (
     <>
       <section>
-        <Typography.Title level={5} className='!text-[#ffffff]'>รายงาน</Typography.Title>
+        <Typography.Title level={5} className='!m-0 !text-primary-color'>รายงาน</Typography.Title>
+      </section>
+      <section className="mt-5">
         <TableReport />
       </section>
     </>

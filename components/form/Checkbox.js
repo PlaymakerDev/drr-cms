@@ -91,7 +91,7 @@ const Checkbox = (props) => {
           options={_options}
           disabled={_disabled}
           {...propsCheckbox}
-        ></CheckboxAntd.Group>
+        />
       </div>
       <span className={`${styles.error}`}>{tran["error_massage_form" + _errorWithLocal]}</span>
     </div>
