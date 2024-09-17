@@ -9,9 +9,7 @@ const INIT_MODAL = { open: false, info: {} }
 const ManageInformationScreen = (props) => {
   const { } = props
   const [open, setOpen] = useState(INIT_MODAL)
-
-  console.log(open)
-
+  
   return (
     <div>
       <section>
