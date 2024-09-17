@@ -1,0 +1,1 @@
+export { default as FormSearchUser } from './FormSearchUser'

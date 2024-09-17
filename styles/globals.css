@@ -56,7 +56,6 @@ body {
   background-color:#43BE6D;
 }
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

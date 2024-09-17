@@ -1,5 +1,8 @@
 const theme = {
   components: {
+    Menu: {
+      darkSubMenuItemBg: 'transparent',
+    },
     Segmented: {
       itemColor: '#878787',
       itemSelectedBg: '#0075E9',

@@ -24,16 +24,16 @@ const FormSearchUser = (props) => {
   return (
     <>
       <Form form={form} handlerSubmit={[buildValue, handlerSubmit]}>
-        <Row gutter={[16, 16]} align={'middle'} className="mt-6 mb-3">
-          <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={6}>
+        <Row gutter={[16, 16]} align={'middle'}>
+          <Col xs={24} sm={24} md={18} lg={18} xl={18} xxl={10}>
             <Field.Input
-              label={<span className="!text-primary-color">ค้นหาข้อมูลผู้ใช้งาน</span>}
-              name='search_user'
+              label={<Typography.Text className="!text-primary-color">ชื่อผู้ใช้งาน</Typography.Text>}
+              name='username'
               placeholder=''
               hideRequired
             />
           </Col>
-          <Col xs={24} sm={12} md={12} lg={12} xl={6} xxl={2}>
+          <Col xs={24} sm={24} md={6} lg={6} xl={6} xxl={4}>
             <fieldset>
               <label>&nbsp;</label>
               <Button
@@ -41,7 +41,8 @@ const FormSearchUser = (props) => {
                 size='large'
                 icon={<SearchOutlined />}
                 // className='!w-full 2xl:!w-auto'
-                className='!w-full '
+                // className='!w-full !bg-[#5671EE] hover:!bg-[#6c87ff] duration-200'
+                className='!w-full'
               >
                 ค้นหา
               </Button>

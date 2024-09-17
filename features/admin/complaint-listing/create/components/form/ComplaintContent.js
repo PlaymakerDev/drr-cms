@@ -14,7 +14,7 @@ const ComplaintContent = (props) => {
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Select
-              label='หมวดหมู่'
+              label={<Typography.Text className="!text-primary-color">หมวดหมู่</Typography.Text>}
               name='category'
               placeholder='หมวดหมู่'
               optKeys={['value', 'label']}
@@ -23,7 +23,7 @@ const ComplaintContent = (props) => {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
             <Field.Select
-              label='ประเภทเรื่องร้องทุกข์'
+              label={<Typography.Text className="!text-primary-color">ประเภทเรื่องร้องทุกข์</Typography.Text>}
               name='complaint_type'
               placeholder='ประเภทเรื่องร้องทุกข์'
               optKeys={['value', 'label']}
@@ -36,7 +36,7 @@ const ComplaintContent = (props) => {
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Select
-              label='จังหวัด'
+              label={<Typography.Text className="!text-primary-color">จังหวัด</Typography.Text>}
               name='province'
               placeholder='จังหวัด'
               optKeys={['value', 'label']}
@@ -45,7 +45,7 @@ const ComplaintContent = (props) => {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Select
-              label='อำเภอ'
+              label={<Typography.Text className="!text-primary-color">อำเภอ</Typography.Text>}
               name='district'
               placeholder='อำเภอ'
               optKeys={['value', 'label']}
@@ -54,7 +54,7 @@ const ComplaintContent = (props) => {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Select
-              label='ตำบล'
+              label={<Typography.Text className="!text-primary-color">ตำบล</Typography.Text>}
               name='sub_district'
               placeholder='ตำบล'
               optKeys={['value', 'label']}
@@ -63,7 +63,7 @@ const ComplaintContent = (props) => {
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Input
-              label='สายทาง'
+              label={<Typography.Text className="!text-primary-color">สายทาง</Typography.Text>}
               name='way'
               placeholder='สายทาง'
             />
@@ -89,21 +89,21 @@ const ComplaintContent = (props) => {
             <Row gutter={[16, 16]}>
               <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                 <Field.Input
-                  label='ละติจูด'
+                  label={<Typography.Text className="!text-primary-color">ละติจูด</Typography.Text>}
                   name='latitude'
                   placeholder='ละติจูด'
                 />
               </Col>
               <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                 <Field.Input
-                  label='ลองติจูด'
+                  label={<Typography.Text className="!text-primary-color">ลองติจูด</Typography.Text>}
                   name='longitude'
                   placeholder='ลองติจูด'
                 />
               </Col>
               <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
                 <Field.TextArea
-                  label='บริเวณ'
+                  label={<Typography.Text className="!text-primary-color">บริเวณ</Typography.Text>}
                   name='locale'
                   placeholder='บริเวณ'
                 />
@@ -118,7 +118,7 @@ const ComplaintContent = (props) => {
             <Row gutter={[16, 16]}>
               <Col xs={24} sm={24} md={12} lg={12} xl={24} xxl={24}>
                 <Field.Select
-                  label='แจ้งสำนักกอง'
+                  label={<Typography.Text className="!text-primary-color">แจ้งสำนักกอง</Typography.Text>}
                   name='report_department'
                   placeholder='แจ้งสำนักกอง'
                   optKeys={['value', 'label']}
@@ -127,7 +127,7 @@ const ComplaintContent = (props) => {
               </Col>
               <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                 <Field.Input
-                  label='เลขที่เอกสาร'
+                  label={<Typography.Text className="!text-primary-color">เลขที่เอกสาร</Typography.Text>}
                   name='document_number'
                   placeholder='เลขที่เอกสาร'
                 />
