@@ -8,7 +8,7 @@ const CreateScreen = (props) => {
   return (
     <>
       <section>
-        <Typography.Title level={5} className='!m-0 !text-primary-color'>เพิ่มข้อมูลผู้ใ่ช้งานใหม่</Typography.Title>
+        <Typography.Title level={5} className='!m-0 !text-primary-color'>จัดการผู้ใช้งาน</Typography.Title>
       </section>
       <section className='mt-5'>
         <Row gutter={[30, 30]}>

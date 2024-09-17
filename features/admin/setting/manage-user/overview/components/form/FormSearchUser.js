@@ -25,7 +25,7 @@ const FormSearchUser = (props) => {
   return (
     <Form form={form} handlerSubmit={[buildValue, handlerSubmit]}>
       <Row gutter={[16, 16]} align={'middle'}>
-        <Col xs={24} sm={18} md={18} lg={8} xl={8} xxl={4}>
+        <Col xs={24} sm={18} md={18} lg={8} xl={8} xxl={5}>
           <Field.Input
             label={<Typography.Text className="!text-primary-color">ค้นหาข้อมูลผู้ใช้งาน</Typography.Text>}
             name='user'
