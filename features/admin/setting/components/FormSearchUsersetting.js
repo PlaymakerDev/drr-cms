@@ -35,7 +35,7 @@ const FormSearchUsersetting = (props) => {
             size='large'
             icon={<PlusOutlined />}
             className='!w-full lg:!w-auto xl:!w-auto 2xl:!w-auto !bg-custom-blue'
-            onClick={() => router.push('/admin/setting/create')}
+            onClick={() => router.push('/admin/setting/usermanagement/create')}
             >
             เพิ่มข้อมูลผู้ใช้งาน
           </Button>

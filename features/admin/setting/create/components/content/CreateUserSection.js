@@ -13,7 +13,7 @@ const CreateUserSection = (props) => {
       border: '1px solid rgba(96, 96, 96, 0.5)',
     }}
   >
-      <Typography.Title level={3} className='!text-[#ffffff] '>ผลการดำเนินงานร้องเรียนร้องทุกข์</Typography.Title>
+      <Typography.Title level={3} className='!text-[#ffffff] '>เพิ่มผู้ใช้งาน</Typography.Title>
       <FormCreateUser />
     </Card>
   )
