@@ -7,13 +7,10 @@ const ComplaintComparison = (props) => {
 
   return (
     <Card className='!w-full !h-full'>
-      <section className="flex justify-between items-center">
+      <section className="flex items-center">
         <Typography.Title level={5} className="!m-0">
           เปรียบเทียบเรื่องร้องเรียน ปี 2566 - 2567        
         </Typography.Title>
-        <Typography.Text underline className="!cursor-pointer">
-          ดูข้อมูลเพิ่มเติม
-        </Typography.Text>
       </section>
       <section>
         <ComplaintComparisonChart />
