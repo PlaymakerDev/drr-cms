@@ -1,11 +1,4 @@
 const theme = {
-  components: {
-    Segmented: {
-      itemColor: '#878787',
-      itemSelectedBg: '#0075E9',
-      itemSelectedColor: '#FFFFFF'
-    },
-  },
   token: {
     fontSize: 16,
     colorPrimary: '#0075E9',
@@ -22,8 +15,13 @@ const theme = {
     headerSortActiveBg:'#26344B',
     headerSortHoverBg:'#26344B',
     fixedHeaderSortActiveBg:'#26344B'
-
-  },}
+  },
+  Segmented: {
+    itemColor: '#878787',
+    itemSelectedBg: '#0075E9',
+    itemSelectedColor: '#FFFFFF'
+  },
+}
 };
 
 
