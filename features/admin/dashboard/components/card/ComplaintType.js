@@ -18,7 +18,7 @@ const ComplaintType = (props) => {
 
       <section className="p-4">
         <Typography.Title level={5} className="!m-0 !mb-1 pb-1">
-          TOP 3 ประเภทเรื่องร้องเรียนร้องทุกข์
+          TOP 3 ประเภทเรื่องร้องเรียน
         </Typography.Title>
         <figure className="flex justify-around items-stretch">
           <div className="flex flex-col items-center flex-1 mx-2">
