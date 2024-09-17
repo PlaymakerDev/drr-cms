@@ -12,7 +12,7 @@ const TableUser = (props) => {
     {
       key: '1',
       username: "adisai_t",
-      name: "นายอดิศัย ทองไทย",    
+      name: "นายอดิศัย ทองไทย",
     },
     {
       key: '2',
@@ -47,29 +47,17 @@ const TableUser = (props) => {
   ];
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Table: {
-            headerBg: '#26344b',
-            colorText: '#ffff',
-            colorBgContainer: '#030918',
-            headerColor:'#fff',
-            
-          }
-        }
-      }}
-    >
+    <>
       <Table
         dataSource={data}
         columns={columns}
-        scroll={{ x: 500}} 
+        scroll={{ x: 500 }}
         rowSelection={{
           type: 'radio'
         }}
         onChange={(selectedRowKeys, selectedRows) => onTableChange(selectedRowKeys, selectedRows)}
       />
-    </ConfigProvider>
+    </>
   );
 };
 
