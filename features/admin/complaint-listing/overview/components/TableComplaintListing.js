@@ -1,11 +1,43 @@
-import React from "react";
-import { Table, Space, Typography, ConfigProvider, Badge } from "antd";
-import { EditFilled, DeleteOutlined } from "@ant-design/icons";
+import React, { useState, useMemo } from "react";
+import { Table, Space, Typography, ConfigProvider, Badge, Modal, Divider, notification } from "antd";
+import { ExclamationCircleOutlined ,CloseCircleFilled} from '@ant-design/icons';
 import { useRouter } from "next/router";
+import { DeleteIcon, EditIcon}  from "@/components/icon";
+import styles from '@/features/admin/complaint-listing/overview/styles/ComplaintListing.module.css';
+
+
+const Context = React.createContext({name: 'Default'});
 
 const TableComplaintListing = (props) => {
   const { } = props;
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  const showModal = () => {
+    setOpen(true);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (placement) => {
+    api.info({
+      className: styles.customNotification,
+      icon: <CloseCircleFilled style={{ color: '#FF4A4A' }}/>,
+      message: `ลบข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง`,
+      // description: <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>,
+      placement,
+      width: '500px'
+    });
+  };
+  const contextValue = useMemo(
+    () => ({
+      name: 'Ant Design',
+    }),
+    [],
+  );
+
 
   const data = [
     {
@@ -77,12 +109,12 @@ const TableComplaintListing = (props) => {
             lineHeight: '40px',
           },
         };
-      },  
+      },
       render: (document_number) => (
         <Typography.Text
-        underline
-        onClick={() => router.push('')}
-        style={{ height: '60px', lineHeight: '60px' }}
+          underline
+          onClick={() => router.push('')}
+          style={{ height: '60px', lineHeight: '60px' }}
         >
           {document_number}
         </Typography.Text>
@@ -94,13 +126,13 @@ const TableComplaintListing = (props) => {
       dataIndex: "notification_date",
       width: 200,
       render: (notification_date) => (
-        <div style={{ height: '50px', lineHeight: '50px' }}> 
+        <div style={{ height: '50px', lineHeight: '50px' }}>
           {notification_date}
         </div>
       ),
     },
     {
-      title: "แหล่งที่มาข้อมูล ",
+      title: "แหล่งที่มาข้อมูล",
       key: "data_source",
       dataIndex: "data_source",
       width: 200,
@@ -163,13 +195,18 @@ const TableComplaintListing = (props) => {
       render: () => {
         return (
           <div className='inline-flex flex-wrap items-center gap-5'>
-            <EditFilled
+
+            {/* <EditFilled
+              className='!cursor-pointer'
+
+              onClick={() => router.push('/admin/complaint-listing/create')}
+            /> */}
+            <EditIcon
               className='!cursor-pointer'
               onClick={() => router.push('/admin/complaint-listing/create')}
             />
-            <DeleteOutlined
-              className='!cursor-pointer !text-[#FF4a4a]'
-              // onClick={() =>}
+            <DeleteIcon
+              onClick={showModal}
             />
           </div>
         );
@@ -191,13 +228,49 @@ const TableComplaintListing = (props) => {
   };
 
   return (
-    <ConfigProvider theme={themeConfig}>
-      <Table
-        dataSource={data}
-        columns={columns}
-        scroll={{ x: 1600}}
-      />
-    </ConfigProvider>
+    <div>
+      {contextHolder}
+      <ConfigProvider theme={themeConfig}>
+        <Table
+
+          dataSource={data}
+          columns={columns}
+          scroll={{ x: 1600 }}
+        />
+      </ConfigProvider>
+      <Modal
+        title={
+          <Typography.Text
+            style={{
+              fontSize: '20px',
+              fontWeight: 'bold'
+            }}>
+            <ExclamationCircleOutlined
+              style={{
+                color: '#fcac14',
+                marginRight: '20px'
+              }}
+            />
+            ยืนยันการลบข้อมูล
+          </Typography.Text>
+        }
+        open={open}
+        onOk={() => {
+          hideModal();
+          openNotification('topRight');
+        }}
+        onCancel={hideModal}
+        okText="ยืนยัน"
+        cancelText="ยกเลิก"
+        width={440}
+      >
+        <p
+          style={{
+            marginLeft: '40px'
+          }}
+        >ท่านต้องการลบข้อมูลผู้ใช้งาน</p>
+      </Modal>
+    </div>
   );
 };
 

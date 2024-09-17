@@ -37,7 +37,7 @@ const menu = [
     path_list: [
       {
         label: 'จัดการผู้ใช้งาน',
-        path: '/admin/setting/components'
+        path: '/admin/setting/usermanagement'
       },
       {
         label: 'จัดการแหล่งที่มาข้อมูล',

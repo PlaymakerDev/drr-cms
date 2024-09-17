@@ -29,7 +29,7 @@ const ComplaintComparisonChart = (props) => {
     },
     dataLabels: {
       enabled: true,
-      offsetX: -6,
+      offsetX: -10,
     },
     stroke: {
       show: true,
