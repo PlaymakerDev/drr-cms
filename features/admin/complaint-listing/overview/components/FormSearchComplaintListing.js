@@ -42,7 +42,7 @@ const FormSearchComplaintListing = (props) => {
           <Row gutter={[16, 16]} align={"middle"}>
             <Col xs={24} sm={24} md={24} lg={24} xl={8} xxl={6}>
               <Field.RangePicker
-                label={<span className="text-white-label">สรุปข้อมูลการร้องเรียนวันที่:</span>}
+                label={<Typography.Text className="!text-primary-color">สรุปข้อมูลการร้องเรียนวันที่</Typography.Text>}
                 name="date"
                 placeholder="วว/ดด/ปปปป"
                 hideRequired
@@ -50,7 +50,7 @@ const FormSearchComplaintListing = (props) => {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={4} xxl={3}>
               <Field.Input
-                label={<span className="text-white-label">เลขที่เอกสาร:</span>}
+                label={<Typography.Text className="!text-primary-color">เลขที่เอกสาร</Typography.Text>}
                 name="document_number"
                 placeholder="เลขที่เอกสาร"
                 hideRequired
@@ -58,7 +58,7 @@ const FormSearchComplaintListing = (props) => {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={3}>
               <Field.Select
-                label={<span className="text-white-label">หมวดหมู่:</span>}
+                label={<Typography.Text className="!text-primary-color">หมวดหมู่</Typography.Text>}
                 name="category"
                 placeholder="หมวดหมู่"
                 hideRequired
@@ -66,7 +66,7 @@ const FormSearchComplaintListing = (props) => {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
               <Field.Select
-                label={<span className="text-white-label">ประเภท:</span>}
+                label={<Typography.Text className="!text-primary-color">ประเภท</Typography.Text>}
                 name="type"
                 placeholder="ประเภท"
                 hideRequired
@@ -74,7 +74,7 @@ const FormSearchComplaintListing = (props) => {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
               <Field.Select
-                label={<span className="text-white-label">หน่วยงาน:</span>}
+                label={<Typography.Text className="!text-primary-color">หน่วยงาน</Typography.Text>}
                 name="agency"
                 placeholder="หน่วยงาน"
                 hideRequired
@@ -82,7 +82,7 @@ const FormSearchComplaintListing = (props) => {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={3}>
               <Field.Select
-                label={<span className="text-white-label">สถานะ:</span>}
+                label={<Typography.Text className="!text-primary-color">สถานะ</Typography.Text>}
                 name="status"
                 placeholder="สถานะ"
                 hideRequired
@@ -90,7 +90,7 @@ const FormSearchComplaintListing = (props) => {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
               <Field.Input
-                label={<span className="text-white-label">แหล่งที่มา:</span>}
+                label={<Typography.Text className="!text-primary-color">แหล่งที่มา</Typography.Text>}
                 name="source"
                 placeholder="แหล่งที่มา"
                 hideRequired

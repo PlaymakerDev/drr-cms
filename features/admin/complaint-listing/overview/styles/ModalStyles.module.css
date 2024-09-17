@@ -1,0 +1,38 @@
+.customModal {
+  width: 80% !important; /* Or set a specific pixel value */
+  max-width: 450px; /* Optional: Ensure a maximum width */
+}
+
+.modalTitle {
+  display: inline-flex;
+  align-items: center;
+}
+
+.iconModal {
+  color: #faad14;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.iconNotiseError {
+  color: #e74c3c;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.iconNotiseSuccess {
+  color: #1cbd40;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.modalContent {
+  margin-left: 30px;
+}
+
+.customNotification {
+  width: 400px !important; 
+}

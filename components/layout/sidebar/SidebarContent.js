@@ -1,29 +1,20 @@
 import React, { useCallback, useMemo } from 'react'
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
-  ProductOutlined,
-  HomeOutlined,
-  TruckOutlined,
-  FileTextOutlined,
-  SettingOutlined,
-  VideoCameraOutlined
+  AppstoreOutlined,
+  PieChartOutlined,
+  TableOutlined,
+  ProfileOutlined,
+  SettingOutlined
 } from '@ant-design/icons'
-import { ConfigProvider, Menu } from 'antd';
-import { CCTVIcon, PaperIcon, TruckIcon } from '@/components/icon'
+import { Menu } from 'antd';
 
 const mappingTransaction = {
-  // HomeOutlined,
-  // TruckOutlined,
-  // FileTextOutlined,
-  // SettingOutlined,
-  // VideoCameraOutlined
-  ProductOutlined,
-  TruckOutlined,
-  PaperIcon,
-  SettingOutlined,
-  CCTVIcon,
-  TruckIcon
+  AppstoreOutlined,
+  PieChartOutlined,
+  TableOutlined,
+  ProfileOutlined,
+  SettingOutlined
 }
 
 const PageSidebar = (props) => {

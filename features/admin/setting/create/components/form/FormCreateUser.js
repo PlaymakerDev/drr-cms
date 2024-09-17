@@ -28,7 +28,7 @@ const FormCreateUser = (props) => {
         <Row gutter={[16, 16]}className='mt-5 mb-2'>
           <Col xs={24} sm={24} md={8} lg={8} xl={8} xxl={12}>
             <Field.Input
-              label={<span className="text-white-label">Username</span>}
+              label={<span className="!text-primary-color">Username</span>}
               name='username'
               placeholder='Username'
             />
@@ -38,21 +38,21 @@ const FormCreateUser = (props) => {
         <Row gutter={[16, 16]} className="items-start mb-40">
           <Col xs={24} sm={24} md={8} lg={8} xl={8} xxl={12}>
             <Field.Select
-              label={<span className="text-white-label">คำนำหน้า</span>}
+              label={<span className="!text-primary-color">คำนำหน้า</span>}
               name='prefix'
               placeholder='คำนำหน้า'
             />
           </Col>
           <Col xs={24} sm={24} md={8} lg={8} xl={8} xxl={12}>
             <Field.Input
-              label={<span className="text-white-label">ชื่อ-นามสกุล</span>}
+              label={<span className="!text-primary-color">ชื่อ-นามสกุล</span>}
               name='first_name'
               placeholder='ชื่อ-นามสกุล'
             />
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={16} xxl={24}>
             <Field.Select
-              label={<span className="text-white-label">สิทธิ์การเข้าใช้งาน</span>}
+              label={<span className="!text-primary-color">สิทธิ์การเข้าใช้งาน</span>}
               name='access_rights'
               placeholder='สิทธิ์การเข้าใช้งาน'
               optKeys={['value', 'label']}

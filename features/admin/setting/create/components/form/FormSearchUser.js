@@ -27,7 +27,7 @@ const FormSearchUser = (props) => {
         <Row gutter={[16, 16]} align={'middle'} className="mt-6 mb-3">
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={6}>
             <Field.Input
-              label={<span className="text-white-label">ค้นหาข้อมูลผู้ใช้งาน</span>}
+              label={<span className="!text-primary-color">ค้นหาข้อมูลผู้ใช้งาน</span>}
               name='search_user'
               placeholder=''
               hideRequired

@@ -14,7 +14,7 @@ const OperationProgress = (props) => {
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
             <Field.DatePicker
-              label='วันที่ยุติ'
+              label={<Typography.Text className="!text-primary-color">วันที่ยุติ</Typography.Text>}
               name='end_date'
               placeholder='วันที่ยุติ'
             />
@@ -25,7 +25,7 @@ const OperationProgress = (props) => {
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
             <Field.TextArea
-              label='คำชี้แจง/ผลปัฏิบัติ'
+              label={<Typography.Text className="!text-primary-color">คำชี้แจง/ผลปัฏิบัติ</Typography.Text>}
               name='instruction'
               placeholder='คำชี้แจง/ผลปัฏิบัติ'
             />
