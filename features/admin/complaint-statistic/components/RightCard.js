@@ -1,9 +1,7 @@
-import { Card, Row, Col, Typography, Flex, Progress, Segmented } from "antd";
+import { Card, Row, Col, Typography, Segmented } from "antd";
 import React from "react";
 
 import {
-  LeftDonutChart,
-  RightDonutChart,
   ServiceChart,
   SummaryChart,
 } from "./chart";

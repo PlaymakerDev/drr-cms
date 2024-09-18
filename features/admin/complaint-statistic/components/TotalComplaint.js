@@ -22,6 +22,7 @@ const data = [
   { src: WWW2, alt: "www2", title: "เว็บไซต์กรมทางหลวงชนบท", count: 0 },
   { src: WWW3, alt: "www3", title: "เว็บไซต์กระทรวงคมนาคม", count: 0 },
   { src: Book, alt: "book", title: "หนังสือภายนอก", count: 1 },
+  { src: Book, alt: "book", title: "หนังสือภายนอก", count: 0 },
 ];
 
 const INIT_MODAL = { open: false };
@@ -31,17 +32,15 @@ const TotalComplaint = (props) => {
 
   const [openOverall, setOpenOverall] = useState(INIT_MODAL);
 
-  // Sort data by count in descending order and take top 8
   const sortedData = [...data].sort((a, b) => b.count - a.count).slice(0, 8);
 
   return (
-    <div className="flex space-x-4 bg-white rounded-lg !w-full !h-full">
-      <article className="flex flex-col justify-between p-4">
-        <div className="flex">
+    <div className="flex flex-wrap space-x-4 bg-white rounded-lg !w-full !h-full">
+      <article className="flex flex-warp flex-col justify-between p-4">
+        <div className="flex flex-warp">
           <Typography.Text className="text-xl font-bold">
             เรื่องร้องเรียนรวม
           </Typography.Text>
-          <Overall open={openOverall.open} setOpen={setOpenOverall} />
           <Image
             src={allinone}
             alt="hotline"
@@ -51,21 +50,21 @@ const TotalComplaint = (props) => {
             onClick={() => setOpenOverall({ open: true })}
           />
         </div>
-        <div className="flex-1" />
+        <div className="flex-1 flex-warp" />
         <div className="mt-10 mb-2 space-x-1 pt-7">
           <Typography.Text className="text-4xl font-bold">321</Typography.Text>
           <Typography.Text className="text-2xl">เรื่อง</Typography.Text>
         </div>
-        <div className="flex">
+        <div className="flex flex-warp">
           <Image src={Chart} alt={Chart} width={20} height={20} />
           <Typography.Text>จำนวนเรื่องร้องเรียน</Typography.Text>
         </div>
       </article>
-      <div className="flex flex-wrap flex-1">
+      <div className="hidden xl:flex flex-wrap flex-1">
         {sortedData.map((item, index) => (
           <article
             key={index}
-            className="flex-1 flex flex-col items-center hover:bg-gray-100"
+            className="flex-1 flex flex-wrap flex-col items-center hover:bg-gray-100"
           >
             <Image
               src={item.src}
@@ -77,8 +76,8 @@ const TotalComplaint = (props) => {
             <Typography.Text className="text-lg font-bold mb-5 mt-2">
               {item.title}
             </Typography.Text>
-            <div className="flex-1" />
-            <section className="flex items-end space-x-1 pt-6 pb-3">
+            <div className="flex-1 flex-warp" />
+            <section className="flex flex-warp items-end space-x-1 pt-6 pb-3">
               <Typography.Text className="text-4xl font-bold">
                 {item.count}
               </Typography.Text>
@@ -89,6 +88,7 @@ const TotalComplaint = (props) => {
           </article>
         ))}
       </div>
+      <Overall open={openOverall.open} setOpen={setOpenOverall} iconData={data} />
     </div>
   );
 };

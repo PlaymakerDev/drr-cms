@@ -32,6 +32,7 @@ const Content = () => {
         dataLabels: {
           position: "top",
         },
+        borderRadius: 4,
       },
     },
     dataLabels: {
@@ -62,6 +63,7 @@ const Content = () => {
     fill: {
       opacity: 1,
     },
+    colors: ["#0075E9", "#43BE6D"]
   };
 
   return (

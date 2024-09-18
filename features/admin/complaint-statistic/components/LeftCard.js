@@ -1,30 +1,30 @@
-import { Card, Row, Col, Typography, Progress, Badge, Space } from "antd";
+import { Card, Row, Col, Typography, Progress, Badge, Space, ConfigProvider } from "antd";
 import React from "react";
 import { LeftDonutChart, RightDonutChart } from "./chart";
 
 const colorsLeft = [
-  "pink",
-  "red",
-  "yellow",
-  "orange",
-  "cyan",
-  "green",
-  "blue",
-  "purple",
-  "geekblue",
-  "magenta",
-  "volcano",
-  "gold",
+  "#25507F",
+  "#264B72",
+  "#093563",
+  "#0050A0",
+  "#006AD2",
+  "#007DF8",
+  "#0F87FE",
+  "#3098FE",
+  "#3FC8E4",
+  "#6DB6FE",
+  "#9BCDFE",
+  "#C3E0FD",
 ];
 const colorsRight = [
-  "pink",
-  "red",
-  "yellow",
-  "orange",
-  "cyan",
-  "green",
-  "blue",
-  "purple",
+  "#1C4C2C",
+  "#287241",
+  "#369857",
+  "#43BE6D",
+  "#6BD690",
+  "#69CB8A",
+  "#B4E5C5",
+  "#D8F1E1",
 ];
 
 const detailsLeft = [
@@ -86,11 +86,21 @@ const LeftCard = (props) => {
               <LeftDonutChart />
               <Space direction="vertical" className="space-y-2 pt-5">
                 {colorsLeft.map((colorsLeft, index) => (
+                  <ConfigProvider 
+                  theme={{
+                    components:{
+                      Badge:{
+                        colorTextHeading: '#000000',
+                        colorTextDescription: '#000000',
+                        colorText: '#000000',}
+                    }
+                  }}>
                   <Badge
                     key={colorsLeft}
                     color={colorsLeft}
                     text={detailsLeft[index]}
-                  />
+                    />
+                    </ConfigProvider>
                 ))}
               </Space>
             </figure>
@@ -127,11 +137,21 @@ const LeftCard = (props) => {
               <RightDonutChart />
               <Space direction="vertical" className="space-y-2 pt-5">
                 {colorsRight.map((colorsRight, index) => (
+                  <ConfigProvider
+                  theme={{
+                    components:{
+                      Badge:{
+                        colorTextHeading: '#000000',
+                        colorTextDescription: '#000000',
+                        colorText: '#000000',}
+                    }
+                  }}>
                   <Badge
                     key={colorsRight}
                     color={colorsRight}
                     text={detailsRight[index]}
-                  />
+                    />
+                    </ConfigProvider>
                 ))}
               </Space>
             </figure>

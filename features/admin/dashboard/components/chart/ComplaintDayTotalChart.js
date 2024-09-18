@@ -22,6 +22,7 @@ const ComplaintDayTotalChart = (props) => {
         dataLabels: {
           position: 'top',
         },
+        borderRadius: 3,
       },
     },
     dataLabels: {
@@ -40,9 +41,11 @@ const ComplaintDayTotalChart = (props) => {
     },
       legend: {
     show: false
-  }
+  },
+  colors: ["#0075E9"]
   }
 
+  
   return (
     <div>
       <Chart

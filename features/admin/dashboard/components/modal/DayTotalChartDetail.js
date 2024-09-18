@@ -26,6 +26,7 @@ const Content = () => {
         dataLabels: {
           position: 'top',
         },
+        borderRadius: 4,
       },
     },
     dataLabels: {
@@ -44,7 +45,8 @@ const Content = () => {
     },
       legend: {
     show: false
-  }
+  },
+  colors: ["#0075E9"]
   }
   return (
     <div>

@@ -37,9 +37,13 @@ const DonutChart = () => {
     legend: {
       show: false
     },
+    colors: ["#F1E14A","#FF8831","#43BE6D","#0075E9","#8E9BA7","#A2CCF4"],
+    stroke: {
+      width: 0,  // Removes the spacing between the data points
+    },
   };
 
-  const series = [44, 55, 13];
+  const series = [10,44,20,20,3,3];
 
   return (
     <div>

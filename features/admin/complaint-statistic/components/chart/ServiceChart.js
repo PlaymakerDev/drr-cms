@@ -22,7 +22,7 @@ const ServiceChart = (props) => {
         horizontal: false,
         columnWidth: '40%',
         endingShape: 'rounded',
-        
+        borderRadius: 5,
       },
     },
     dataLabels: {
@@ -39,7 +39,8 @@ const ServiceChart = (props) => {
     fill: {
       opacity: 1
     },
-    
+    colors: ["#0075E9", "#43BE6D"]
+
   }
 
   return (

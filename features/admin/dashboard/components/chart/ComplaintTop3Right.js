@@ -30,6 +30,7 @@ const ComplaintTop3Right = () => {
       },
     },
     labels: ["Something"],
+    colors: ["#FF8831"]
   };
 
   return (

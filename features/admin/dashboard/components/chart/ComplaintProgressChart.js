@@ -25,6 +25,7 @@ const ComplaintProgressChart = (props) => {
         dataLabels: {
           position: 'top',
         },
+        borderRadius: 5,
       },
     },
     dataLabels: {
@@ -42,7 +43,7 @@ const ComplaintProgressChart = (props) => {
     fill: {
       opacity: 1
     },
-    
+    colors: ["#0075E9", "#43BE6D"]
   }
 
   return (
