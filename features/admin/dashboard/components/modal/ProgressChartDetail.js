@@ -32,6 +32,7 @@ const Content = () => {
         dataLabels: {
           position: "top",
         },
+        borderRadius: 4,
       },
     },
     dataLabels: {

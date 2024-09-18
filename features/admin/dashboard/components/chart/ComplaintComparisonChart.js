@@ -25,6 +25,7 @@ const ComplaintComparisonChart = (props) => {
         dataLabels: {
           position: 'top',
         },
+        borderRadius: 5,
       },
     },
     dataLabels: {

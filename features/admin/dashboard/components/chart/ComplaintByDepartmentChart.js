@@ -28,6 +28,7 @@ const ComplaintByDepartmentChart = (props) => {
         dataLabels: {
           position: 'top',
         },
+        borderRadius: 2,
       },
     },
     dataLabels: {

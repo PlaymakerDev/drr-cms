@@ -22,7 +22,7 @@ const ServiceChart = (props) => {
         horizontal: false,
         columnWidth: '40%',
         endingShape: 'rounded',
-        
+        borderRadius: 5,
       },
     },
     dataLabels: {
