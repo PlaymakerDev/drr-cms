@@ -11,7 +11,7 @@ const ComplaintProgress = (props) => {
   const [openProgressDetail, setOpenProgressDetail] = useState(INIT_MODAL);
 
   return (
-    <Card className="!w-full !h-full">
+    <Card className="">
       <section className="flex justify-between items-center">
         <Typography.Title level={5} className="!m-0">
           ผลการดำเนินงานร้องเรียนร้องทุกข์

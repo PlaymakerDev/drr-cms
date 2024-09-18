@@ -37,8 +37,8 @@ const NotifyCard = (props) => {
                 className='!flex !justify-center !items-center !bg-black'
               />
               <div className='flex flex-col'>
-                <Typography.Title level={5} className='!m-0'>{item.title}</Typography.Title>
-                <Badge color='red' text={item.detail} />
+                <Typography.Title level={5} className='!m-0'>{item.title}</Typography.Title>                
+                <Badge color='red' text={item.detail} className='text-black'/>
               </div>
             </div>
             <div>

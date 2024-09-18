@@ -1,9 +1,9 @@
-import { Card, Typography, Progress } from "antd";
-import Image from 'next/image';
+import { Card, Typography, Col, Row } from "antd";
+import Image from "next/image";
 import React from "react";
-import Hotline from '@/public/images/Hotline.svg'
-import Traffic from '@/public/images/Traffic.svg'
-import Facebook from '@/public/images/Facebook.svg'
+import Hotline from "@/public/images/Hotline.svg";
+import Traffic from "@/public/images/Traffic.svg";
+import Facebook from "@/public/images/Facebook.svg";
 import { ComplaintCurrentChart } from "../chart";
 import { useRouter } from "next/router";
 
@@ -17,66 +17,75 @@ const ComplaintCurrent = (props) => {
   };
 
   return (
-    <Card >
+    <Card>
       <section className="flex justify-between items-center">
         <Typography.Text className="!m-0 text-xl font-bold">
           เรื่องร้องเรียนร้องทุกข์ ภายในวันนี้
         </Typography.Text>
-        <Typography.Text underline className="!cursor-pointer" onClick={Letgo} >
+        <Typography.Text underline className="!cursor-pointer" onClick={Letgo}>
           ดูข้อมูลเพิ่มเติม
         </Typography.Text>
       </section>
-      <div className="flex items-center justify-around">
-        <section>
-          <ComplaintCurrentChart />
-        </section>
-        <section className="space-y-3">
-          <Typography.Title level={5} className="!m-0">
-            แหล่งที่มาของข้อมูล
-          </Typography.Title>
-          <figure className="flex space-x-20"> 
-              <div className="flex flex-col space-y-2">
-                  <Image
-                    src={Hotline}
-                    alt='hotline'
-                    width={80}
-                    height={80}
-                  />
-                <Typography.Text className="text-lg font-bold">🟢 สายด่วน 1146</Typography.Text>
-                <section className="flex items-end space-x-1">
-                  <Typography.Text className="text-4xl font-bold">286</Typography.Text>
-                  <Typography.Text className="text-lg font-bold ">รายการ</Typography.Text>
-                </section>
-              </div>
-              <div className="flex flex-col space-y-2">
-                  <Image
-                    src={Traffic}
-                    alt='traffic'
-                    width={80}
-                    height={80}
-                  />
-                <Typography.Text className="text-lg font-bold">🟠 Traffic Fondue</Typography.Text>
+      <Row gutter={[16, 16]} className="!w-full !h-full">
+        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={6}>
+          <section>
+            <ComplaintCurrentChart />
+          </section>
+        </Col>
+        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={18}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+                <Typography.Text>แหล่งที่มาของข้อมูล</Typography.Text>
+              </Col>
+            </Row>
+            <Row gutter={[16, 16]} className="!w-full !h-full">
+              <Col xs={24} sm={8} md={8} lg={8} xl={8} xxl={8}>
+                <div className="flex flex-col space-y-2 items-center">
+                  <Image src={Hotline} alt="hotline" width={80} height={80} />
+                  <Typography.Text className="text-lg font-bold">
+                    🟢 สายด่วน 1146
+                  </Typography.Text>
+                  <section className="flex items-end space-x-1">
+                    <Typography.Text className="text-4xl font-bold">
+                      286
+                    </Typography.Text>
+                    <Typography.Text className="text-lg font-bold ">
+                      รายการ
+                    </Typography.Text>
+                  </section>
+                </div>
+              </Col>
+              <Col xs={24} sm={8} md={8} lg={8} xl={8} xxl={8}>
+              <div className="flex flex-col space-y-2 items-center">
+                <Image src={Traffic} alt="traffic" width={80} height={80} />
+                <Typography.Text className="text-lg font-bold">
+                  🟠 Traffic Fondue
+                </Typography.Text>
                 <section className="flex items-end space-x-1">
                   <Typography.Text className="text-4xl font-bold">15</Typography.Text>
-                  <Typography.Text className="text-lg font-bold ">รายการ</Typography.Text>
+                  <Typography.Text className="text-lg font-bold ">
+                    รายการ
+                  </Typography.Text>
                 </section>
               </div>
-              <div className="flex flex-col space-y-2">
-                  <Image
-                    src={Facebook}
-                    alt='facebook'
-                    width={80}
-                    height={80}
-                  />
-                <Typography.Text className="text-lg font-bold">🔵 Facebook</Typography.Text>
+              </Col>
+              <Col xs={24} sm={8} md={8} lg={8} xl={8} xxl={8}>
+              <div className="flex flex-col space-y-2 items-center">
+                <Image src={Facebook} alt="facebook" width={80} height={80} />
+                <Typography.Text className="text-lg font-bold">
+                  🔵 Facebook
+                </Typography.Text>
                 <section className="flex items-end space-x-1">
                   <Typography.Text className="text-4xl font-bold">12</Typography.Text>
-                  <Typography.Text className="text-lg font-bold ">รายการ</Typography.Text>
+                  <Typography.Text className="text-lg font-bold ">
+                    รายการ
+                  </Typography.Text>
                 </section>
-              </div>        
-          </figure>
-        </section>
-      </div>
+              </div>
+              </Col>
+            </Row>    
+        </Col>
+      </Row>
     </Card>
   );
 };
