@@ -40,9 +40,11 @@ const ComplaintDayTotalChart = (props) => {
     },
       legend: {
     show: false
-  }
+  },
+  colors: ["#0075E9"]
   }
 
+  
   return (
     <div>
       <Chart

@@ -44,7 +44,8 @@ const Content = () => {
     },
       legend: {
     show: false
-  }
+  },
+  colors: ["#0075E9"]
   }
   return (
     <div>
