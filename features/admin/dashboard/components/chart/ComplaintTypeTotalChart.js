@@ -51,6 +51,7 @@ const DonutChart = () => {
         options={options}
         series={series}
         type="donut"
+        height={260}
         width={options.chart.width}
       />
     </div>
