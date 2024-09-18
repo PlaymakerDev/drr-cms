@@ -42,6 +42,7 @@ const ComplaintComparisonChart = (props) => {
     fill: {
       opacity: 1
     },
+    colors: ["#0075E9", "#43BE6D"]
   }
 
   return (

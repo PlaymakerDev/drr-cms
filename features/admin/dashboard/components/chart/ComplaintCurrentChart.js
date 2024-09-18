@@ -4,7 +4,7 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const ComplaintCurrentChart = () => {
   const options = {
-    series: [15, 65, 34],
+    series: [25, 45, 65],
     chart: {
       type: 'radialBar',
     },
@@ -43,6 +43,7 @@ const ComplaintCurrentChart = () => {
       },
     },
     labels: ['#', '#', '#'],
+    colors: ["#6093FF", "#FCAA72","#99DE63"]
   };
 
   return (
