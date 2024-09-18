@@ -22,6 +22,7 @@ const ComplaintDayTotalChart = (props) => {
         dataLabels: {
           position: 'top',
         },
+        borderRadius: 3,
       },
     },
     dataLabels: {
