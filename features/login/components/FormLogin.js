@@ -13,20 +13,23 @@ const Formlogin = () => {
       <div style={{
         display: 'flex',
         justifyContent: 'flex-end',
+        width: '100%', // Ensures the container takes full width
+        marginBottom: '20px'
       }}>
       <Image
           src="/images/Group 41848.png"
-          width={120}
-          height={120}
+          width={150}
+          height={150}
           alt="backgroud"
         />
       </div>
+      <div className={styles.formContainer}>
       <div
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '50px',
+          // marginTop: '50px',
           marginBottom: '25px'
         }}
       >
@@ -140,7 +143,8 @@ const Formlogin = () => {
             fontSize: '28px',
             borderColor: '#004F9D',
             borderRadius: '4px',
-            height: '60px'
+            height: '60px',
+            fontWeight: 'bold'
 
           }}
         // onClick={}
@@ -150,13 +154,14 @@ const Formlogin = () => {
       </section>
 
       <footer className={styles.footer} style={{ textAlign: 'center', marginTop: '100px' }}>
-        <InfoCircleFilled style={{ fontSize: '16px', marginRight: '8px', color: '#414142' }} />
-        <Typography.Text level={1} className='!text-[#414142]'>
+        <InfoCircleFilled style={{ fontSize: '24px', marginRight: '8px', color: '#414142'}} className="items:center" />
+        <Typography.Text level={2} className='!text-[#919193]'>
           มีปัญหาในการเข้าสู่ระบบ ติดต่อ 02-
           <br />
           All rights reserved 2025.
         </Typography.Text>
       </footer>
+      </div>
     </div>
   )
 }

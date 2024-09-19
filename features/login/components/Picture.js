@@ -7,10 +7,12 @@ function Picture() {
     <figure className={`relative w-full h-full ${styles.image}`}>
       <Image
         src='/images/login.png'
+        // src='/images/image.svg'
         layout='fill' // Ensures the image fills the parent container
         // objectFit='cover' // Makes the image cover the container while preserving aspect ratio
         alt='login'
-        className='absolute inset-0' // Ensures the image is positioned correctly
+        className='block w-full h-full object-fit absolute inset-0' // Ensures the image is positioned correctly
+      
       />
     </figure>
   )

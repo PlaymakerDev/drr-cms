@@ -1,6 +1,7 @@
 .loginScreen {
   background-color: #ffffff !important; 
   height: 100vh; 
+  overflow: hidden;
 }
 
 .imageContainer {
@@ -13,7 +14,6 @@
 }
 .header {
   text-align: left; /* Centers the text horizontally */
-  
 }
 
 .primaryLabel {
@@ -27,7 +27,8 @@
 .secondaryLabel {
   display: block; /* Ensures the label takes up full width */
   font-size: 38px; /* Adjust font size */
-  color: gray; /* Optional: Change text color */
+  color: #b2babb;
+   /* Optional: Change text color */
 }
 .textLoging {
   font-size: 50px;
@@ -40,4 +41,23 @@
   object-fit: cover;  /* Ensures the image covers the container without overflow */
   max-width: 100%;    /* Optional max-width */
   max-height: 100vh;  /* Constrain the height to the viewport */
+}
+.formContainer {
+  padding: 0 190px; /* Adjust the padding as needed */
+}
+.buttonImage {
+  position: absolute; /* Positioning it absolutely within the parent */
+  top: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  z-index: 10; /* Ensure it's above other elements */
+  cursor: pointer; /* Change cursor to pointer for button */
+}
+.thinText {
+  color: white;
+   
+  font-size: 10px
+}
+.thaiText {
+  color: white;
+  font-size: 18px
 }
