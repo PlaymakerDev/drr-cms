@@ -10,9 +10,9 @@ const LoginScreen = () => {
     <div className={styles.loginScreen}>
       <div className='grid grid-cols-2 h-screen'>
         <Picture />
-        <container className='p-52'>
+        
           <FormLogin />
-        </container>
+        
         
       </div>
     </div>

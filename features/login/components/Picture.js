@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 function Picture() {
   return (
-    <figure className={`relative w-full h-full ${styles.pictureWrapper}`}>
+    <figure className={`relative w-full h-full ${styles.image}`}>
       <Image
         src='/images/login.png'
         layout='fill' // Ensures the image fills the parent container

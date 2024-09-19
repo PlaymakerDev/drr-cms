@@ -9,13 +9,25 @@ import { useForm, Field } from '@/components/form'
 const Formlogin = () => {
 
   return (
-    <div>
+    <div >
+      <div style={{
+        display: 'flex',
+        justifyContent: 'flex-end',
+      }}>
+      <Image
+          src="/images/Group 41848.png"
+          width={120}
+          height={120}
+          alt="backgroud"
+        />
+      </div>
       <div
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginBottom: '20px'
+          marginTop: '50px',
+          marginBottom: '25px'
         }}
       >
         <Image
@@ -99,11 +111,17 @@ const Formlogin = () => {
         </Row>
 
         <div className='text-left mt-10'>
-          <Checkbox id='rememberMe' name='rememberMe' className='mr-2' />
+          <Checkbox id='rememberMe' name='rememberMe' className='mr-2' 
+          style={{
+            transform: 'scale(2)'
+            
+          }}/>
           <Typography.Text
             style={{
               color:'gray',
-              fontSize: '25px',
+              fontSize: '25px', 
+              marginLeft: '8px',
+              verticalAlign: 'middle'
             }}
           >
             จดจำฉัน
@@ -119,7 +137,7 @@ const Formlogin = () => {
           className='custom-button'
           style={{
             background: '#004F9D',
-            fontSize: '24px',
+            fontSize: '28px',
             borderColor: '#004F9D',
             borderRadius: '4px',
             height: '60px'
