@@ -35,8 +35,8 @@ const LoginScreen = () => {
       <div className="absolute bottom-20 md:bottom-40 left-1/2 transform -translate-x-1/2 z-5">
         <Image
           src="/images/Group 41849.png"
-          width={100} /* Smaller for mobile */
-          height={100} /* Smaller for mobile */
+          width={150} /* Smaller for mobile */
+          height={150} /* Smaller for mobile */
           className="md:w-150 md:h-150" /* Larger for medium and above */
           alt="Login"
         />

@@ -2,11 +2,13 @@ import { FormContent } from '@/features/admin/complaint-listing/create/component
 import React from 'react'
 import styles from '@/features/login/style/login.module.css'
 import { Button, Typography, Row, Col, Form, Input, Checkbox } from 'antd'
-import { EyeInvisibleOutlined, EyeTwoTone, InfoCircleFilled, UserOutlined, UserTie } from '@ant-design/icons'
+import { EyeInvisibleOutlined, EyeTwoTone, InfoCircleFilled,} from '@ant-design/icons'
 import Image from 'next/image'
 import { useForm, Field } from '@/components/form'
+import { useRouter } from "next/router";
 
 const Formlogin = () => {
+  const router = useRouter();
 
   return (
     <div >
@@ -147,7 +149,8 @@ const Formlogin = () => {
             fontWeight: 'bold'
 
           }}
-        // onClick={}
+        
+        onClick={() => router.push('/admin/dashboard')}
         >
           เข้าสู่ระบบ
         </Button>

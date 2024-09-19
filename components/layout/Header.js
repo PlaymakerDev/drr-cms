@@ -8,6 +8,7 @@ import styles from '@/styles/components/layout/Layout.module.css'
 // import menu from '@/menu'
 import DPTLogo from '@/public/images/dpt-logo.svg'
 
+
 const mappingTransaction = {
   AppstoreOutlined,
   PieChartOutlined,
@@ -18,7 +19,7 @@ const mappingTransaction = {
 
 const Header = (props) => {
   const { menu, role, setOpen } = props
-  const { pathname, reload } = useRouter()
+  const { pathname, reload ,push} = useRouter()
 
   const Icon = useCallback((iconName, { ...props }) => {
     const IconResult = mappingTransaction[iconName]
@@ -166,6 +167,7 @@ const Header = (props) => {
               size={'large'}
               icon={<LogoutOutlined />}
               className={`${styles.avatarIcon} !bg-[#FFFFFF30] !cursor-pointer`}
+              onClick={() => push('/login')}
             />
           </div>
         </section>
