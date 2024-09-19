@@ -4,16 +4,15 @@ import Image from 'next/image'
 
 function Picture() {
   return (
-    <pictureContain >
-
+    <figure className={`relative w-full h-full ${styles.pictureWrapper}`}>
       <Image
         src='/images/login.png'
-        width={900}
-        height={900}
+        layout='fill' // Ensures the image fills the parent container
+        // objectFit='cover' // Makes the image cover the container while preserving aspect ratio
         alt='login'
-
+        className='absolute inset-0' // Ensures the image is positioned correctly
       />
-    </pictureContain>
+    </figure>
   )
 }
 

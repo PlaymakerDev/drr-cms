@@ -8,9 +8,9 @@ const LoginScreen = () => {
 
   return (
     <div className={styles.loginScreen}>
-      <div className='grid grid-cols-2'>
+      <div className='grid grid-cols-2 h-screen'>
         <Picture />
-        <container className={styles.forms}>
+        <container className='p-52'>
           <FormLogin />
         </container>
         
