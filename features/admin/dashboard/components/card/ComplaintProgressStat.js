@@ -10,17 +10,19 @@ const ComplaintProgressStat = (props) => {
         showInfo={false}
         percent={100}
         success={{
-          percent: 70,
+          percent: 70,  // สัดส่วนของ progress bar ทางซ้าย
+          strokeColor: "#0075E9",  // สีน้ำเงิน (ด้านซ้าย)
         }}
         strokeWidth={15}
+        strokeColor="#43BE6D"  // สีเขียว (ด้านขวา)
       />
       <Flex
         justify='space-between'
         align='center'
         wrap
       >
-        <Typography.Text>🟢 กำลังดำเนินการ 286 รายการ</Typography.Text>
-        <Typography.Text>🔵 ยุติ 15 รายการ</Typography.Text>
+        <Typography.Text>🔵 กำลังดำเนินการ 286 รายการ</Typography.Text>
+        <Typography.Text>🟢 ยุติ 15 รายการ</Typography.Text>
       </Flex>
     </Card>
   )

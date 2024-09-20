@@ -15,7 +15,7 @@ const ComplaintType = (props) => {
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
           <Typography.Title level={5} className="!m-0">
-            ประเภทเรื่องร้องเรียนร้องทุกข์ ภายในวันนี้
+            ประเภทเรื่องร้องเรียน ภายในวันนี้
           </Typography.Title>
         </Col>
         <Col

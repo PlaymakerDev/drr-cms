@@ -6,12 +6,15 @@ const LeftDonutChart = () => {
   const options = {
     chart: {
       type: 'donut',
+      toolbar: {
+        show: false
+      },
     },
     dataLabels: {
       enabled: false,
     },
     legend: {
-      show: false,  // This hides the legend
+      show: false,
     },
     responsive: [{
       breakpoint: 480,

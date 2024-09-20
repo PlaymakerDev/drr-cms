@@ -15,7 +15,10 @@ const ServiceChart = (props) => {
 
   const options = {
     chart: {
-      type: 'bar',
+      type: "bar",
+      toolbar: {
+        show: false
+      },
     },
     plotOptions: {
       bar: {

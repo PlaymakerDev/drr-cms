@@ -17,6 +17,9 @@ const Content = () => {
   const options = {
     chart: {
       type: 'bar',
+      toolbar: {
+        show: false
+      },
     },
     plotOptions: {
       bar: {

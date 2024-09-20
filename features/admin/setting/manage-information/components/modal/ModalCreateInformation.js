@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo, useRef } from 'react'
 import { Col, Modal, Row, Typography } from 'antd'
 import { useForm, Form, Field } from '@/components/form'
+import styles from '@/features/admin/setting/manage-information/style/manage-information.module.css'
+import UploadImage from '@/components/icon/UploadImage'
 // ICON LIST
 import Hotline from '@/public/images/Hotline.svg'
 import Traffic from '@/public/images/Traffic.svg'
@@ -57,7 +59,7 @@ const Content = (props) => {
                 }
                 if (!isLt10) {
                   // message.error('File size exceed')
-                  message.error('ไม่สามารถอัปโหลดไฟล์ได้ ไฟล์ที่อัปโหลดมีขนาดเกิน 10 MB')
+                  message.error('ไม่สามารถอัปโหลดไฟล์ได้ ไฟล์ที่อัปโหลดมีขนาดเกิน 3 MB')
                 }
                 // RETURN UPLOAD.LIST_IGNORE
                 return ((isListAvailable && isLt10) || Upload.LIST_IGNORE) || false
@@ -65,12 +67,20 @@ const Content = (props) => {
               label='เลือกรูปภาพ'
               description={
                 <div className='flex flex-col flex-wrap justify-center'>
-                  <Typography.Text className='!text-sm'>รองรับรูปแบบไฟล์ .png .jpeg .jpg ขนาดไม่เกิน 10MB</Typography.Text>
-                  <Typography.Text className='!text-sm'>ขนาดที่แนะนำ 1024 x 720 px</Typography.Text>
+                  <Typography.Text className='!text-sm'>รองรับรูปแบบไฟล์ .png .jpeg .jpg ขนาดไม่เกิน 3 MB</Typography.Text>
+                  <Typography.Text className='!text-sm'>ขนาดที่แนะนำ 256 x 256 px</Typography.Text>
                 </div>
               }
             />
           </section>
+        </Col>
+        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+          <div className={styles.uploadContainer}>
+            <UploadImage />
+            <label className={styles.label}>
+              อัปโหลดอีกครั้ง
+            </label>
+          </div>
         </Col>
         <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
           <Field.Input

@@ -19,6 +19,9 @@ const ComplaintByDepartmentChart = (props) => {
   const options = {
     chart: {
       type: 'bar',
+      toolbar: {
+        show: false
+      },
     },
     plotOptions: {
       bar: {

@@ -7,6 +7,9 @@ const DonutChart = () => {
     chart: {
       width: 330,
       type: 'donut',
+      toolbar: {
+        show: false
+      },
     },
     plotOptions:{
         pie: {
@@ -39,7 +42,7 @@ const DonutChart = () => {
     },
     colors: ["#F1E14A","#FF8831","#43BE6D","#0075E9","#8E9BA7","#A2CCF4"],
     stroke: {
-      width: 0,  // Removes the spacing between the data points
+      width: 0,
     },
   };
 

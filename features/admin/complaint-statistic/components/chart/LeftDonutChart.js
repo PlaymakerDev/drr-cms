@@ -6,12 +6,15 @@ const LeftDonutChart = () => {
   const options = {
     chart: {
       type: 'donut',
+      toolbar: {
+        show: false
+      },
     },
     dataLabels: {
       enabled: false,
     },
     legend: {
-      show: false,  // This hides the legend
+      show: false,
     },
     responsive: [{
       breakpoint: 480,
@@ -23,7 +26,7 @@ const LeftDonutChart = () => {
     }],
     colors: ["#3FC8E4", "#C4E1FE", "#9BCDFE", "#6DB6FE", "#3098FE", "#0F87FE", "#007DF8", "#0050A0", "#053464", "#264B72", "#24507F"],
     stroke: {
-      width: 0,  // Removes the spacing between the data points
+      width: 0,
     },
   };
 
