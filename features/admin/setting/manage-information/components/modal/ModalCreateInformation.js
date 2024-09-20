@@ -74,14 +74,14 @@ const Content = (props) => {
             />
           </section>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
           <div className={styles.uploadContainer}>
             <UploadImage />
             <label className={styles.label}>
               อัปโหลดอีกครั้ง
             </label>
           </div>
-        </Col>
+        </Col> */}
         <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
           <Field.Input
             label='ประเภทเรื่องร้องทุกข์'
