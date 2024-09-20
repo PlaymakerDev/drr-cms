@@ -1,55 +1,92 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { HYDRATE } from 'next-redux-wrapper';
+import { createSlice } from "@reduxjs/toolkit";
+import { HYDRATE } from "next-redux-wrapper";
 
-const name = "dashboard"
+const name = "dashboard";
 
 export const initialState = {
   top3_complain: {
     search: {
-      dateSearch: '',
+      dateSearch: "",
     },
     data: {
       graph: {
         series: [],
-        labels: []
+        labels: [],
       },
-      data: []
-    }
+      data: [],
+    },
   },
   top3_progress: {
     search: {
-      dateSearch: '',
+      dateSearch: "",
     },
     data: {
       series: [],
-      labels: []
+      labels: [],
     },
   },
   most_popular: {
     search: {
-      dateSearch: '',
+      dateSearch: "",
     },
-    data: []
-  }
-}
+    data: [],
+  },
+  compare_process_close: {
+    search: {
+      dateSearch: "",
+    },
+    data: [],
+  },
+  compare_process_close_2years: {
+    search: {
+      dateSearch: "",
+    },
+    data: {
+      series: [],
+      labels: [],
+    },
+  },
+  count_complaints: {
+    search: {
+      dateSearch: "",
+    },
+    data: {
+      series: [],
+      labels: [],
+    },
+  },
+  count_complain_type: {
+    search: {
+      dateSearch: "",
+    },
+    data: {
+      series: [],
+      labels: [],
+      top3: [],
+    },
+  },
+  top3_department_complain: {
+    search: {
+      dateSearch: "",
+    },
+    data: [],
+  },
+};
 
 export const slice = createSlice({
   name,
   initialState,
   extraReducers: (builder) => {
     builder.addCase(HYDRATE, (state, action) => {
-      return state = {
+      return (state = {
         ...state,
-        ...(action?.['payload']?.[name] || {})
-      };
+        ...(action?.["payload"]?.[name] || {}),
+      });
     });
   },
-  reducers: {
-  }
-})
+  reducers: {},
+});
 
-export const {
+export const {} = slice.actions;
 
-} = slice.actions
-
-export default slice.reducer
+export default slice.reducer;
