@@ -3,6 +3,10 @@ import tasksRunning from './tasksRunningSlice'
 import example from './exampleSlice'
 import dashboard from './dashboardSlice'
 import master from './masterSlice'
+import complaintListing from './complaintListingSlice'
+import complaintStatistic from './complaintStatisticSlice'
+import report from './reportSlice'
+import setting from './settingSlice'
 // {{import}}
 
 const rootReducer = {
@@ -11,6 +15,10 @@ const rootReducer = {
 	example,
 	dashboard,
 	master,
+	complaintListing,
+	complaintStatistic,
+	report,
+	setting,
 // {{export}}
 }
 

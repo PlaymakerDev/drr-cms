@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper';
 
-const name = "master"
+const name = "setting"
 
-export const initialState = {
-
-}
+export const initialState = {}
 
 export const slice = createSlice({
   name,
@@ -19,10 +17,10 @@ export const slice = createSlice({
     });
   },
   reducers: {
-
+    
   }
 })
 
-export const { } = slice.actions
+export const {  } = slice.actions
 
 export default slice.reducer
