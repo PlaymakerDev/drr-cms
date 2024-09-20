@@ -68,17 +68,19 @@ const LeftCard = (props) => {
             <Progress
               showInfo={false}
               percent={100}
-              success={{
-                percent: 70,
-              }}
-              strokeWidth={15}
-            />
+             success={{
+                percent: 70,  // สัดส่วนของ progress bar ทางซ้าย
+                strokeColor: "#0075E9",  // สีน้ำเงิน (ด้านซ้าย)
+          }}
+            strokeWidth={15}
+            strokeColor="#43BE6D"  // สีเขียว (ด้านขวา)
+      />
             <div className="flex justify-between items-center flex-wrap pt-2 pb-5">
               <Typography.Text className="font-bold">
-                🟢 ดำเนินการ (39%)
+                🔵 ยุติ (60%)
               </Typography.Text>
               <Typography.Text className="font-bold">
-                🔵 ยุติ (60%)
+                🟢 ดำเนินการ (39%)
               </Typography.Text>
             </div>
             <Typography.Text>ประเภทเรื่องร้องเรียนร้องทุกข์</Typography.Text>
@@ -118,18 +120,19 @@ const LeftCard = (props) => {
             <Progress
               showInfo={false}
               percent={100}
-              success={{
-                percent: 70,
-              }}
-              strokeWidth={15}
-
-            />
+             success={{
+                percent: 70,  // สัดส่วนของ progress bar ทางซ้าย
+                strokeColor: "#0075E9",  // สีน้ำเงิน (ด้านซ้าย)
+          }}
+            strokeWidth={15}
+            strokeColor="#43BE6D"  // สีเขียว (ด้านขวา)
+      />
             <div className="flex justify-between items-center flex-wrap pt-2 pb-5">
               <Typography.Text className="font-bold">
-                🟢 ดำเนินการ (39%)
+                🔵 ยุติ (60%)
               </Typography.Text>
               <Typography.Text className="font-bold">
-                🔵 ยุติ (60%)
+                🟢 ดำเนินการ (39%)
               </Typography.Text>
             </div>
             <Typography.Text>ประเภทเรื่องขอรับบริการ</Typography.Text>

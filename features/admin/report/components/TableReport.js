@@ -48,6 +48,33 @@ const TableReport = (props) => {
       report: true,
       summary: true,
     },
+    {
+      month: "มิถุนายน 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },{
+      month: "มิถุนายน 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
+    {
+      month: "มิถุนายน 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
+    {
+      month: "มิถุนายน 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
   ];
   const columns = [
     {
@@ -112,16 +139,11 @@ const TableReport = (props) => {
       dataIndex: "summary",
       width: 100,
       align: 'center',
-      render: (item) => {
-        if (item) {
-          return (
-            <FileTextOutlined
-              className='!cursor-pointer'
-            />
-          )
-        }
-        return '-'
-      },
+      render: (item) => (
+        <div style={{ height: '40px', lineHeight: '40px' }}>
+          {item ? <FileTextOutlined className='!cursor-pointer' /> : '-'}
+        </div>
+      ),
     },
   ];
 

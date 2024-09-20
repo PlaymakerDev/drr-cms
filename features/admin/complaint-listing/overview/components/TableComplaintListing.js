@@ -97,7 +97,7 @@ const TableComplaintListing = (props) => {
       width: 150,
       render: (item) => {
         if (item) {
-          return <Typography.Text className="!text-primary-color !cursor-pointer" underline onClick={() => router.push('')}>{item}</Typography.Text>
+          return <Typography.Text className="!text-primary-color !cursor-pointer" underline onClick={() => router.push('/admin/complaint-listing/create')}>{item}</Typography.Text>
         }
         return
       }
@@ -130,7 +130,7 @@ const TableComplaintListing = (props) => {
       title: "หมวดหมู่",
       key: "category",
       dataIndex: "category",
-      width: 200,
+      width: 100,
       render: (item) => {
         if (item) {
           return item
