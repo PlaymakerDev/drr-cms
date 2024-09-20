@@ -24,7 +24,7 @@ const ContentComplaintCurrent = (props) => {
       <Row gutter={[16, 16]} className="!w-full !h-full">
         <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={6}>
           <section>
-            <ComplaintCurrentChart />
+            <ComplaintCurrentChart data={data} />
           </section>
         </Col>
         <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={18}>
