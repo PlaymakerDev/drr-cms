@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo, useRef } from 'react'
 import { Col, Modal, Row, Typography } from 'antd'
 import { useForm, Form, Field } from '@/components/form'
+import styles from '@/features/admin/setting/manage-information/style/manage-information.module.css'
+import UploadImage from '@/components/icon/UploadImage'
 // ICON LIST
 import Hotline from '@/public/images/Hotline.svg'
 import Traffic from '@/public/images/Traffic.svg'
@@ -71,6 +73,14 @@ const Content = (props) => {
               }
             />
           </section>
+        </Col>
+        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+          <div className={styles.uploadContainer}>
+            <UploadImage />
+            <label className={styles.label}>
+              อัปโหลดอีกครั้ง
+            </label>
+          </div>
         </Col>
         <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
           <Field.Input

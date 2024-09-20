@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "antd";
 import { FileTextOutlined, FileProtectOutlined } from "@ant-design/icons";
+import styles from '@/features/admin/report/styles/TableReport.module.css'
 
 const TableReport = (props) => {
   const { } = props;
@@ -48,6 +49,34 @@ const TableReport = (props) => {
       report: true,
       summary: true,
     },
+    {
+      month: "มีนาคม 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
+    {
+      month: "เมษายน 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
+    {
+      month: "พฤษภาคม 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
+    {
+      month: "มิถุนายน 2567",
+      terminate: "xxx",
+      in_progress: "xxx",
+      report: true,
+      summary: true,
+    },
   ];
   const columns = [
     {
@@ -55,7 +84,7 @@ const TableReport = (props) => {
       key: "month",
       dataIndex: "month",
       width: 150,
-      // align: 'center',
+      align: 'center',
       render: (item) => {
         if (item) {
           return item
@@ -100,6 +129,9 @@ const TableReport = (props) => {
           return (
             <FileProtectOutlined
               className='!cursor-pointer'
+              style={{
+                fontSize: '20px'
+              }}
             />
           )
         }
@@ -117,6 +149,9 @@ const TableReport = (props) => {
           return (
             <FileTextOutlined
               className='!cursor-pointer'
+              style={{
+                fontSize: '20px'
+              }}
             />
           )
         }
@@ -126,22 +161,18 @@ const TableReport = (props) => {
   ];
 
   return (
-    <Table
-      columns={columns}
-      dataSource={data || []}
-      // loading={loading}
-      pagination={{
-        defaultCurrent: 1,
-        defaultPageSize: 100,
-        // current: page,
-        // pageSize: perPage,
-        // total: Number(total) || 0,
-        // onChange: onChange,
-        showSizeChanger: false,
-        // position: ['bottomCenter']
-      }}
-      scroll={{ x: 1600 }}
-    />
+    <div >
+      <Table
+        columns={columns}
+        dataSource={data}
+        className={styles.customTableRrow}
+        pagination={{
+          defaultPageSize: 10,
+          showSizeChanger: true,
+        }}
+        
+      />
+    </div>
   );
 };
 
