@@ -21,3 +21,13 @@
 .ant-checkbox+span {
   color: var(--primary-color) !important;
 }
+
+.cust_upload_list.ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload-list.ant-upload-list-picture-card .ant-upload-list-item-container {
+  width: 98px !important;
+  min-height: 98px !important;
+}
+.ant-upload-list ant-upload-list-picture-card{
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+}

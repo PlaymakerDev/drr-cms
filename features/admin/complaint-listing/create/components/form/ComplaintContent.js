@@ -1,9 +1,87 @@
-import React from 'react'
-import { Col, Row, Typography } from 'antd'
+import React, { useState } from 'react'
+import { Col, Row, Typography, Image, Upload } from 'antd'
+import { UploadOutlined, FileTwoTone } from '@ant-design/icons';
 import { Field } from '@/components/form'
+import { PlusOutlined, StarOutlined } from '@ant-design/icons';
+import styles from '@/features/admin/complaint-listing/create/style/create.module.css'
+
+
+
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 
 const ComplaintContent = (props) => {
-  const {values, errors } = props
+  const { values, errors } = props
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [fileList, setFileList] = useState([
+    // {
+    //   uid: '',
+    //   percent: 50,
+    //   name: 'เอกสารร้องทุกข์',
+    //   status: 'done',
+    //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    // },
+
+    // {
+    //   uid: ' string',
+    //   percent: 'number',
+    //   name: 'string',
+    //   status: 'error',
+    //   url: ''
+    // }
+  ])
+
+
+
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+  };
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+
+  const beforeUpload = (file) => {
+    const isLt10M = file.size < 10 * 1024 * 1024;
+    if (!isLt10M) {
+      message.error('File must be smaller than 10MB!');
+    }
+    return isLt10M;
+  };
+
+  const uploadButton = (
+    <>
+      <button className={styles.fixedUploadBtn}
+        style={{
+          border: 0,
+          background: 'none',
+          cursor: 'pointer'
+        }}
+        type="button"
+      >
+        <UploadOutlined style={{ color: 'white', fontSize: '30px' }} />
+        <div
+          style={{
+            marginTop: 8,
+            color: 'white'
+          }}
+        >
+          เลือกไฟล์
+        </div>
+      </button>
+    </>
+  );
+
+
+
+
 
   return (
     <div>
@@ -112,6 +190,9 @@ const ComplaintContent = (props) => {
           </Col>
         </Row>
       </section>
+
+
+
       <section className='mt-5'>
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
@@ -139,8 +220,14 @@ const ComplaintContent = (props) => {
               <Typography.Title level={5} className='!m-0 !text-primary-color'>ไฟล์ประกอบการร้องเรียน</Typography.Title>
               <Typography.Text className='!text-[#FFFFFF80]'>เลือกไฟล์เพื่ออัปโหลดรายการเอกสารที่เกี่ยวข้อง (รองรับไฟล์ .pdf, .jpg, .png เท่านั้น ไฟล์ขนาดไม่เกิน 10 MB)</Typography.Text>
             </section>
-            <section className='mt-5'>
-              <Field.Upload
+            <section
+              className='mt-5'
+              style={{
+                flexDirection: 'row-reverse', // Corrected camelCase for inline style
+                justifyContent: 'flex-end',
+                display: 'flex' // Make sure to set display to flex for flexbox properties to work
+              }}>
+            {/* <Field.Upload
                 name='complaint_file'
                 maxCount={5}
                 accept="image/png, image/jpeg, application/pdf"
@@ -165,12 +252,42 @@ const ComplaintContent = (props) => {
                 }}
                 // label='เลือกไฟล์'
                 label={<Typography.Text className='!text-primary-color'>เลือกไฟล์</Typography.Text>}
+              /> */}
+            <Upload
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              listType="picture-card"
+              fileList={fileList}
+              onPreview={handlePreview}
+              onChange={handleChange}
+              // style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}
+              className={`w-full flex flex-col-reverse cust_upload_list ${styles.uploadList} `}
+            >
+              {fileList.length >= 8 ? null : uploadButton}
+            </Upload>
+            {/* {previewImage && (
+              <Image
+                // wrapperStyle={{
+                //   display: 'none',
+                // }}
+                preview={{
+                  // visible: previewOpen,
+                  // onVisibleChange: (visible) => setPreviewOpen(visible),
+                  // afterOpenChange: (visible) => !visible && setPreviewImage(''),
+                  visible: previewOpen,
+                  onVisibleChange: (visible) => setPreviewOpen(visible),
+                }}
+                src={previewImage}
+                style={{ display: 'none' }}
+                alt='previewImage'
               />
-            </section>
-          </Col>
-        </Row>
-      </section>
-    </div>
+
+
+            )} */}
+          </section>
+        </Col>
+      </Row>
+    </section>
+    </div >
   )
 }
 
