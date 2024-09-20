@@ -17,6 +17,9 @@ const OperationProgress = (props) => {
               label={<Typography.Text className="!text-primary-color">วันที่ยุติ</Typography.Text>}
               name='end_date'
               placeholder='วันที่ยุติ'
+              disabled
+              className="disabled:bg-gray-200"
+              style={{ backgroundColor: '#f0f0f0' }}
             />
           </Col>
         </Row>
@@ -28,6 +31,8 @@ const OperationProgress = (props) => {
               label={<Typography.Text className="!text-primary-color">คำชี้แจง/ผลปัฏิบัติ</Typography.Text>}
               name='instruction'
               placeholder='คำชี้แจง/ผลปัฏิบัติ'
+              disabled
+              className="disabled:bg-gray-200"
             />
           </Col>
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
@@ -38,8 +43,8 @@ const OperationProgress = (props) => {
             <section className='mt-5'>
               <Field.Upload
                 name='operate_file'
-                maxCount={10}
-                accept="image/png, image/jpeg"
+                maxCount={5}
+                accept="image/png, image/jpeg, application/pdf"
                 listType='picture-card'
                 maxSizeLimit={10000000}
                 hideRequired={!errors.operate_file}
@@ -59,6 +64,7 @@ const OperationProgress = (props) => {
                   // RETURN UPLOAD.LIST_IGNORE
                   return ((isListAvailable && isLt10) || Upload.LIST_IGNORE) || false
                 }}
+                disabled
                 // label='เลือกไฟล์'
                 label={<Typography.Text className='!text-primary-color'>เลือกไฟล์</Typography.Text>}
               />

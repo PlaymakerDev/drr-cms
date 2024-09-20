@@ -30,7 +30,7 @@ const FormSearchComplaintListing = (props) => {
             type='primary'
             size='large'
             icon={<PlusOutlined />}
-            className='!w-full lg:!w-auto'
+            className='!w-full lg:!w-auto !bg-[#43BE6D]'
             onClick={() => router.push('/admin/complaint-listing/create')}
           >
             เพิ่มข้อมูล

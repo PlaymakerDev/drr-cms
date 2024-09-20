@@ -142,8 +142,8 @@ const ComplaintContent = (props) => {
             <section className='mt-5'>
               <Field.Upload
                 name='complaint_file'
-                maxCount={10}
-                accept="image/png, image/jpeg"
+                maxCount={5}
+                accept="image/png, image/jpeg, application/pdf"
                 listType='picture-card'
                 maxSizeLimit={10000000}
                 hideRequired={!errors.complaint_file}
