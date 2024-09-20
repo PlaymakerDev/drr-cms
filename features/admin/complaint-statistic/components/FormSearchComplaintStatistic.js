@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Form, useForm, Field } from "@/components/form";
-import { Row, Col , Button } from "antd";
+import { Row, Col , Button, Typography } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 const FormSearchComplaintStatistic = (props) => {
@@ -24,7 +24,7 @@ const FormSearchComplaintStatistic = (props) => {
       <Row gutter={[16, 16]} align={"middle"}>
         <Col xs={24} sm={24} md={12} lg={5} xl={7} xxl={5}>
           <Field.DatePicker
-            label="สรุปข้อมูลการร้องเรียนวันที่:"
+            label={<Typography.Text className="!text-primary-color">สรุปข้อมูลการร้องเรียนวันที่:</Typography.Text>}
             name="date"
             placeholder="วว/ดด/ปปปป  -  วว/ดด/ปปปป"
             hideRequired

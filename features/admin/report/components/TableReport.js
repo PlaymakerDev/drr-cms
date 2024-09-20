@@ -130,7 +130,7 @@ const TableReport = (props) => {
             <FileProtectOutlined
               className='!cursor-pointer'
               style={{
-                fontSize: '20px'
+                fontSize: '30px'
               }}
             />
           )
@@ -150,7 +150,8 @@ const TableReport = (props) => {
             <FileTextOutlined
               className='!cursor-pointer'
               style={{
-                fontSize: '20px'
+                fontSize: '30px',
+                height:45
               }}
             />
           )
@@ -168,7 +169,7 @@ const TableReport = (props) => {
         className={styles.customTableRrow}
         pagination={{
           defaultPageSize: 10,
-          showSizeChanger: true,
+          showSizeChanger: false,
         }}
         
       />
