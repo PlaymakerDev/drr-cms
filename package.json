@@ -11,10 +11,12 @@
   "dependencies": {
     "@ant-design/cssinjs": "^1.21.1",
     "@ant-design/icons": "^5.4.0",
+    "@hapi/iron": "^7.0.1",
     "@olapat/react-useform": "^0.2.11",
     "@reduxjs/toolkit": "^2.2.7",
     "antd": "^5.20.5",
     "apexcharts": "^3.53.0",
+    "axios": "^1.7.7",
     "dayjs": "^1.11.13",
     "leaflet": "^1.9.4",
     "next": "14.2.8",
@@ -25,7 +27,8 @@
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
     "react-number-format": "^5.4.2",
-    "react-redux": "^9.1.2"
+    "react-redux": "^9.1.2",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "eslint": "^8",

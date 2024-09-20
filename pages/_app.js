@@ -1,6 +1,10 @@
+import React from "react";
 import "@/styles/globals.css";
+// REACT REDUX-PROVIDER
+import { wrapper } from '@/store'
+import { Provider } from "react-redux";
+// ANTD PROVIDER
 import { ConfigProvider } from 'antd';
-
 import theme from '@/theme/themeConfig';
 
 // STATIC CONFIG
@@ -43,13 +47,16 @@ ConfigProvider.config({
   },
 })
 
-const App = (props) => {
-  const { Component, pageProps } = props;
+const App = ({ Component, ...rest }) => {
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { pageProps } = props;
 
   return (
-    <ConfigProvider theme={theme}>
-      <Component {...pageProps} />
-    </ConfigProvider>
+    <Provider store={store}>
+      <ConfigProvider theme={theme}>
+        <Component {...pageProps} />
+      </ConfigProvider>
+    </Provider>
   );
 }
 

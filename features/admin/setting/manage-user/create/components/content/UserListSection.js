@@ -7,12 +7,12 @@ const UserListSection = (props) => {
 
   return (
     <>
-      <section>
+      {/* <section>
         <FormSearchUser />
       </section>
       <section className='mt-5'>
+      </section> */}
         <TableUser />
-      </section>
     </>
   )
 }

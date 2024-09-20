@@ -24,8 +24,8 @@ const FormSearchUser = (props) => {
   return (
     <>
       <Form form={form} handlerSubmit={[buildValue, handlerSubmit]}>
-        <Row gutter={[16, 16]} align={'middle'}>
-          <Col xs={24} sm={24} md={18} lg={18} xl={18} xxl={10}>
+        <Row gutter={[16, 0]} align={'middle'}>
+          <Col xs={24} sm={24} md={18} lg={18} xl={9} xxl={5}>
             <Field.Input
               label={<Typography.Text className="!text-primary-color">ค้นหาข้อมูลผู้ใช้งาน</Typography.Text>}
               name='username'
@@ -33,7 +33,7 @@ const FormSearchUser = (props) => {
               hideRequired
             />
           </Col>
-          <Col xs={24} sm={24} md={6} lg={6} xl={6} xxl={4}>
+          <Col xs={24} sm={24} md={6} lg={6} xl={3} xxl={2}>
             <fieldset>
               <label>&nbsp;</label>
               <Button
