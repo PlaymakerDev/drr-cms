@@ -8,6 +8,9 @@ const ComplaintTop3Left = () => {
     series: [50],
     chart: {
       type: "radialBar",
+      toolbar: {
+        show: false
+      },
     },
     plotOptions: {
       radialBar: {

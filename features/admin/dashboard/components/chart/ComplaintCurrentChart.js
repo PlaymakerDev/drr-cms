@@ -7,6 +7,9 @@ const ComplaintCurrentChart = () => {
     series: [25, 45, 65],
     chart: {
       type: 'radialBar',
+      toolbar: {
+        show: false 
+      },
     },
     plotOptions: {
       radialBar: {

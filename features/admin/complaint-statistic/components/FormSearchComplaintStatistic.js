@@ -22,7 +22,7 @@ const FormSearchComplaintStatistic = (props) => {
   return (
     <Form form={form} handlerSubmit={[buildValue, handlerSubmit]}>
       <Row gutter={[16, 16]} align={"middle"}>
-        <Col xs={24} sm={24} md={12} lg={5} xl={5} xxl={5}>
+        <Col xs={24} sm={24} md={12} lg={5} xl={7} xxl={5}>
           <Field.DatePicker
             label="สรุปข้อมูลการร้องเรียนวันที่:"
             name="date"
@@ -30,7 +30,7 @@ const FormSearchComplaintStatistic = (props) => {
             hideRequired
           />
         </Col>
-        <Col xs={24} sm={24} md={12} lg={2} xl={2} xxl={2}>
+        <Col xs={24} sm={24} md={12} lg={2} xl={4} xxl={2}>
           <fieldset>
             <label className='block'>&nbsp;</label>
             <Button

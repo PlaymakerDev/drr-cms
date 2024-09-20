@@ -2,17 +2,17 @@ import React from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const SummaryChart = (props) => {
+const SummaryChartOther = (props) => {
   const {} = props;
 
   const series = [
     {
       name: "กำลังดำเนินการ",
-      data: [95, 101, 150, 77, 84, 65, 55, 44],
+      data: [94, 60, 130, 97, 54, 75, 105, 94],
     },
     {
       name: "ยุติ",
-      data: [95, 101, 150, 85, 47, 84, 67, 55]
+      data: [75, 71, 130, 95, 77, 104, 97, 35]
     },
   ];
 
@@ -69,4 +69,4 @@ const SummaryChart = (props) => {
   );
 };
 
-export default React.memo(SummaryChart);
+export default React.memo(SummaryChartOther);
