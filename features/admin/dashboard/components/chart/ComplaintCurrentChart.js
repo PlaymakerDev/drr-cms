@@ -2,14 +2,21 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-const ComplaintCurrentChart = () => {
+const ComplaintCurrentChart = (props) => {
+  const { data } = props;
+  console.log('data is in the chart', data)
   const options = {
-    series: [25, 45, 65],
+    // series: [25, 45, 65],
+    // series: data.series || [],
     chart: {
       type: 'radialBar',
       toolbar: {
-        show: false 
+        show: false
       },
+    },
+    noData: {
+      text: 'No Data',
+      align: 'center',
     },
     plotOptions: {
       radialBar: {
@@ -28,7 +35,7 @@ const ComplaintCurrentChart = () => {
             label: 'ทั้งหมด',
             formatter: function (w) {
               return 312;
-            }, 
+            },
           },
         },
         hollow: {
@@ -45,15 +52,16 @@ const ComplaintCurrentChart = () => {
         },
       },
     },
-    labels: ['#', '#', '#'],
-    colors: ["#6093FF", "#FCAA72","#99DE63"]
+    // labels: data.graph.labels || ['#', '#', '#'],
+    labels: data.graph.labels || [],
+    colors: ["#6093FF", "#FCAA72", "#99DE63"]
   };
 
   return (
     <>
       <Chart
         options={options}
-        series={options.series}
+        series={data.graph.series || []}
         type="radialBar"
         height={240}
       />

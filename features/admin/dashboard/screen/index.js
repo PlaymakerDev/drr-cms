@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TopSection, BottomSection } from '../components/section'
 
 const DashboardScreen = (props) => {

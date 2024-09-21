@@ -84,9 +84,14 @@ export const slice = createSlice({
       });
     });
   },
-  reducers: {},
+  reducers: {
+    getTop3Complain: (state, action) => {
+      state.top3_complain.search = action.payload.params,
+        state.top3_complain.data = action.payload.data
+    }
+  },
 });
 
-export const {} = slice.actions;
+export const { getTop3Complain } = slice.actions;
 
 export default slice.reducer;
