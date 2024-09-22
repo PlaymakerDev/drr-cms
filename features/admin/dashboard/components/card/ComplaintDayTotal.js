@@ -1,38 +1,44 @@
-import React, { useState } from "react";
-import { Card, Typography } from "antd";
-import { ComplaintDayTotalChart } from "../chart";
-import { DayTotalChartDetail } from "../modal";
+import React, { useEffect, useMemo } from "react";
+import { Card, Spin } from "antd";
+// API
+import useGetAPI from '@/utils/hooks/api/useGetAPI'
+import { getCount_Complaints } from '@/store/features/dashboardSlice'
+// CONTENT
+import { ContentComplaintDayTotal } from "./content";
 
-const INIT_MODAL = { open: false };
+const ComplaintCurrent = (props) => {
+  const { } = props;
+  const [apiGetData, loading, data] = useGetAPI('overlay', {
+    funcDispatch: getCount_Complaints, reducerName: 'dashboard', reducerKey: 'count_complaints'
+  })
 
-const ComplaintDayTotal = (props) => {
-  const {} = props;
+  useEffect(() => {
+    // const mock = '?dateSearch=2024-09-17'
+    apiGetData('/api/v1/dashboard/count_complaints?dateSearch=2024-09-17', {} , false, {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const [openDayTotalDetail, setOpenDayTotalDetail] = useState(INIT_MODAL);
+  const renderContent = useMemo(() => {
+    if (!loading) {
+      return (
+        <ContentComplaintDayTotal
+          data={data.data}
+        />
+      )
+    } else {
+      return (
+        <section className="h-40 flex items-center justify-center">
+          <Spin spinning={loading} />
+        </section>
+      )
+    }
+  }, [data.data, loading])
 
   return (
-    <Card className="!w-full !h-full">
-      <section className="flex justify-between items-center">
-        <Typography.Title level={5} className="!m-0">
-          จำนวนเรื่องร้องทุกข์ ภายในวันนี้
-        </Typography.Title>
-        <Typography.Text
-          underline
-          className="!cursor-pointer"
-          onClick={() => setOpenDayTotalDetail({ open: true })}
-        >
-          ดูข้อมูลเพิ่มเติม
-        </Typography.Text>
-        <DayTotalChartDetail
-          open={openDayTotalDetail.open}
-          setOpen={setOpenDayTotalDetail}
-        />
-      </section>
-      <section>
-        <ComplaintDayTotalChart />
-      </section>
+    <Card>
+      {renderContent}
     </Card>
   );
 };
 
-export default React.memo(ComplaintDayTotal);
+export default React.memo(ComplaintCurrent);

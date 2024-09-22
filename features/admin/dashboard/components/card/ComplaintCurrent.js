@@ -13,7 +13,8 @@ const ComplaintCurrent = (props) => {
   })
 
   useEffect(() => {
-    apiGetData('/api/v1/dashboard/top3_complain', data.search, false, {})
+    // const mock = '?dateSearch=2024-09-17'
+    apiGetData('/api/v1/dashboard/top3_complain?dateSearch=2024-09-17', {} , false, {})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -1,31 +1,43 @@
-import React from 'react'
-import { Card, Flex, Progress, Typography } from 'antd'
+import React, { useEffect, useMemo } from "react";
+import { Card, Spin } from "antd";
+// API
+import useGetAPI from '@/utils/hooks/api/useGetAPI'
+import { getCompare_Process_Close } from '@/store/features/dashboardSlice'
+import { ContentComplaintProgressStat } from "./content";
+// CONTENT
 
-const ComplaintProgressStat = (props) => {
-  const { } = props
+const ComplaintCurrent = (props) => {
+  const { } = props;
+  const [apiGetData, loading, data] = useGetAPI('overlay', {
+    funcDispatch: getCompare_Process_Close, reducerName: 'dashboard', reducerKey: 'compare_process_close'
+  })
+
+  useEffect(() => {
+    apiGetData('/api/v1/dashboard/compare_process_close', data.search , false, {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const renderContent = useMemo(() => {
+    if (!loading) {
+      return (
+        <ContentComplaintProgressStat
+          data={data.data}
+        />
+      )
+    } else {
+      return (
+        <section className="h-40 flex items-center justify-center">
+          <Spin spinning={loading} />
+        </section>
+      )
+    }
+  }, [data.data, loading])
 
   return (
     <Card>
-      <Progress
-        showInfo={false}
-        percent={100}
-        success={{
-          percent: 70,  // สัดส่วนของ progress bar ทางซ้าย
-          strokeColor: "#0075E9",  // สีน้ำเงิน (ด้านซ้าย)
-        }}
-        strokeWidth={15}
-        strokeColor="#43BE6D"  // สีเขียว (ด้านขวา)
-      />
-      <Flex
-        justify='space-between'
-        align='center'
-        wrap
-      >
-        <Typography.Text>🔵 กำลังดำเนินการ 286 รายการ</Typography.Text>
-        <Typography.Text>🟢 ยุติ 15 รายการ</Typography.Text>
-      </Flex>
+      {renderContent}
     </Card>
-  )
-}
+  );
+};
 
-export default React.memo(ComplaintProgressStat)
+export default React.memo(ComplaintCurrent);

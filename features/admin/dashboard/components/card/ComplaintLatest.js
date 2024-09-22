@@ -1,38 +1,44 @@
-import React, { useState } from "react";
-import { Card, Typography } from "antd";
-import { NotifyCard } from "../notify-card";
-import { NotifyDetail } from "../modal";
+import React, { useEffect, useMemo } from "react";
+import { Card, Spin } from "antd";
+// API
+import useGetAPI from '@/utils/hooks/api/useGetAPI'
+import { getLatest_Complain } from '@/store/features/dashboardSlice'
+// CONTENT
+import { ContentComplaintLatest } from "./content";
 
-const INIT_MODAL = { open: false };
+const ComplaintCurrent = (props) => {
+  const { } = props;
+  const [apiGetData, loading, data] = useGetAPI('overlay', {
+    funcDispatch: getLatest_Complain, reducerName: 'dashboard', reducerKey: 'latest_complain'
+  })
 
-const ComplaintLatest = (props) => {
-  const {} = props;
+  useEffect(() => {
+    // const mock = '?dateSearch=2024-09-17'
+    apiGetData('/api/v1/dashboard/latest_complain?dateSearch=2024-09-17', {} , false, {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const [openNotifyDetail, setOpenNotifyDetail] = useState(INIT_MODAL);
+  const renderContent = useMemo(() => {
+    if (!loading) {
+      return (
+        <ContentComplaintLatest
+          data={data.data}
+        />
+      )
+    } else {
+      return (
+        <section className="h-40 flex items-center justify-center">
+          <Spin spinning={loading} />
+        </section>
+      )
+    }
+  }, [data.data, loading])
 
   return (
     <Card>
-      <section className="flex justify-between items-center">
-        <Typography.Title level={5} className="!m-0">
-          เรื่องร้องเรียนล่าสุด ภายในวันนี้
-        </Typography.Title>
-        <Typography.Text
-          underline
-          className="!cursor-pointer"
-          onClick={() => setOpenNotifyDetail({ open: true })}
-        >
-          แสดงทั้งหมด
-        </Typography.Text>
-        <NotifyDetail
-          open={openNotifyDetail.open}
-          setOpen={setOpenNotifyDetail}
-        />
-      </section>
-      <section>
-        <NotifyCard />
-      </section>
+      {renderContent}
     </Card>
   );
 };
 
-export default React.memo(ComplaintLatest);
+export default React.memo(ComplaintCurrent);

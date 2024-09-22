@@ -1,62 +1,44 @@
-import React from "react";
-import { Card, Typography, Row, Col } from "antd";
-import {
-  ComplaintTop3Left,
-  ComplaintTop3Mid,
-  ComplaintTop3Right,
-  ComplaintTypeTotalChart,
-} from "../chart";
+import React, { useEffect, useMemo } from "react";
+import { Card, Spin } from "antd";
+// API
+import useGetAPI from '@/utils/hooks/api/useGetAPI'
+import { getCount_Complain_Type } from '@/store/features/dashboardSlice'
+// CONTENT
+import { ContentComplaintType } from "./content";
 
-const ComplaintType = (props) => {
-  const {} = props;
+const ComplaintCurrent = (props) => {
+  const { } = props;
+  const [apiGetData, loading, data] = useGetAPI('overlay', {
+    funcDispatch: getCount_Complain_Type, reducerName: 'dashboard', reducerKey: 'count_complain_type'
+  })
+
+  useEffect(() => {
+    // const mock = '?dateSearch=2024-09-17'
+    apiGetData('/api/v1/dashboard/count_complain_type?dateSearch=2024-09-17', {} , false, {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const renderContent = useMemo(() => {
+    if (!loading) {
+      return (
+        <ContentComplaintType
+          data={data.data}
+        />
+      )
+    } else {
+      return (
+        <section className="h-40 flex items-center justify-center">
+          <Spin spinning={loading} />
+        </section>
+      )
+    }
+  }, [data.data, loading])
 
   return (
     <Card>
-      <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
-          <Typography.Title level={5} className="!m-0">
-            ประเภทเรื่องร้องเรียน ภายในวันนี้
-          </Typography.Title>
-        </Col>
-        <Col
-          xs={24}
-          sm={24}
-          md={24}
-          lg={24}
-          xl={24}
-          xxl={24}
-          className="flex justify-center items-center"
-        >
-          <ComplaintTypeTotalChart />
-        </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
-          <Typography.Title level={5}>
-            TOP 3 ประเภทเรื่องร้องเรียน
-          </Typography.Title>
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={8} xl={8} xxl={8} className="text-center">
-          <ComplaintTop3Left />
-          <Typography.Text>
-            ไฟฟ้าส่องสว่าง/ดับ/ชำรุด/ติดตั้ง
-          </Typography.Text>
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={8} xl={8} xxl={8} className="text-center">
-          <ComplaintTop3Mid />
-          <Typography.Text>
-            ถนนชำรุด
-          </Typography.Text>
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={8} xl={8} xxl={8} className="text-center">
-          <ComplaintTop3Right />
-          <Typography.Text>
-            ป้ายจราจรเสียหาย/ชำรุด/ติดตั้ง
-          </Typography.Text>
-        </Col>
-      </Row>
+      {renderContent}
     </Card>
   );
 };
 
-export default React.memo(ComplaintType);
+export default React.memo(ComplaintCurrent);

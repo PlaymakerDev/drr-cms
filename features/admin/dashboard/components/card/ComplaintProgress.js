@@ -1,36 +1,41 @@
-import React, { useState } from "react";
-import { Card, Typography } from "antd";
-import { ComplaintProgressChart } from "../chart";
-import { ProgressChartDetail } from "../modal";
-
-const INIT_MODAL = { open: false };
+import React, { useEffect, useMemo } from "react";
+import { Card, Spin } from "antd";
+// API
+import useGetAPI from '@/utils/hooks/api/useGetAPI'
+import { getTop3_Progress } from '@/store/features/dashboardSlice'
+// CONTENT
+import { ContentComplaintProgress } from "./content";
 
 const ComplaintProgress = (props) => {
-  const {} = props;
+  const { } = props;
+  const [apiGetData, loading, data] = useGetAPI('overlay', {
+    funcDispatch: getTop3_Progress, reducerName: 'dashboard', reducerKey: 'top3_progress'
+  })
 
-  const [openProgressDetail, setOpenProgressDetail] = useState(INIT_MODAL);
+  useEffect(() => {
+    apiGetData('/api/v1/dashboard/top3_progress', data.search, false, {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const renderContent = useMemo(() => {
+    if (!loading) {
+      return (
+        <ContentComplaintProgress
+          data={data.data}
+        />
+      )
+    } else {
+      return (
+        <section className="h-40 flex items-center justify-center">
+          <Spin spinning={loading} />
+        </section>
+      )
+    }
+  }, [data.data, loading])
 
   return (
-    <Card className="">
-      <section className="flex justify-between items-center">
-        <Typography.Title level={5} className="!m-0">
-          ผลการดำเนินงานร้องเรียนร้องทุกข์
-        </Typography.Title>
-        <Typography.Text
-          underline
-          className="!cursor-pointer"
-          onClick={() => setOpenProgressDetail({ open: true })}
-        >
-          ดูข้อมูลเพิ่มเติม
-        </Typography.Text>
-        <ProgressChartDetail
-          open={openProgressDetail.open}
-          setOpen={setOpenProgressDetail}
-        />
-      </section>
-      <section>
-        <ComplaintProgressChart />
-      </section>
+    <Card>
+      {renderContent}
     </Card>
   );
 };

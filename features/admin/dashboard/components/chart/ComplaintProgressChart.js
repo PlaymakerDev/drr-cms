@@ -1,64 +1,63 @@
-import React from 'react'
+import React from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ComplaintProgressChart = (props) => {
-  const { } = props
+  const { data } = props;
+  
+  const mutableData = JSON.parse(JSON.stringify(data));
 
-  const series = [{
-    name: 'กำลังดำเนินการ',
-    data: [95, 101, 150]
-  }, {
-    name: 'ยุติ',
-    data: [45, 50, 139]
-  }]
+  console.log("data is in the chart", data.series);
 
-  const options = {
-    chart: {
-      type: 'bar',
-      toolbar: {
-        show: false
-      },
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: '40%',
-        endingShape: 'rounded',
-        dataLabels: {
-          position: 'top',
-        },
-        borderRadius: 5,
-      },
-    },
-    dataLabels: {
-      enabled: false,
-      offsetX: -10,
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ['transparent']
-    },
-    xaxis: {
-      categories: ['พฤษภาคม 65', 'มิถุนายน 65', 'กรกฏาคม 65'],
-    },
-    fill: {
-      opacity: 1
-    },
-    colors: ["#0075E9", "#43BE6D"]
-  }
-
+  // const mock_data = [
+  //   { name: "ดำเนินการอยู่", data: [0, 2, 9] },
+  //   { name: "ยุติ", data: [1, 0, 3] },
+  // ];
+ 
   return (
     <div>
       <Chart
-        series={series}
-        options={options}
+        series={mutableData?.series || []}
+        options={{
+          chart: {
+            type: "bar",
+            toolbar: {
+              show: false,
+            },
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "40%",
+              endingShape: "rounded",
+              dataLabels: {
+                position: "top",
+              },
+              borderRadius: 5,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+            offsetX: -10,
+          },
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ["transparent"],
+          },
+          xaxis: {
+            categories: data.labels
+          },
+          fill: {
+            opacity: 1,
+          },
+          colors: ["#0075E9", "#43BE6D"],
+        }}
         height={180}
-        type='bar'
+        type="bar"
       />
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(ComplaintProgressChart)
+export default React.memo(ComplaintProgressChart);

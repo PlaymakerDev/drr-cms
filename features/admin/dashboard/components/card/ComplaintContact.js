@@ -1,37 +1,43 @@
-import React from 'react'
-import Image from 'next/image';
-import { Card, Typography, Row, Col } from 'antd'
-import Hotline from '@/public/images/Hotline.svg'
+import React, { useEffect, useMemo } from "react";
+import { Card, Spin } from "antd";
+// API
+import useGetAPI from '@/utils/hooks/api/useGetAPI'
+import { getMost_Popular } from '@/store/features/dashboardSlice'
+// CONTENT
+import { ContentComplaintContact } from "./content";
 
-const ComplaintContact = (props) => {
-  const { } = props
+const ComplaintCurrent = (props) => {
+  const { } = props;
+  const [apiGetData, loading, data] = useGetAPI('overlay', {
+    funcDispatch: getMost_Popular, reducerName: 'dashboard', reducerKey: 'most_popular'
+  })
+
+  useEffect(() => {
+    apiGetData('/api/v1/dashboard/most_popular', data.search , false, {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const renderContent = useMemo(() => {
+    if (!loading) {
+      return (
+        <ContentComplaintContact
+          data={data.data}
+        />
+      )
+    } else {
+      return (
+        <section className="h-40 flex items-center justify-center">
+          <Spin spinning={loading} />
+        </section>
+      )
+    }
+  }, [data.data, loading])
 
   return (
     <Card>
-      <Row gutter={[16, 16]} className="!w-full !h-full items-center">
-        <Col xs={24} sm={16} md={16} lg={16} xl={16} xxl={16}>
-        <div className='flex space-x-3'>
-          <Image
-            src={Hotline}
-            alt='hotline'
-            width={46}
-            height={46}
-          />
-          <div>
-            <Typography.Title level={5} className='font-bold !m-0'>สายด่วน 1146</Typography.Title>
-            <Typography.Text>ช่องทางที่ได้รับความนิยมสูงสุด ภายในวันนี้</Typography.Text>
-          </div>
-        </div>
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={8} xl={8} xxl={8}>
-        <div className='md:text-right text-center'>
-          <Typography.Text className='!text-4xl !font-bold'>88</Typography.Text>
-          <Typography.Text className='!text-3xl !text-gray-500'>.79%</Typography.Text>
-        </div>
-        </Col>
-      </Row>
+      {renderContent}
     </Card>
-  )
-}
+  );
+};
 
-export default React.memo(ComplaintContact)
+export default React.memo(ComplaintCurrent);

@@ -3,44 +3,47 @@ import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const ComplaintTop3Right = () => {
-  const options = {
-    series: [25],
-    chart: {
-      type: "radialBar",
-      toolbar: {
-        show: false
-      },
-    },
-    plotOptions: {
-      radialBar: {
-        hollow: {
-          size: '50%',
-        },
-        dataLabels: {
-          name: {
-            show: false, 
-          },
-          value: {
-            fontSize: "20px",
-            show: true,
-            formatter: function (val) {
-              return `${val}%`;
-            },
-            offsetY: 10,
-          },
-        },
-      },
-    },
-    labels: ["Something"],
-    colors: ["#FF8831"]
-  };
+const ComplaintTop3Right = (props) => {
+  const { data } = props;
+
+  const label = data?.top3?.[2]?.label || "No Data";
+
+  const value = data?.top3?.[2]?.value || 0;
 
   return (
     <div>
       <Chart
-        options={options}
-        series={options.series}
+        options={{
+          chart: {
+            type: "radialBar",
+            toolbar: {
+              show: false,
+            },
+          },
+          plotOptions: {
+            radialBar: {
+              hollow: {
+                size: "50%",
+              },
+              dataLabels: {
+                name: {
+                  show: false,
+                },
+                value: {
+                  fontSize: "18px",
+                  show: true,
+                  formatter: function (val) {
+                    return `${val}%`;
+                  },
+                  offsetY: 10,
+                },
+              },
+            },
+          },
+          labels: [label],
+          colors: ["#FF8831"],
+        }}
+        series={[value]}
         type="radialBar"
         height={200}
       />

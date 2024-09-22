@@ -1,8 +1,8 @@
 export default {
   development: {
-    hostBackend: process.env.NEXT_PUBLIC_HOST_BACKEND || 'http://localhost:3001',
-    hostBackendServerSide: process.env.HOST_BACKEND || 'http://localhost:3001',
-    host: process.env.NEXT_PUBLIC_HOST || 'http://localhost:3003',
+    hostBackend: process.env.NEXT_PUBLIC_HOST_BACKEND || 'http://203.150.243.195:3003',
+    hostBackendServerSide: process.env.HOST_BACKEND || 'http://203.150.243.195:3003',
+    host: process.env.NEXT_PUBLIC_HOST || 'http://203.150.243.195:3003',
     lifeTimeToken: 55 * 3,
     basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
     ckAuthKey: "ergo-web-backoffice",
