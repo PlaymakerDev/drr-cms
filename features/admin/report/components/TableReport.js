@@ -1,101 +1,32 @@
-import React from "react";
-import { Table } from "antd";
+import React, { useCallback } from "react";
+import { Spin, Table } from "antd";
 import { FileTextOutlined, FileProtectOutlined } from "@ant-design/icons";
+// import { useRouter } from "next/router";
+import dayjs from "dayjs";
+// import 'dayjs/locale/th'
 import styles from '@/features/admin/report/styles/TableReport.module.css'
 
 const TableReport = (props) => {
-  const { } = props;
+  const { data, loading, page, perPage, total, onChange, refreshContent, loadFileDirector, loadFileSummary, downloadFileDirector, downloadFileSummary, loadFileIndex, setLoadFileIndex } = props;
 
-  const data = [
-    {
-      month: "มกราคม 2567",
-      terminate: "250",
-      in_progress: "412  ",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "กุมภาพันธ์ 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "มีนาคม 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "เมษายน 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "พฤษภาคม 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "มิถุนายน 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "มีนาคม 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "เมษายน 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "พฤษภาคม 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-    {
-      month: "มิถุนายน 2567",
-      terminate: "xxx",
-      in_progress: "xxx",
-      report: true,
-      summary: true,
-    },
-  ];
   const columns = [
     {
       title: "เดือน/ปี",
-      key: "month",
-      dataIndex: "month",
+      key: "year_month",
+      dataIndex: "year_month",
       width: 150,
       align: 'center',
       render: (item) => {
         if (item) {
-          return item
+          return dayjs(item, 'YYYY-MM').locale('th').format('MMMM BBBB')
         }
         return '-'
       },
     },
     {
       title: "ยุติ(รายการ)",
-      key: "terminate",
-      dataIndex: "terminate",
+      key: "status_3",
+      dataIndex: "status_3",
       width: 200,
       align: 'center',
       render: (item) => {
@@ -107,8 +38,8 @@ const TableReport = (props) => {
     },
     {
       title: "กำลังดำเนินการ(รายการ) ",
-      key: "in_progress",
-      dataIndex: "in_progress",
+      key: "status_2",
+      dataIndex: "status_2",
       width: 200,
       align: 'center',
       render: (item) => {
@@ -124,18 +55,32 @@ const TableReport = (props) => {
       dataIndex: "report",
       width: 200,
       align: 'center',
-      render: (item) => {
-        if (item) {
+      render: (item, record, index) => {
+        if (!loadFileDirector) {
           return (
             <FileProtectOutlined
-              className='!cursor-pointer'
-              style={{
-                fontSize: '30px'
+              className='!cursor-pointer !text-2xl'
+              onClick={() => {
+                downloadFileDirector(record)
+                setLoadFileIndex(index)
               }}
+            // onClick={() => router.push(`/admin/complaint-listing/update/${record?.cid}`)}
             />
           )
+        } else {
+          if (index == loadFileIndex) {
+            return <Spin spinning={true} />
+          } else {
+            return (
+              <FileProtectOutlined
+                className='!cursor-pointer !text-2xl'
+                onClick={() => downloadFileDirector(record)}
+              // onClick={() => router.push(`/admin/complaint-listing/update/${record?.cid}`)}
+              />
+            )
+          }
+
         }
-        return '-'
       },
     },
     {
@@ -144,19 +89,31 @@ const TableReport = (props) => {
       dataIndex: "summary",
       width: 100,
       align: 'center',
-      render: (item) => {
-        if (item) {
+      render: (item, record,index) => {
+        if (!loadFileSummary) {
           return (
             <FileTextOutlined
-              className='!cursor-pointer'
-              style={{
-                fontSize: '30px',
-                height:45
+              className='!cursor-pointer !text-2xl'
+              onClick={() => {
+                downloadFileSummary(record)
+                setLoadFileIndex(index)
               }}
+            // onClick={() => router.push(`/admin/complaint-listing/update/${record?.cid}`)}
             />
           )
+        } else {
+          if (index == loadFileIndex) {
+            return <Spin spinning={true} />
+          } else {
+            return (
+              <FileTextOutlined
+                className='!cursor-pointer !text-2xl'
+                onClick={() => downloadFileDirector(record)}
+              // onClick={() => router.push(`/admin/complaint-listing/update/${record?.cid}`)}
+              />
+            )
+          }
         }
-        return '-'
       },
     },
   ];
@@ -164,14 +121,22 @@ const TableReport = (props) => {
   return (
     <div >
       <Table
-        columns={columns}
         dataSource={data}
-        className={styles.customTableRrow}
+        columns={columns}
+        loading={loading}
         pagination={{
+          defaultCurrent: 1,
           defaultPageSize: 10,
+          current: page,
+          pageSize: perPage,
+          total: Number(total) || 0,
+          onChange: onChange,
           showSizeChanger: false,
+          position: ['bottomCenter']
+          // defaultPageSize: 10,
+          // showSizeChanger: true,
         }}
-        
+        className={styles.customTableRrow}
       />
     </div>
   );

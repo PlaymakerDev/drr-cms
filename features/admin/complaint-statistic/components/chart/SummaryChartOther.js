@@ -22,6 +22,7 @@ const SummaryChartOther = (props) => {
       toolbar: {
         show: false
       },
+      fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
     },
     plotOptions: {
       bar: {
@@ -58,8 +59,14 @@ const SummaryChartOther = (props) => {
     fill: {
       opacity: 1,
     },
-    colors: ["#0075E9", "#43BE6D"]
-
+    colors: ["#0075E9", "#43BE6D"],
+    legend: {
+          markers: {
+              size: 14,
+              shape: 'line',
+               strokeWidth: 6,
+            }
+          },
   };
 
   return (

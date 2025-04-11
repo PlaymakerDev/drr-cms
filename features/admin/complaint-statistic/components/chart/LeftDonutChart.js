@@ -1,42 +1,54 @@
-import React from 'react';
+import React from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const LeftDonutChart = () => {
-  const options = {
-    chart: {
-      type: 'donut',
-      toolbar: {
-        show: false
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    legend: {
-      show: false,
-    },
-    responsive: [{
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200,
-        },
-      },
-    }],
-    colors: ["#3FC8E4", "#C4E1FE", "#9BCDFE", "#6DB6FE", "#3098FE", "#0F87FE", "#007DF8", "#0050A0", "#053464", "#264B72", "#24507F"],
-    stroke: {
-      width: 0,
-    },
-  };
+const LeftDonutChart = (props) => {
+  const { complaindata , colorChartLeft } = props;
 
-  const series = [47, 13, 4, 4, 6, 3, 2, 1, 2, 10, 8];
+  const complainDataseries = complaindata?.series
+  const complainDatalabels = complaindata?.labels
+
+  const nodata = [0];
 
   return (
     <div>
       <Chart
-        options={options}
-        series={series}
+        options={{
+          chart: {
+            type: "donut",
+            toolbar: {
+              show: false,
+            },
+            fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
+          },
+          noData: {
+            text: "ไม่มีข้อมูล",
+            align: "center",
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          legend: {
+            show: false,
+          },
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+              },
+            },
+          ],
+          colors: colorChartLeft,
+          labels: complainDatalabels || [],
+          stroke: {
+            width: 0,
+          },
+
+        }}
+        series={complainDataseries || nodata}
         type="donut"
         width="460"
       />

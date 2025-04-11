@@ -2,6 +2,9 @@ import React from 'react'
 import { Avatar, Typography } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import styles from '@/styles/components/layout/Layout.module.css'
+import dayjs from 'dayjs'
+import { useSelector } from 'react-redux'
+import { selectRole, selectUsername } from '@/store/features/userAuthenSlice'
 
 const SidebarHeader = (props) => {
   const { title, description } = props
@@ -14,8 +17,10 @@ const SidebarHeader = (props) => {
         className={styles.avatarIcon}
       />
       <section className='text-center'>
-        <Typography.Title level={5} className='!m-0 !text-white'>{title}</Typography.Title>
-        <Typography.Text className='!text-white'>{description}</Typography.Text>
+        <Typography.Title level={5} className='!m-0 !text-white'>{useSelector(selectUsername)}</Typography.Title>
+        <Typography.Title className='!text-white !text-sm'>{useSelector(selectRole) === "Admin" ? 'ผู้ดูแลระบบ' : 'พนักงาน'}</Typography.Title>
+        <Typography.Title className='!text-white !text-sm'>{dayjs().locale('th').format('D MMM YYYY')}</Typography.Title>
+
       </section>
     </div>
   )

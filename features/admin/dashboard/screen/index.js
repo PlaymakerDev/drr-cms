@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
-import { TopSection, BottomSection } from '../components/section'
+import DashboardLayout from '../components/layout/dashboard'
 
 const DashboardScreen = (props) => {
   const { } = props
 
   return (
-    <div>
+    <>
       <section>
-        <TopSection />
+        <DashboardLayout />
       </section>
-      <section className='mt-5'>
-        <BottomSection />
-      </section>
-    </div>
+    </>
+    // <div>
+    //   <section>
+    //     <TopSection />
+    //   </section>
+    //   <section className='mt-5'>
+    //     <BottomSection />
+    //   </section>
+    // </div>
   )
 }
 

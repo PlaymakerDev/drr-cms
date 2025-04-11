@@ -37,13 +37,14 @@ const useGetAPI = (
     async (
       path,
       params,
-      showDefaultMessage = true
+      showDefaultMessage = true,
+      options
     ) => {
       const name = "GET:" + path;
       try {
         API.begin(name);
         refPath.current = name;
-        const { data } = await API.get(path, { params });
+        const { data } = await API.get(path, { params, ...(options || {}) });
 
         if (typeof reducer?.funcDispatch === "function") {
           dispatch(reducer?.funcDispatch({ data, params }));

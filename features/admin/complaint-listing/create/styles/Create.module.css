@@ -1,0 +1,29 @@
+.upload-item {
+  width: 100px; /* Set width to match the upload button */
+  height: 100px; /* Set height to match the upload button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed white; /* Match the upload button's border */
+}
+.upload-container {
+  display: flex;
+  align-items: center;
+}
+
+.fixed-upload-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.upload-list {
+  margin-left: 80px; /* Adjust this value based on the width of your upload button */
+}
+.imageDirection{
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin-top: 5px;
+
+}

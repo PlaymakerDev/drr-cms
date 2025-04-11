@@ -23,6 +23,7 @@ const DonutChart = (props) => {
             toolbar: {
               show: false,
             },
+            fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
           },
           noData: {
             text: "ไม่มีข้อมูล",
@@ -85,7 +86,7 @@ const DonutChart = (props) => {
         }}
         series={seriesData}
         type="donut"
-        height={260}
+        height={205}
       />
     </div>
   );

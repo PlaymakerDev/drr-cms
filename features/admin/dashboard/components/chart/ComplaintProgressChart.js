@@ -1,29 +1,48 @@
-import React from "react";
+import React, { useMemo } from "react";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import dayjs from 'dayjs'
+import 'dayjs/locale/th'
+import buddhistEra from 'dayjs/plugin/buddhistEra'
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(buddhistEra)
+dayjs.extend(customParseFormat);   
 
 const ComplaintProgressChart = (props) => {
   const { data } = props;
+
+  const renderLabels = useMemo(() => {
+    const labels = [];
+    data?.labels?.forEach((currentData) => {
+      labels.push(dayjs(currentData, 'YYYY-MM').locale('th').format('MMMM BB'));
+    })
+    return {
+      labels
+    }
+  }, [data]);
   
   const mutableData = JSON.parse(JSON.stringify(data));
 
-  console.log("data is in the chart", data.series);
-
-  // const mock_data = [
-  //   { name: "ดำเนินการอยู่", data: [0, 2, 9] },
-  //   { name: "ยุติ", data: [1, 0, 3] },
-  // ];
- 
   return (
-    <div>
+    <div className="!h-full !w-full">
       <Chart
         series={mutableData?.series || []}
         options={{
+          grid: {
+            padding: {
+              left:0,
+              right:0,
+              top: 0,
+              bottom:-40
+            }
+          },
           chart: {
             type: "bar",
             toolbar: {
               show: false,
             },
+            fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
           },
           plotOptions: {
             bar: {
@@ -46,14 +65,23 @@ const ComplaintProgressChart = (props) => {
             colors: ["transparent"],
           },
           xaxis: {
-            categories: data.labels
+            categories: renderLabels.labels || []
           },
           fill: {
             opacity: 1,
           },
           colors: ["#0075E9", "#43BE6D"],
+          legend: {
+            position:'bottom',
+            offsetY:'25',
+            markers: {
+                size: 16,
+                shape: 'line',
+                 strokeWidth: 6,
+              }
+            },
         }}
-        height={180}
+        height={200}
         type="bar"
       />
     </div>

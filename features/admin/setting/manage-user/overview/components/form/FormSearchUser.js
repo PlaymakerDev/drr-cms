@@ -5,7 +5,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 
 const FormSearchUser = (props) => {
-  const { } = props;
+  const { searchData } = props;
 
   const form = useForm({
     initialValues: {
@@ -15,11 +15,15 @@ const FormSearchUser = (props) => {
   });
 
   const buildValue = useCallback((values, next) => {
-    next(values);
+    const body = {
+      username : values.user,
+      page:1
+    }
+    next(body);
   }, []);
 
-  const handlerSubmit = useCallback((values) => {
-    console.log(values);
+  const handlerSubmit = useCallback(async (values) => {
+    await searchData(values.username)
   }, []);
 
   return (
@@ -37,10 +41,10 @@ const FormSearchUser = (props) => {
           <fieldset>
             <label>&nbsp;</label>
             <Button
+              htmlType="submit"
               type='primary'
               size='large'
               icon={<SearchOutlined />}
-              // className='!w-full 2xl:!w-auto'
               className='!w-full'
             >
               ค้นหา

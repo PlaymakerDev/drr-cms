@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8004",
     "lint": "next lint"
   },
   "dependencies": {
@@ -14,11 +14,14 @@
     "@hapi/iron": "^7.0.1",
     "@olapat/react-useform": "^0.2.11",
     "@reduxjs/toolkit": "^2.2.7",
-    "antd": "^5.20.5",
+    "antd": "^5.21.5",
     "apexcharts": "^3.53.0",
     "axios": "^1.7.7",
+    "cookie": "^1.0.1",
     "dayjs": "^1.11.13",
     "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
+    "lodash": "^4.17.21",
     "next": "14.2.8",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18",

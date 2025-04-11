@@ -37,13 +37,15 @@ const theme = {
       colorPrimary: '#ffffff',
       colorPrimaryHover: '#ffffff',
       // borderRadius: 50,
-      showSizeChanger: false,
+      // showSizeChanger: false,
+      colorText: '#ffffff'
     },
   },
   token: {
     fontSize: 16,
     colorPrimary: '#0075E9',
     fontFamily: 'IBMPlexSansThai-Regular',
+    paddingLG: 10
   },
   // components: {
   //   Table: {

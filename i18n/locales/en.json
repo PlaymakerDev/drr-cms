@@ -44,6 +44,7 @@
   "required_nationality": "Nationality is required",
   "required_document_type": "Document Type is required",
   "required_passport": "Passport Number is required",
+  "required_file": "File is required",
   "validation_error_pattern_not_match": "Invalid Password",
   "validation_error_confirm_password": "Password do not match",
   "validation_error_phone_number": "Inappropriate Phone Number",
@@ -138,5 +139,6 @@
   "vmi_policy_expired_date": "กรุณาระบุวันที่สิ้นสุดคุ้มครอง",
   "cmi_policy_effective_date": "กรุณาระบุเริ่มต้นคุ้มครอง (พรบ.)",
   "required_taxnumber": "กรุณาระบุเลขผู้เสียภาษี",
-  "required_taxnumber_must": "กรุณาระบุเลขผู้เสียภาษีให้ถูกต้อง"
+  "required_taxnumber_must": "กรุณาระบุเลขผู้เสียภาษีให้ถูกต้อง",
+  "validate_phone_numnber_incorrect": "Invalid phone number. Please enter a valid phone number."
 }

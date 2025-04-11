@@ -1,8 +1,13 @@
 import { Button } from 'antd'
 import React from 'react'
+import { useRouter } from 'next/router';
 
 const SidebarFooter = (props) => {
   const { } = props
+
+
+  
+  const router = useRouter();
 
   return (
     <div className='text-center'>
@@ -11,6 +16,7 @@ const SidebarFooter = (props) => {
         size='large'
         block
         className='prop-color'
+        onClick={() => router.push('/api/logout')}
       >
         ออกจากระบบ
       </Button>

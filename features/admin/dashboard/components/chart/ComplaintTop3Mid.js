@@ -19,11 +19,12 @@ const ComplaintTop3Mid = (props) => {
             toolbar: {
               show: false,
             },
+            fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
           },
           plotOptions: {
             radialBar: {
               hollow: {
-                size: "50%",
+                size: "45%",
               },
               dataLabels: {
                 name: {

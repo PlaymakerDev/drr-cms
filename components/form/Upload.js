@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react'
-import { message, Typography, Button, Upload as UploadAntd } from 'antd'
-import { UploadOutlined, PlusOutlined } from '@ant-design/icons'
+import { message, Typography, Button, Upload as UploadAntd, Tooltip } from 'antd'
+import { UploadOutlined, PlusOutlined, EyeOutlined, DeleteOutlined, FilePdfOutlined } from '@ant-design/icons'
 import { FormContext } from '@olapat/react-useform'
 import {
   getValues,
@@ -11,6 +11,7 @@ import {
 } from '@olapat/react-useform/dist/utils/field'
 import PropTypes from 'prop-types'
 import styles from '@/styles/components/form/Field.module.css'
+import uploadStyles from '@/styles/components/form/Upload.module.css'
 import { getErrorWithLocalKey } from './utils'
 import useTrans from '@/utils/hooks/useTrans'
 
@@ -39,6 +40,7 @@ const Upload = (props) => {
     maxCount,
     hasStar,
     hideRequired,
+    previewFile,
     ...propsUpload
   } = props
   const formContext = useContext(FormContext)
@@ -74,10 +76,12 @@ const Upload = (props) => {
   )
 
   const _onRemove = useCallback((file) => {
-    if (typeof onRemove === 'function') {
-      return onRemove(file)
-    }
-  }, [onRemove])
+    // if (typeof onRemove === 'function') {
+    // return onRemove(file)
+    const funChange = getOnChange(formContext, onRemove)
+    funChange(name, _value?.filter((item) => item?.uid !== file?.uid), file)
+    // }
+  }, [formContext, name, onRemove, _value])
 
   // const onClickRemove = useCallback((event: any) => {
   //   event.stopPropagation()
@@ -103,10 +107,26 @@ const Upload = (props) => {
     const isOverMaxSize = file.size > maxSizeLimit
     if (isOverMaxSize) {
       message.error('ไม่สามารถอัปโหลดไฟล์ได้ ไฟล์ที่อัปโหลดมีขนาดเกิน 10 MB')
+      return UploadAntd.LIST_IGNORE
     }
     // return isOverMaxSize ? UploadAntd.LIST_IGNORE : true;
-    return isOverMaxSize ? UploadAntd.LIST_IGNORE : false;
+    return false;
   }, [beforeUpload, maxSizeLimit, accept])
+
+  const _previewFile = useCallback(async (file) => {
+    if (typeof previewFile === 'function') {
+      return previewFile(file)
+    }
+    if (file.type && file.type.startsWith('image/')) {
+      const objectURL = URL.createObjectURL(file)
+      return objectURL
+    } else if (file.type && file.type === 'application/pdf') {
+      const pdfBlob = new Blob([file.originFileObj], { type: 'application/pdf' });
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+      window.open(pdfUrl);
+    }
+    return false
+  }, [previewFile])
 
   const _styleError = useMemo(() => {
     let res = [`${styles.error}`]
@@ -115,6 +135,29 @@ const Upload = (props) => {
     }
     return res.join(' ')
   }, [hideRequired])
+
+  const _itemRender = useCallback((originNode, file, fileList) => {
+    if (file.type === 'application/pdf') {
+      return (
+        <div className={uploadStyles.customUploadItem}>
+          {originNode}
+          <div className={uploadStyles.previewOverlay}>
+            <EyeOutlined
+              className={uploadStyles.previewIcon}
+              onClick={() => _previewFile(file)}
+            />
+            <DeleteOutlined
+              className={uploadStyles.deleteIcon}
+              onClick={() => {
+                _onRemove(file)
+              }}
+            />
+          </div>
+        </div>
+      )
+    }
+    return originNode
+  }, [_previewFile, _onRemove]);
 
   return (
     <div className={`${styles.container} ${_error ? 'a-error' : ''}`}>
@@ -125,6 +168,7 @@ const Upload = (props) => {
         </label>
       )}
       <UploadAntd
+        // multiple={true}
         defaultFileList={defaultFileList || []}
         fileList={_value || []}
         id={id}
@@ -138,9 +182,23 @@ const Upload = (props) => {
         style={{
           width: '100% !important'
         }}
-        previewFile={async (file) => {
-          const objectURL = URL.createObjectURL(file)
-          return objectURL
+        // previewFile={async (file) => {
+        //   if (file.type && file.type.startsWith('image/')) {
+        //     const objectURL = URL.createObjectURL(file)
+        //     return objectURL
+        //   }
+        //   return false
+        // }}
+        previewFile={_previewFile}
+        itemRender={_itemRender}
+        showUploadList={{
+          showRemoveIcon: (file) => {
+            if (file.type === 'application/pdf') {
+              return false
+            } else {
+              return true
+            }
+          }
         }}
         {...propsUpload}
       >

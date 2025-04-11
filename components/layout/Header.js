@@ -7,6 +7,15 @@ import { useRouter } from 'next/router';
 import styles from '@/styles/components/layout/Layout.module.css'
 // import menu from '@/menu'
 import DPTLogo from '@/public/images/dpt-logo.svg'
+import dayjs from 'dayjs'
+import 'dayjs/locale/th'
+import buddhistEra from 'dayjs/plugin/buddhistEra'
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(buddhistEra)
+dayjs.extend(customParseFormat);  
+import { selectRole, selectUsername } from '@/store/features/userAuthenSlice';
+import { useSelector } from 'react-redux';
 
 
 const mappingTransaction = {
@@ -19,7 +28,8 @@ const mappingTransaction = {
 
 const Header = (props) => {
   const { menu, role, setOpen } = props
-  const { pathname, reload ,push} = useRouter()
+  const { pathname, reload, push } = useRouter()
+  const router = useRouter();
 
   const Icon = useCallback((iconName, { ...props }) => {
     const IconResult = mappingTransaction[iconName]
@@ -36,10 +46,11 @@ const Header = (props) => {
         <Menu>
           {item.path_list.map((item, index) => (
             <Menu.Item key={index + 1}>
-              <Link href={item.path}>{item.label}</Link>
+              <a href={item.path}>{item.label}</a> {/* Corrected syntax */}
             </Menu.Item>
           ))}
         </Menu>
+
       );
 
       const generateDropdown = () => {
@@ -142,7 +153,7 @@ const Header = (props) => {
         <section className={styles.navbarExtraMenu}>
           <div className='flex items-center gap-5'>
             <div className='flex flex-col items-end'>
-              <p className='text-sm'>26 ก.ค. 2567</p>
+              <p className='text-sm'>{dayjs().locale('th').format('DD MMM BBBB')}</p>
               <p className='text-sm text-[#FFFFFF80]'>วันที่</p>
             </div>
             <Avatar
@@ -158,8 +169,8 @@ const Header = (props) => {
               className={`${styles.avatarIcon} !bg-[#FFFFFF30]`}
             />
             <div className='flex flex-col items-start'>
-              <p className='text-sm'>Admin User</p>
-              <p className='text-sm text-[#FFFFFF80]'>ผู้ดูแลระบบ</p>
+              <p className='text-sm'>{useSelector(selectUsername)}</p>
+              <p className='text-sm text-[#FFFFFF80]'>{useSelector(selectRole) === "Admin" ? 'ผู้ดูแลระบบ' : 'พนักงาน'}</p>
             </div>
           </div>
           <div>
@@ -167,7 +178,7 @@ const Header = (props) => {
               size={'large'}
               icon={<LogoutOutlined />}
               className={`${styles.avatarIcon} !bg-[#FFFFFF30] !cursor-pointer`}
-              onClick={() => push('/login')}
+              onClick={() => router.push('/api/logout')}
             />
           </div>
         </section>

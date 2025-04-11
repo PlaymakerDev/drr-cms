@@ -2,25 +2,34 @@ import React, { useEffect, useMemo } from "react";
 import { Card, Spin } from "antd";
 // API
 import useGetAPI from '@/utils/hooks/api/useGetAPI'
-import { getTop3_Department_Complain } from '@/store/features/dashboardSlice'
+import { getTop3_Department_Complain , getToday_Department_Complain} from '@/store/features/dashboardSlice'
 // CONTENT
 import { ContentComplaintDepartment } from "./content";
+import dayjs from "dayjs";
 
 const ComplaintCurrent = (props) => {
   const { } = props;
+  
   const [apiGetData, loading, data] = useGetAPI('overlay', {
     funcDispatch: getTop3_Department_Complain, reducerName: 'dashboard', reducerKey: 'top3_department_complain'
   })
 
+  const [apiGetDepartment, loadingDepartment, department] = useGetAPI('overlay', {
+    funcDispatch: getToday_Department_Complain, reducerName: 'dashboard', reducerKey: 'today_department_complain'
+  })
+
   useEffect(() => {
-    apiGetData('/api/v1/dashboard/top3_department_complain?dateSearch=2024-09-17', {} , false, {})
+    apiGetData('/api/v1/dashboard/top3_department_complain', { dateSearch: dayjs().format('YYYY-MM-DD') } , false, {})
+    apiGetDepartment('/api/v1/dashboard/today_department_complain', { dateSearch: dayjs().format('YYYY-MM-DD') } , false, {})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   const renderContent = useMemo(() => {
     if (!loading) {
       return (
         <ContentComplaintDepartment
           data={data.data}
+          department={department.data}
         />
       )
     } else {
@@ -33,7 +42,7 @@ const ComplaintCurrent = (props) => {
   }, [data.data, loading])
 
   return (
-    <Card>
+    <Card className="min-h-[255px]">
       {renderContent}
     </Card>
   );

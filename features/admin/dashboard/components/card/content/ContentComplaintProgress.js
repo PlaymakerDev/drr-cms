@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Typography } from "antd";
 import { ComplaintProgressChart } from "../../chart";
 import { ProgressChartDetail } from "../../modal";
@@ -7,7 +7,6 @@ const INIT_MODAL = { open: false };
 
 const ContentComplaintProgress = (props) => {
   const { data } = props;
-
   const [openProgressDetail, setOpenProgressDetail] = useState(INIT_MODAL);
 
   return (
@@ -29,8 +28,8 @@ const ContentComplaintProgress = (props) => {
         />
       </section>
       <section>
-        <ComplaintProgressChart 
-          data = {data}
+        <ComplaintProgressChart
+          data={data}
         />
       </section>
     </>

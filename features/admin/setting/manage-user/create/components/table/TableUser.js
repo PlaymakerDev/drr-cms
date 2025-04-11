@@ -1,63 +1,59 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Table } from "antd";
+import { useRouter } from "next/router";
 
 const TableUser = (props) => {
-  const { } = props;
-  const onTableChange = useCallback((key, row) => {
-    console.log(key, row)
-  }, [])
+  const { data , setPrefill} = props;
 
-  const data = [
-    {
-      key: '1',
-      username: "adisai_t",
-      name: "นายอดิศัย ทองไทย",
-    },
-    {
-      key: '2',
-      username: "adisai_t",
-      name: "นายอดิศัย ทองไทย",
-    },
-    {
-      key: '3',
-      username: "adisai_t",
-      name: "นายอดิศัย ทองไทย",
-    },
-    {
-      key: '4',
-      username: "adisai_t",
-      name: "นายอดิศัย ทองไทย",
-    },
-  ];
+  const renderData = useMemo(() => {
+    if (data?.message) {
+      return []
+    }
+    const mapData = data?.map((item, index) => {
+      return {
+        key: index + 1,
+        ...item
+      }
+    })
+    return mapData
+  }, [data])
 
   const columns = [
     {
       title: "Username",
-      key: "username",
-      dataIndex: "username",
+      key: "Username",
+      dataIndex: "Username",
       width: 100
     },
     {
       title: "ชื่อ-นามสกุล",
-      key: "name",
-      dataIndex: "name",
+      key: "Description",
+      dataIndex: "Description",
       width: 200
     },
   ];
 
   return (
-      <Table
-        dataSource={data}
-        columns={columns}
-        scroll={{ x: 500 }}
-        pagination={{
-          // position: ['bottomCenter']
-        }}
-        rowSelection={{
-          type: 'radio'
-        }}
-        onChange={(selectedRowKeys, selectedRows) => onTableChange(selectedRowKeys, selectedRows)}
-      />
+    <Table
+      dataSource={data?.message ? [] : renderData}
+      columns={columns}
+      scroll={{ x: 500 }}
+      pagination={{
+        // position: ['bottomCenter']
+        defaultPageSize: 10,
+        showSizeChanger: true,
+      }}
+      rowSelection={{
+        type: 'radio',
+        onChange: (key, row) => setPrefill({
+          username: row[0]?.Username || '',
+          prefix: row[0]?.Prefix || '',
+          name: row[0]?.Description || '',
+          first_name: row[0]?.FirstName || '',
+          last_name: row[0]?.LastName || ''
+        })
+      }}
+    />
   );
 };
 

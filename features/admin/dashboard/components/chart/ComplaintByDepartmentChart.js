@@ -4,35 +4,37 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ComplaintByDepartmentChart = (props) => {
   const { data } = props;
-console.log('tetetet' , data);
+
+  if (!data || !data.series || !data.labels) {
+    return ;
+  }
 
   const mutableData = JSON.parse(JSON.stringify(data));
-
-  const mock_data = [
-    {
-      name: "กำลังดำเนินการ",
-      data: [95, 101, 150],
-    },
-    {
-      name: "ยุติ",
-      data: [95, 101, 150],
-    },
-    {
-      name: "รวม",
-      data: [45, 50, 139],
-    },
-  ];
+  const total = mutableData?.series[2].data[0]
 
   return (
-    <div>
+    <div >
       <Chart
-        series={mutableData?.series}
+        series={mutableData?.series || []}
         options={{
+          grid: {
+            padding: {
+              left:0,
+              right:0,
+              top: 0,
+              bottom:-40
+            }
+          },
           chart: {
             type: "bar",
             toolbar: {
               show: false,
             },
+            fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
+          },
+          noData: {
+            text: "ไม่มีข้อมูล",
+            align: "center",
           },
           plotOptions: {
             bar: {
@@ -48,6 +50,7 @@ console.log('tetetet' , data);
           dataLabels: {
             enabled: true,
             offsetX: -10,
+            offsetY: -3,
           },
           stroke: {
             show: true,
@@ -55,14 +58,33 @@ console.log('tetetet' , data);
             colors: ["transparent"],
           },
           xaxis: {
-            categories: data.labels,
+            categories: data.labels || [],
+            min: 0, 
+            max: total + 1, 
+            tickAmount: total + 1,
+            labels: {
+              formatter: (value) => Math.round(value),
+            },
           },
           fill: {
             opacity: 1,
           },
           colors: ["#0075E9", "#43BE6D", "#F1E14A"],
+          legend: {
+            position:'bottom',
+            offsetY:'15',
+            itemMargin: {
+              horizontal: 4,
+              vertical: 0,
+            },
+          markers: {
+              size: 14,
+              shape: 'line',
+               strokeWidth: 6,
+            }
+          },
         }}
-        height={220}
+        height={180}
         type="bar"
       />
     </div>

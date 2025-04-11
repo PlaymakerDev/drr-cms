@@ -5,6 +5,7 @@ import useGetAPI from '@/utils/hooks/api/useGetAPI'
 import { getMost_Popular } from '@/store/features/dashboardSlice'
 // CONTENT
 import { ContentComplaintContact } from "./content";
+import dayjs from "dayjs";
 
 const ComplaintCurrent = (props) => {
   const { } = props;
@@ -13,7 +14,7 @@ const ComplaintCurrent = (props) => {
   })
 
   useEffect(() => {
-    apiGetData('/api/v1/dashboard/most_popular', data.search , false, {})
+    apiGetData('/api/v1/dashboard/most_popular', { dateSearch: dayjs().format('YYYY-MM-DD') }, false, {})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

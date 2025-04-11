@@ -5,6 +5,8 @@ import useGetAPI from '@/utils/hooks/api/useGetAPI'
 import { getCount_Complain_Type } from '@/store/features/dashboardSlice'
 // CONTENT
 import { ContentComplaintType } from "./content";
+import dayjs from "dayjs";
+
 
 const ComplaintCurrent = (props) => {
   const { } = props;
@@ -13,9 +15,9 @@ const ComplaintCurrent = (props) => {
   })
 
   useEffect(() => {
-    // const mock = '?dateSearch=2024-09-17'
-    apiGetData('/api/v1/dashboard/count_complain_type?dateSearch=2024-09-17', {} , false, {})
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    apiGetData('/api/v1/dashboard/count_complain_type', { dateSearch: dayjs().format('YYYY-MM-DD') } , false, {})
+
   }, [])
 
   const renderContent = useMemo(() => {
@@ -35,7 +37,7 @@ const ComplaintCurrent = (props) => {
   }, [data.data, loading])
 
   return (
-    <Card>
+    <Card >
       {renderContent}
     </Card>
   );

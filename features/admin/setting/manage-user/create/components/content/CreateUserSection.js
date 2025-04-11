@@ -3,7 +3,7 @@ import { FormCreateUser } from '../form'
 import { Card, Typography } from 'antd'
 
 const CreateUserSection = (props) => {
-  const { } = props
+  const { initialValues } = props
 
   return (
     <Card className='!bg-[#BAC9CC20] border-[#60606020]'>
@@ -11,7 +11,9 @@ const CreateUserSection = (props) => {
         <Typography.Title level={5} className='!m-0 !text-primary-color'>เพิ่มข้อมูลผู้ใช้งาน</Typography.Title>
       </section>
       <section className='mt-5'>
-        <FormCreateUser />
+        <FormCreateUser
+          initialValues={initialValues}
+        />
       </section>
     </Card>
   )

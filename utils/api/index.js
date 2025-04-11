@@ -68,7 +68,9 @@ class ApiClient {
   }
 
   post(url, body, options = {}) {
+    console.log("auth")
     const access = this._checkAuth()
+    
     return this.axios.post(url, body, { ...this._setOption(access, options) })
       .catch((reason) => {
         if (reason?.response?.status === 401) {

@@ -5,6 +5,8 @@ import useGetAPI from '@/utils/hooks/api/useGetAPI'
 import { getCompare_Process_Close } from '@/store/features/dashboardSlice'
 import { ContentComplaintProgressStat } from "./content";
 // CONTENT
+import dayjs from "dayjs";
+
 
 const ComplaintCurrent = (props) => {
   const { } = props;
@@ -13,7 +15,7 @@ const ComplaintCurrent = (props) => {
   })
 
   useEffect(() => {
-    apiGetData('/api/v1/dashboard/compare_process_close', data.search , false, {})
+    apiGetData('/api/v1/dashboard/compare_process_close', { dateSearch: dayjs().format('YYYY-MM-DD') } , false, {})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

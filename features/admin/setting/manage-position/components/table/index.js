@@ -1,0 +1,1 @@
+export { default as TableManagePosition } from './TableManagePosition'

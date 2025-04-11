@@ -10,7 +10,10 @@ export default async function logout(
 
   let location
   switch (role) {
-    case 'ADMIN':
+    case 'Admin':
+      location = `${config.basePath}/login`
+      break;
+    case 'Superadmin':
       location = `${config.basePath}/login`
       break;
     default:

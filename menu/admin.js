@@ -43,6 +43,14 @@ const menu = [
         label: 'จัดการแหล่งที่มาข้อมูล',
         path: '/admin/setting/manage-information'
       },
+      {
+        label: 'จัดการตำแหน่งงาน',
+        path: '/admin/setting/manage-position'
+      },
+      {
+        label: 'จัดการรายงาน',
+        path: '/admin/setting/manage-report'
+      },
     ],
       label: "ตั้งค่า",
       label_key: "setting",

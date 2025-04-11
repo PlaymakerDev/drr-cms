@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import dynamic from "next/dynamic";
+import dayjs from 'dayjs'
+import 'dayjs/locale/th'
+import buddhistEra from 'dayjs/plugin/buddhistEra'
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(buddhistEra)
+dayjs.extend(customParseFormat);  
+
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ServiceChart = (props) => {
-  const { } = props
+  const { data } = props
 
-  const series = [{
-    name: 'กำลังดำเนินการ',
-    data: [95, 101, 150]
-  }, {
-    name: 'ยุติ',
-    data: [45, 50, 139]
-  }]
+  const renderLabels = useMemo(() => {
+    const labels = [];
+    data.data?.labels?.forEach((currentData) => {
+      labels.push(dayjs(currentData, 'YYYY-MM').locale('th').format('MMMM BB'));
+    })
+    return {
+      labels
+    }
+  }, [data]);
+
+  const mutableData = JSON.parse(JSON.stringify(data));
+  const series = mutableData?.data?.series
 
   const options = {
     chart: {
@@ -19,6 +32,7 @@ const ServiceChart = (props) => {
       toolbar: {
         show: false
       },
+      fontFamily: 'IBMPlexSansThai-Regular, Arial, sans-serif',
     },
     plotOptions: {
       bar: {
@@ -37,13 +51,21 @@ const ServiceChart = (props) => {
       colors: ['transparent']
     },
     xaxis: {
-      categories: ['พฤษภาคม 65', 'มิถุนายน 65', 'กรกฏาคม 65'],
+      categories: renderLabels.labels,
     },
     fill: {
       opacity: 1
     },
-    colors: ["#0075E9", "#43BE6D"]
-
+    colors: ["#0075E9", "#43BE6D"],
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      markers: {
+          size: 17,
+          shape: 'line',
+           strokeWidth: 6,
+        }
+      },
   }
 
   return (
@@ -51,7 +73,7 @@ const ServiceChart = (props) => {
       <Chart
         series={series}
         options={options}
-        height={250}
+        height={490}
         type='bar'
       />
     </div>

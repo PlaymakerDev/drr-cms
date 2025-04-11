@@ -3,11 +3,7 @@ import { setLoginSession, getUserSession } from '@/utils/auth'
 import config from '@/config'
 import pm from '@/utils/auth/permission';
 
-const toLoginAgain = async (
-  res,
-  response,
-  locale
-) => {
+const toLoginAgain = async (res, response, locale) => {
   const MAX_AGE = 4
   await setLoginSession(res, response, MAX_AGE)
   let p = config.basePath
@@ -17,28 +13,30 @@ const toLoginAgain = async (
   return res.redirect(302, p + '/login')
 }
 
-const url = config.hostBackendServerSide + '/api/v1/auth/login'
-async function handler(
-  req,
-  res,
-) {
-  const { username, password, role, locale, remember_me_checked, token } = await req.body
+
+const url = config.hostBackendServerSide + '/api/v1/user/login'
+async function handler(req, res,) {
+  const { username, password, role, locale, remember_me, token } = await req.body
   try {
     if (![username, password].every(val => String(val).trim())) {
-      console.log('Bad request')
       return res.status(400).json({ success: false, message: 'Bad request' })
     }
 
+    const rememberMe = remember_me === 'true' ? true : false
     const body = {
       "username": username,
-      "password": password
+      "password": password,
+      "rememberMe": rememberMe
     }
+    console.log('bodyparam', body);
     const configHeader = {
       headers: {
-        'recaptcha': token 
+        'recaptcha': token
       }
     };
     const { data, status } = await axios.post(url, body, configHeader)
+
+    console.log('data----->>>>>', data);
 
     if (!data?.success) {
       const response = {
@@ -48,20 +46,18 @@ async function handler(
       }
       return toLoginAgain(res, response, locale)
     }
-    const user = getUserSession(data?.response)
+    console.log('successs login', data);
+    const user = getUserSession(data)
     await setLoginSession(res, user, 60 * 60 * 24 * 2)
     let redirectURL = (config.basePath || '')
     if (locale === 'en') {
       redirectURL = redirectURL + '/en'
     }
-
     const pUser = pm(user)
     redirectURL = redirectURL + pUser.indexPage()
-
     return res.redirect(302, redirectURL)
-
   } catch (error) {
-    console.log('error', error)
+    console.log('error----->>>>>', error);
     let response = {
       success: false,
       message: 'Wrong password',
@@ -70,7 +66,6 @@ async function handler(
     }
 
     if (error instanceof AxiosError) {
-      console.log('error', error.response)
       response = {
         ...response,
         ...(error?.response?.data),

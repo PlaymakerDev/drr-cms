@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 const useAPI = (loadType) => {
   const dispatch = useAppDispatch()
   const { locale } = useRouter()
-  const userAuth = useAppSelector(state => state.user)
+  const userAuth = useAppSelector(state => state.userAuthen)
   const start = (name) => dispatch(taskStart({ name, loadType }))
   const end = (name) => setTimeout(() => { dispatch(taskFinished({ name })) }, 200)
   const onExpire = () => {

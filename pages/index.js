@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router';
 
-const HomePage = (props) => {
-  const {} = props
 
-  return (
-    <div>index</div>
-  )
+const HomePage = () => {
+
+  const router = useRouter();
+  useEffect(() => {
+    router.push('/login');
+  }, [router]);
+  
 }
 
 export default React.memo(HomePage)

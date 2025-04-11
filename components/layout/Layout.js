@@ -1,10 +1,18 @@
 import React, { useState, useCallback } from 'react'
 import { Drawer } from 'antd'
 import { Header } from '@/components/layout'
-import { SidebarHeader as Title, SidebarContent as Content, SidebarFooter as Footer } from './sidebar';
+import { SidebarHeader as Title, SidebarFooter as Footer } from './sidebar';
 import menu from '@/menu'
+import dynamic from 'next/dynamic'
+import { useSelector } from 'react-redux';
+
+
+const Content = dynamic(() => import('./sidebar/SidebarContent'), { ssr: false })
+
 
 const Layout = (props) => {
+
+  const { username, role, token } = useSelector((state) => state.userAuthen);
   const { children } = props
   // STATE
   const [open, setOpen] = useState(false)
@@ -39,7 +47,7 @@ const Layout = (props) => {
       <header>
         <Header
           menu={menu}
-          role={'ADMIN'}
+          role={role}
           setOpen={setOpen}
         />
       </header>
@@ -54,7 +62,7 @@ const Layout = (props) => {
         onTouchEnd={handleTouchEnd}
       >
         <Drawer
-          title={<Title title='Admin User' description='ผู้ดูแลระบบ' />}
+          title={<Title/>}
           closeIcon={false}
           open={open}
           onClose={_onClose}
@@ -77,7 +85,7 @@ const Layout = (props) => {
         >
           <Content
             menu={menu}
-            role={'ADMIN'}
+            role={role}
             setOpen={setOpen}
           />
         </Drawer>

@@ -22,7 +22,7 @@ const BottomLeftSection = (props) => {
         <section>
           <ComplaintProgressStat />
         </section>
-        <section className='mt-5'>
+        <section className='mt-5 !h-full'>
           <ComplaintType />
         </section>
       </Col>

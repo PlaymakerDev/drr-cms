@@ -6,24 +6,24 @@ import { NotifyDetail } from "../../modal";
 const INIT_MODAL = { open: false };
 
 const ContentComplaintLatest = (props) => {
-  const { data } = props;
-
+  const { data , comp } = props;
   const [openNotifyDetail, setOpenNotifyDetail] = useState(INIT_MODAL);
 
   return (
     <>
       <section className="flex justify-between items-center">
         <Typography.Title level={5} className="!m-0">
-          เรื่องร้องเรียนล่าสุด ภายในวันนี้
+        เรื่องร้องเรียนร้องทุกข์ล่าสุด
         </Typography.Title>
         <Typography.Text
           underline
           className="!cursor-pointer"
           onClick={() => setOpenNotifyDetail({ open: true })}
         >
-          แสดงทั้งหมด
+          ดูข้อมูลเพิ่มเติม
         </Typography.Text>
         <NotifyDetail
+          data={comp}
           open={openNotifyDetail.open}
           setOpen={setOpenNotifyDetail}
         />

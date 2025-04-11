@@ -113,6 +113,7 @@ const InputNumber = (props) => {
           maxLength={propsInput.maxLength || 255}
           {...propsInput}
           disabled={_disabled}
+          autoComplete='off'
           className={`ant-input ant-input-lg css-dev-only-do-not-override-12432py ant-input-outlined ${className || ''}`}
           style={_disabled ? {
             color: 'rgba(0, 0, 0, 0.25)',

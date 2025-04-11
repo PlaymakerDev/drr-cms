@@ -28,7 +28,7 @@ export function getUserSession(dataSignIn) {
     ...(dataSignIn?.data || {})
   }
 
-  user.token = dataSignIn.token
+  user.token = dataSignIn.data.token
   // delete user.token
 
   return user

@@ -7,6 +7,7 @@ import complaintListing from './complaintListingSlice'
 import complaintStatistic from './complaintStatisticSlice'
 import report from './reportSlice'
 import setting from './settingSlice'
+import userAuthen from './userAuthenSlice'
 // {{import}}
 
 const rootReducer = {
@@ -19,6 +20,7 @@ const rootReducer = {
 	complaintStatistic,
 	report,
 	setting,
+	userAuthen,
 // {{export}}
 }
 

@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { Form, Field, useForm } from "@/components/form";
-import { Button, Card, Col, Row, Typography } from "antd";
-import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Col, Row, Typography } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 const FormSearchUser = (props) => {
-  const { } = props;
+  const { apiGetData } = props;
 
   const form = useForm({
     initialValues: {
@@ -14,12 +14,17 @@ const FormSearchUser = (props) => {
   });
 
   const buildValue = useCallback((values, next) => {
-    next(values);
+    const body = {
+      keyword: values.username
+    }
+    next(body);
   }, []);
 
   const handlerSubmit = useCallback((values) => {
-    console.log(values);
-  }, []);
+    apiGetData('/api/v1/user/search', values, false);
+  }, [apiGetData]);
+
+  const usernameValue = form.values.username; 
 
   return (
     <>
@@ -37,11 +42,10 @@ const FormSearchUser = (props) => {
             <fieldset>
               <label>&nbsp;</label>
               <Button
+                htmlType="submit"
                 type='primary'
                 size='large'
                 icon={<SearchOutlined />}
-                // className='!w-full 2xl:!w-auto'
-                // className='!w-full !bg-[#5671EE] hover:!bg-[#6c87ff] duration-200'
                 className='!w-full'
               >
                 ค้นหา
@@ -50,7 +54,9 @@ const FormSearchUser = (props) => {
           </Col>
         </Row>
       </Form>
-      <Typography.Text className="!text-[#FF4A4A]">**กรุณาค้นหาด้วยชื่อ หรือ Username</Typography.Text>
+      {!usernameValue && (
+        <Typography.Text className="!text-[#FF4A4A]">กรุณาค้นหาด้วยชื่อ หรือ Username</Typography.Text>
+      )}
     </>
   );
 };

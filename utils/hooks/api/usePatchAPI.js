@@ -13,12 +13,12 @@ const usePatchAPI = (loadType, reducer) => {
   const data = useAppSelector((state) => reducer?.reducerKey ? state[reducer?.reducerName || '']?.[reducer?.reducerKey] : state[reducer?.reducerName || ''])
   const refPath = useRef('')
 
-  const func = useCallback(async (path, body, params, showDefaultMessage = true) => {
+  const func = useCallback(async (path, body, params, showDefaultMessage = true, options) => {
     const name = 'PATCH:' + path
     try {
       API.begin(name)
       refPath.current = name
-      const { data } = await API.patch(path, body, { params })
+      const { data } = await API.patch(path, body, { params, ...(options || {}) })
 
       if (typeof reducer?.funcDispatch === 'function') {
         dispatch(reducer?.funcDispatch(data))

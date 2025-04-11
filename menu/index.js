@@ -1,8 +1,10 @@
 import admin from './admin'
+import staff from './staff'
 
 
 const menu = {
-  ADMIN: admin,
+  Admin: admin,
+  Staff: staff
 }
 
 export default menu

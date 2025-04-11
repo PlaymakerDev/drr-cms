@@ -2,9 +2,10 @@ import React, { useEffect, useMemo } from "react";
 import { Card, Spin } from "antd";
 // API
 import useGetAPI from '@/utils/hooks/api/useGetAPI'
-import { getTop3_Progress } from '@/store/features/dashboardSlice'
+import { getTop3_Progress  } from '@/store/features/dashboardSlice'
 // CONTENT
 import { ContentComplaintProgress } from "./content";
+import dayjs from "dayjs";
 
 const ComplaintProgress = (props) => {
   const { } = props;
@@ -13,10 +14,9 @@ const ComplaintProgress = (props) => {
   })
 
   useEffect(() => {
-    apiGetData('/api/v1/dashboard/top3_progress', data.search, false, {})
+    apiGetData('/api/v1/dashboard/top3_progress', { dateSearch: dayjs().format('YYYY-MM-DD') } , false, {})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
   const renderContent = useMemo(() => {
     if (!loading) {
       return (
@@ -34,7 +34,7 @@ const ComplaintProgress = (props) => {
   }, [data.data, loading])
 
   return (
-    <Card>
+    <Card className="!w-full">
       {renderContent}
     </Card>
   );

@@ -13,6 +13,101 @@ export const WEIGHT_STATUS = {
   "P": "รถน้ำหนักเกิน (เพลาเกิน)"
 }
 
+export const ICON_SOURCE = {
+  "1": {
+    "icon" : "/images/icon/Hotline.svg",
+    "name" : "สายด่วน 1146"
+  },
+  "2": {
+    "icon" : "/images/icon/DORR.svg",
+    "name" : "หน่วยงานภายในกรมทางหลวงชนบท"
+  },
+  "3": {
+    "icon" : "/images/icon/Facebook.svg",
+    "name" : "Facebook"
+  },
+  "4": {
+    "icon" : "/images/icon/GVM.svg",
+    "name" : "หน่วยงานภาครัฐ"
+  },
+  "5": {
+    "icon" : "/images/icon/PV.svg",
+    "name" : "หน่วยงานเอกชน"
+  },
+  "6": {
+    "icon" : "/images/icon/Traffic.svg",
+    "name" : "Traffic Fondue"
+  },
+  "7": {
+    "icon" : "/images/icon/DRR.svg",
+    "name" : "เว็บไซต์กรมทางหลวงชนบท (www.drr.go.th)"
+  },
+  "8": {
+    "icon" : "/images/icon/OPM.svg",
+    "name" : "เว็บไซต์สำนักงานปลัดสำนักนายกรัฐมนตรี"
+  },
+  "9": {
+    "icon" : "/images/icon/MOT.svg",
+    "name" : "เว็บไซต์กระทรวงคมนาคม"
+  },
+  "10": {
+    "icon" : "/images/icon/GECC.svg",
+    "name" : "ศูนย์ราชการสะดวก (GECC)"
+  },
+  "11": {
+    "icon" : "/images/icon/BookNew.svg",
+    "name" : "หนังสือภายนอก"
+  },
+
+
+}
+export const ICON_LABELS = {
+  "สายด่วน 1146": {
+    "icon" : "/images/icon/Hotline.svg",
+    "name" : "สายด่วน 1146"
+  },
+  "หน่วยงานภายในกรมทางหลวงชนบท": {
+    "icon" : "/images/icon/DORR.svg",
+    "name" : "กรมทางหลวงชนบท"
+  },
+  "Facebook กรมทางหลวงชนบท": {
+    "icon" : "/images/icon/Facebook.svg",
+    "name" : "Facebook"
+  },
+  "หน่วยงานของภาครัฐ": {
+    "icon" : "/images/icon/GVM.svg",
+    "name" : "หน่วยงานของภาครัฐ"
+  },
+  "หน่วยงานของภาคเอกชน": {
+    "icon" : "/images/icon/PV.svg",
+    "name" : "หน่วยงานของภาคเอกชน"
+  },
+  "ฟองดูว์ (Trafft Fondue)": {
+    "icon" : "/images/icon/Traffic.svg",
+    "name" : "Trafft Fondue"
+  },
+  "เว็บไซต์กรมทางหลวงชนบท (www.drr.go.th)": {
+    "icon" : "/images/icon/DRR.svg",
+    "name" : "เว็บไซต์กรมทางหลวงชนบท"
+  },
+  "เว็บไซต์สำนักงานปลัดสำนักนายกรัฐมนตรี": {
+    "icon" : "/images/icon/OPM.svg",
+    "name" : "เว็บไซต์สำนักงานปลัด"
+  },
+  "เว็บไซต์กระทรวงคมนาคม": {
+    "icon" : "/images/icon/MOT.svg",
+    "name" : "เว็บไซต์กระทรวงคมนาคม"
+  },
+  "ศูนย์ราชการสะดวก (GECC)": {
+    "icon" : "/images/icon/GECC.svg",
+    "name" : "ศูนย์ราชการสะดวก (GECC)"
+  },
+  "หนังสือภายนอก": {
+    "icon" : "/images/icon/BookNew.svg",
+    "name" : "หนังสือภายนอก"
+  },
+}
+
 export const VEHICLE_PROPERTIES = {
   "1": {
     "vehicle": {
@@ -414,4 +509,22 @@ export const VEHICLE_PROPERTIES = {
       "vehicle_description": "ไม่ระบุ",
     },
   }
+}
+
+export const BADGE_CONFIG = {
+  "1": {
+    text: "รับเรื่อง",
+    color: "#ffc90a",
+    // text_color : "#ffffff"
+  },
+  "2": {
+    text: "กำลังดำเนินการ",
+    color: "#0075E9",
+    // text_color : "#ffffff"
+  },
+  "3": {
+    text: "ยุติ",
+    color: "#43BE6D",
+    // text_color : "#ffffff"
+  },
 }

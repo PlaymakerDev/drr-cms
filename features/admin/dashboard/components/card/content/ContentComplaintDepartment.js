@@ -6,14 +6,13 @@ import { DepartmentDetail } from "../../modal";
 const INIT_MODAL = { open: false };
 
 const ContentComplaintByDepartment = (props) => {
-  const { data } = props;
-
+  const { data , department } = props;
   const [openDepartmentDetail, setOpenDepartmmentDetail] = useState(INIT_MODAL);
   return (
     <>
       <section className="flex justify-between items-center">
         <Typography.Title level={5} className="!m-0 ">
-          TOP3 หน่วยงานที่มีเรื่องร้องเรียนร้องทุกข์มากที่สุด ในวันนี้
+          TOP3 หน่วยงานที่มีเรื่องร้องเรียนร้องทุกข์มากที่สุด
         </Typography.Title>
         <Typography.Text
           underline
@@ -23,6 +22,7 @@ const ContentComplaintByDepartment = (props) => {
           ดูข้อมูลเพิ่มเติม
         </Typography.Text>
         <DepartmentDetail
+          data={department}
           open={openDepartmentDetail.open}
           setOpen={setOpenDepartmmentDetail}
         />

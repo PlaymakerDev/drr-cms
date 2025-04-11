@@ -77,6 +77,30 @@ export const initialState = {
     },
     data: [],
   },
+  progress_full_year: {
+    search: {
+      dateSearch: "",
+    },
+    data: {
+      serise: [],
+      labels: [],
+    }
+  },
+  today_department_complain: {
+    search: {
+      dateSearch: "",
+    },
+    data: {
+      serise: [],
+      labels: [],
+    }
+  },
+  all_latest_complain: {
+    search: {
+      dateSearch: "",
+    },
+    data: []
+  }
 };
 
 export const slice = createSlice({
@@ -126,6 +150,18 @@ export const slice = createSlice({
     getLatest_Complain: (state, action) => {
       (state.latest_complain.search = action.payload.params),
       (state.latest_complain.data = action.payload.data);
+    },
+    getProgress_Full_Year: (state, action) => {
+      (state.progress_full_year.search = action.payload.params),
+      (state.progress_full_year.data = action.payload.data);
+    },
+    getToday_Department_Complain: (state, action) => {
+      (state.today_department_complain.search = action.payload.params),
+      (state.today_department_complain.data = action.payload.data);
+    },
+    getAll_Latest_Complain: (state, action) => {
+      (state.all_latest_complain.search = action.payload.params),
+      (state.all_latest_complain.data = action.payload.data);
     }
   },
 });
@@ -140,6 +176,9 @@ export const {
   getCount_Complain_Type,
   getTop3_Department_Complain,
   getLatest_Complain,
+  getProgress_Full_Year,
+  getToday_Department_Complain,
+  getAll_Latest_Complain
 } = slice.actions;
 
 export default slice.reducer;

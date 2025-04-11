@@ -1,163 +1,152 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { Table, Typography, Badge, Modal, message } from "antd";
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { ExclamationCircleOutlined, FilePdfOutlined, YoutubeOutlined } from '@ant-design/icons';
 import { useRouter } from "next/router";
 import { DeleteIcon, EditIcon } from "@/components/icon";
+import dayjs from 'dayjs'
+import 'dayjs/locale/th'
+import buddhistEra from 'dayjs/plugin/buddhistEra'
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import config from "@/config";
+
+dayjs.extend(buddhistEra)
+dayjs.extend(customParseFormat);
+import { BADGE_CONFIG } from "@/utils/constant";
+import usePostAPI from "@/utils/hooks/api/usePostAPI";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
+dayjs.extend(customParseFormat);
 
 const TableComplaintListing = (props) => {
-  const { } = props;
-  const router = useRouter();
+  const { data, loading, page, perPage, total, onChange, refreshContent } = props;
+  const router = useRouter()
+  const [apiPost, loadingPost] = usePostAPI()
 
-  const openConfirmDelete = useCallback(() => {
+  const user = {
+    token: useSelector(state => state.userAuthen.token)
+  }
+
+  const handlerDelete = useCallback(async (id) => {
+    const response = await apiPost(`/api/v1/complaints/soft-delete/${id}`, {}, undefined, false)
+    if (response?.message === "Complaint soft deleted successfully") {
+      message.success('ลบข้อมูลสำเร็จ')
+      refreshContent()
+      Modal.destroyAll()
+    } else {
+      message.error('ไม่สามารถลบข้อมูลได้')
+      Modal.destroyAll()
+    }
+  }, [apiPost, refreshContent])
+
+  const handleDownload = useCallback(async (id) => {
+    try {
+      const response = await axios.get(`${config.hostBackend}/api/v1/report/export?cid=${id}`, {
+        headers: {
+          "Authorization": `Bearer ${user.token}`
+        },
+        responseType: 'blob'
+      }
+      )
+      const fileDownload = document.createElement('a')
+      const blobURL = window.URL.createObjectURL(new Blob([response?.data]))
+      fileDownload.setAttribute('href', blobURL)
+      fileDownload.setAttribute('download', 'รายงานแบบรับเรียนร้องเรียน.pdf')
+      fileDownload.click()
+    } catch {
+      message.error('Download Failed')
+    }
+
+  }, [])
+
+
+  const openConfirmDelete = useCallback((record) => {
     Modal.confirm({
       title: 'ยืนยันการลบข้อมูล',
       icon: <ExclamationCircleOutlined />,
-      content: 'ท่านต้องการลบรายการเรื่องร้องเรียน',
+      content: 'ท่านต้องการลบรายการเรื่องร้องเรียนใช่หรือไม่',
       okText: 'ยืนยัน',
       cancelText: 'ยกเลิก',
-      onOk: () => {
-        message.success('ลบข้อมูลสำเร็จ')
-        Modal.destroyAll()
+      onOk: () => handlerDelete(record.cid),
+      okButtonProps: {
+        loading: loadingPost
       },
       onCancel: () => {
         Modal.destroyAll()
       },
     })
-  }, [])
+  }, [handlerDelete, loadingPost])
 
-  const data = [
-    {
-      document_number: "",
-      notification_date: "12 สิงหาคม 2567",
-      data_source: "สายด่วน 1146",
-      category: "ร้องเรียน",
-      type: "ถนนชำรุด",
-      responsible_agency: "ขทช.xxx",
-      // status: "รับเรื่อง"
-      status: "START"
-    },
-    {
-      document_number: "คค.1246/2567",
-      notification_date: "11 สิงหาคม 2567",
-      data_source: "Traffic Fondue",
-      category: "ร้องเรียน",
-      type: "ไฟฟ้าส่องสว่างดับ/ชำรุด/ติดตั้ง",
-      responsible_agency: "ขทช.xxx",
-      // status: "กำลังดำเนินเรื่อง"
-      status: "PROGRESS"
-
-    },
-    {
-      document_number: "คค.1245/2567",
-      notification_date: "10 สิงหาคม 2567",
-      data_source: "กรมทางหลวงชนบท",
-      category: "ร้องเรียน",
-      type: "ถนนชำรุด",
-      responsible_agency: "ขทช.xxx",
-      // status: "ยุติ"
-      status: "END"
-    },
-    {
-      document_number: "",
-      notification_date: "12 สิงหาคม 2567",
-      data_source: "Facebook",
-      category: "ร้องเรียน",
-      type: "วัชพืช/ต้นไม้/ขยะ",
-      responsible_agency: "ขทช.xxx",
-      // status: "รับเรื่อง"
-      status: "START"
-    },
-    {
-      document_number: "คค.1243/2567",
-      notification_date: "11 สิงหาคม 2567",
-      data_source: "Facebook",
-      category: "ร้องเรียน",
-      type: "ไฟฟ้าส่องสว่าง",
-      responsible_agency: "ขทช.xxx",
-      // status: "กำลังดำเนินเรื่อง"
-      status: "PROGRESS"
-    },
-    {
-      document_number: "คค.1242/2567",
-      notification_date: "10 สิงหาคม 2567",
-      data_source: "กรมทางหลวงชนบท",
-      category: "ขอรับบริการ",
-      type: "ไฟฟ้าส่องสว่าง",
-      responsible_agency: "ขทช.xxx",
-      // status: "ยุติ"
-      status: "END"
-    },
-  ];
 
   const columns = [
     {
       title: "เลขที่เอกสาร",
-      key: "document_number",
-      dataIndex: "document_number",
+      key: "document",
+      dataIndex: "document",
       width: 150,
       render: (item) => {
         if (item) {
-          return <Typography.Text className="!text-primary-color !cursor-pointer" underline onClick={() => router.push('/admin/complaint-listing/create')}>{item}</Typography.Text>
+          return item
         }
-        return
+        return '-'
       }
     },
     {
       title: "วันที่แจ้ง",
-      key: "notification_date",
-      dataIndex: "notification_date",
+      key: "receive_at",
+      dataIndex: "receive_at",
       width: 200,
       render: (item) => {
         if (item) {
-          return item
+          return dayjs(item, 'YYYY-MM-DD HH:mm:ss').locale('th').format('DD MMMM BBBB')
         }
         return '-'
       }
     },
     {
       title: "แหล่งที่มาข้อมูล",
-      key: "data_source",
-      dataIndex: "data_source",
+      key: "source_type",
+      dataIndex: "source_type",
       width: 200,
-      render: (item) => {
-        if (item) {
-          return item
+      render: (item, record) => {
+        if (record?.source?.mas_name) {
+          return record?.source?.mas_name
         }
         return '-'
       }
     },
     {
       title: "หมวดหมู่",
-      key: "category",
-      dataIndex: "category",
-      width: 100,
-      render: (item) => {
-        if (item) {
-          return item
+      key: "category_type",
+      dataIndex: "category_type",
+      width: 200,
+      render: (item, record) => {
+        if (record?.category?.mas_name) {
+          return record?.category?.mas_name
         }
         return '-'
       }
     },
     {
       title: "ประเภท",
-      key: "type",
-      dataIndex: "type",
-      width: 130,
-      render: (item) => {
-        if (item) {
-          return item
+      key: "complaint_type",
+      dataIndex: "complaint_type",
+      width: 200,
+      render: (item, record) => {
+        if (record?.complaint?.mas_name) {
+          return record?.complaint?.mas_name
         }
         return '-'
       }
     },
     {
       title: "หน่วยงานผู้รับผิดชอบ",
-      key: "responsible_agency",
-      dataIndex: "responsible_agency",
+      key: "sub_notified_office",
+      dataIndex: "sub_notified_office",
       width: 200,
-      render: (item) => {
-        if (item) {
-          return item
+      render: (item, record) => {
+        if (record?.notified?.deptshort) {
+          return record?.notified?.deptshort
         }
         return '-'
       }
@@ -168,41 +157,49 @@ const TableComplaintListing = (props) => {
       dataIndex: "status",
       width: 200,
       render: (item) => {
-        const BADGE_CONFIG = {
-          "START": {
-            text: "รับเรื่อง",
-            color: "#ffc90a"
-          },
-          "PROGRESS": {
-            text: "กำลังดำเนินเรื่อง",
-            color: "#0075E9"
-          },
-          "END": {
-            text: "ยุติ",
-            color: "#43BE6D"
-          },
-        }
         if (item) {
-          return <Badge color={BADGE_CONFIG[item].color} text={BADGE_CONFIG[item].text} />;
+          return <Badge color={BADGE_CONFIG[item].color} text={BADGE_CONFIG[item].text} />
         }
+        return '-'
       },
     },
+
     {
       title: '',
       key: 'action',
       dataIndex: 'action',
       align: 'center',
-      width: 100,
-      render: () => {
+      width: 103,
+      render: (item, record, index) => {
+        console.log('table ', index, ' ', record);
         return (
-          <div className='inline-flex flex-wrap items-center gap-5'>
+
+          <div className='inline-flex items-center w-full justify-end gap-5'>
+            {/* <FilePdfOutlined /> */}
+            {record?.status == 2 &&
+              <FilePdfOutlined
+              className="text-xl"
+                onClick={() => {
+                  console.log('the record', record)
+                  handleDownload(record?.cid)
+                }}
+              />
+
+            }
             <EditIcon
               className='!cursor-pointer'
-              onClick={() => router.push('/admin/complaint-listing/create')}
+              onClick={() => router.push({
+                pathname: `/admin/complaint-listing/update/${record?.cid}`,
+                query: {
+                  type: record?.notified?.depttype || '',
+                  office: record?.notified_office || '',
+                  sub_office: record?.sub_notified_office || ''
+                }
+              })}
             />
             <DeleteIcon
               className='!cursor-pointer'
-              onClick={() => openConfirmDelete()}
+              onClick={() => openConfirmDelete(record)}
             />
           </div>
         );
@@ -210,21 +207,22 @@ const TableComplaintListing = (props) => {
     },
   ];
 
+
   return (
     <div>
       <Table
         columns={columns}
         dataSource={data || []}
-        // loading={loading}
+        loading={loading}
         pagination={{
           defaultCurrent: 1,
-          defaultPageSize: 100,
-          // current: page,
-          // pageSize: perPage,
-          // total: Number(total) || 0,
-          // onChange: onChange,
-          showSizeChanger: false,
-          // position: ['bottomCenter']
+          defaultPageSize: 10,
+          current: page,
+          pageSize: perPage,
+          total: Number(total) || 0,
+          onChange: onChange,
+          showSizeChanger: true,
+
         }}
         scroll={{ x: 1600 }}
       />

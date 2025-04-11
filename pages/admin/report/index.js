@@ -1,16 +1,33 @@
 import React from 'react'
 import { Layout } from '@/components/layout'
 import ReportScreen from "@/features/admin/report/screen";
-
-
+import { wrapper } from '@/store'
+import { getLoginSession } from '@/utils/auth'
+import { redirectToLogin, sessionToProps, validatePermissionRoute } from '@/utils/auth/routePermission'
+import { signIn } from '@/store/features/userAuthenSlice'
+import { ROLE } from '@/utils/auth/roleConfig'
+import AppProvider from '@/components/providers/AppProvider';
 const ReportPage = (props) => {
   const { } = props
 
   return (
-    <Layout>
-      <ReportScreen />
-    </Layout>
+    <AppProvider>
+      <Layout>
+        <ReportScreen />
+      </Layout>
+    </AppProvider>
   )
 }
+export const getServerSideProps = wrapper.getServerSideProps(store => (async (context) => {
+  const session = await getLoginSession(context.req, context.res)
 
+  const valid = validatePermissionRoute(session, [ROLE.ADMIN, ROLE.STAFF])
+  if (!valid) {
+    return redirectToLogin('/404')
+  }
+
+  store.dispatch(signIn(session));
+
+  return sessionToProps(session, session?.message)
+}));
 export default React.memo(ReportPage)

@@ -13,12 +13,14 @@ const useDeleteAPI = (loadType, reducer) => {
   const data = useAppSelector((state) => reducer?.reducerKey ? state[reducer?.reducerName || '']?.[reducer?.reducerKey] : state[reducer?.reducerName || ''])
   const refPath = useRef('')
 
-  const func = useCallback(async (path, body, params, showDefaultMessage = true) => {
+  const func = useCallback(async (path, body, params, showDefaultMessage = true, options) => {
     const name = 'DELETE:' + path
     try {
       API.begin(name)
       refPath.current = name
-      const { data } = await API.delete(path, { params, data: body })
+      // const { data } = await API.delete(path, { params, data: body })
+      const { data } = await API.delete(path, { params, ...(options || {}), data: body })
+      // const { data } = await API.delete(path, body, { params, ...(options || {}) })
 
       if (typeof reducer?.funcDispatch === 'function') {
         dispatch(reducer?.funcDispatch(data))
@@ -32,7 +34,7 @@ const useDeleteAPI = (loadType, reducer) => {
         }
       }
 
-      return data
+      return { ...data, success: true }
     } catch (error) {
       if (showDefaultMessage) {
         if (error instanceof AxiosError) {
