@@ -18,9 +18,10 @@ const SidebarHeader = (props) => {
       />
       <section className='text-center'>
         <Typography.Title level={5} className='!m-0 !text-white'>{useSelector(selectUsername)}</Typography.Title>
-        <Typography.Title className='!text-white !text-sm'>{useSelector(selectRole) === "Admin" ? 'ผู้ดูแลระบบ' : 'พนักงาน'}</Typography.Title>
-        <Typography.Title className='!text-white !text-sm'>{dayjs().locale('th').format('D MMM YYYY')}</Typography.Title>
-
+        <div className='flex items-center gap-3'>
+          <Typography.Text className='!text-white !text-sm'>{useSelector(selectRole) === "Admin" ? 'ผู้ดูแลระบบ' : 'พนักงาน'}</Typography.Text>
+          <Typography.Text className='!text-white !text-sm'>{dayjs().locale('th').format('DD MMM YYYY')}</Typography.Text>
+        </div>
       </section>
     </div>
   )
