@@ -78,13 +78,13 @@ const FormContent = (props) => {
         data.push({
           uid: index + 1,
           name: item,
-          status: 'done' ,
-          url : `${config.hostBackend}/api/v1/complaints/get_file/${id}?filename=${item}`
+          status: 'done',
+          url: `${config.hostBackend}/api/v1/complaints/get_file/${id}?filename=${item}`
         })
       }
     })
     return data
-  }, [getAttrachment?.received])
+  }, [getAttrachment?.received, id])
 
   const renderAttrachmentClosed = useMemo(() => {
     let data = []
@@ -94,12 +94,12 @@ const FormContent = (props) => {
           uid: index + 1,
           name: item,
           status: 'done',
-          url : `${config.hostBackend}/api/v1/complaints/get_file/${id}?filename=${item}`
+          url: `${config.hostBackend}/api/v1/complaints/get_file/${id}?filename=${item}`
         })
       }
     })
     return data
-  }, [getAttrachment?.closed])
+  }, [getAttrachment?.closed, id])
 
   console.log(data)
 
@@ -173,7 +173,7 @@ const FormContent = (props) => {
       json_value: {
         source_type: values.source_type,
         // date_received: values.date_received ? dayjs(values.date_received).format('YYYY-MM-DD') : '',
-        date_received: values.date_received ? dayjs(values.date_received).format() : '',
+        date_received: values.date_received ? dayjs(values.date_received).format('YYYY-MM-DDT00:00:00+7:00') : '',
         anonymous: values.anonymous[0] ? true : false,
         first_name: values.first_name,
         last_name: values.last_name,
@@ -186,8 +186,8 @@ const FormContent = (props) => {
         district: values.district,
         sub_district: values.sub_district,
         road: values.road,
-        latitude: values.latitude,
-        longitude: values.longitude,
+        // latitude: values.latitude,
+        // longitude: values.longitude,
         area: values.area,
         notified_office: values.notified_office,
         document: values.document,
@@ -222,18 +222,18 @@ const FormContent = (props) => {
         attachment_received5: values.attachment_received5 === '' ? null : values.attachment_received5
       }
     }
-    console.log('body ',body);
-    next(body)
+    console.log('body ', body);
+    // next(body)
   }, [])
 
   const handlerSubmit = useCallback(async (values, next) => {
-    console.log('values ',values);
+    console.log('values ', values);
     if (id) {
       // const complaintFile = values.binary_value.complaint_file
       // const progressFile = values.binary_value.progress_file
       // console.log(complaintFile)
       // console.log(progressFile)
-      
+
       const nullFileAttachments = Object.fromEntries(
         Object.entries(values?.file_attrachment).filter(([key, value]) => value === null)
       )
@@ -356,9 +356,9 @@ const FormContent = (props) => {
     }
   }, [user.token])
 
-  useEffect(()=>{
-    console.log('stype',values.source_type)
-  },[values.source_type])
+  useEffect(() => {
+    console.log('stype', values.source_type)
+  }, [values.source_type])
 
   // useEffect(() => {
   //   if (values.source_type !== 8) {
@@ -382,7 +382,7 @@ const FormContent = (props) => {
           <div className='flex flex-col grow sm:grow-0 sm:items-end sm:justify-end'>
             <Typography.Text className='!text-primary-color !text-sm'>ผู้บันทึกข้อมูล</Typography.Text>
             <Typography.Text className='!text-primary-color !text-base' strong>{RealPosition} {FindUserData?.data[0]?.prefix} {FindUserData?.data[0]?.first_name} {FindUserData?.data[0]?.last_name}</Typography.Text>
-            {data?.status == '2' ?
+            {(data?.status == '2' || data?.status == '1') ?
               <Button
                 htmlType='button'
                 type="primary"

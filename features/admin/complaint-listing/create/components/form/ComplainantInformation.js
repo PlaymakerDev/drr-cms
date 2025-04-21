@@ -50,8 +50,7 @@ const ComplainantInformation = (props) => {
               label={<Typography.Text className="!text-primary-color">รับเรื่องวันที่</Typography.Text>}
               name='date_received'
               placeholder='รับเรื่องวันที่'
-              format={"DD MMMM BBBB HH:mm"}
-              showTime
+              format={"DD MMMM BBBB"}
             />
           </Col>
         </Row>
@@ -110,7 +109,7 @@ const ComplainantInformation = (props) => {
                 label={<Typography.Text className="!text-primary-color">เบอร์โทรศัพท์ (ผู้ร้องเรียน)</Typography.Text>}
                 name='phone_number'
                 placeholder='เบอร์โทรศัพท์ (ผู้ร้องเรียน)'
-                maxLength={10}
+                // maxLength={10}
                 onChange={(name, value) => {
                   handlerChange({
                     [name]: value.replace(/[^0-9]/g, '')

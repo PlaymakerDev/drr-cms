@@ -263,7 +263,7 @@ const ComplaintContent = (props) => {
       </section>
       <section className='mt-5'>
         <Row gutter={[16, 16]}>
-          <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
+          {/* <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}> */}
             {/* <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=100.7657%2C13.7162%2C100.7913%2C13.7458&amp;layer=mapnik"
               width="100%"
@@ -275,11 +275,11 @@ const ComplaintContent = (props) => {
               loading="lazy"
               className="rounded-3xl"
             /> */}
-            {renderMap}
-          </Col>
+            {/* {renderMap} */}
+          {/* </Col> */}
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
             <Row gutter={[16, 16]}>
-              <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
+              {/* <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                 <Field.Number
                   label={<Typography.Text className="!text-primary-color">ละติจูด</Typography.Text>}
                   name='latitude'
@@ -308,7 +308,7 @@ const ComplaintContent = (props) => {
                     e.target.value = e.target.value.replace(/[^0-9.]/g, "");
                   }}
                 />
-              </Col>
+              </Col> */}
               <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
                 <Field.TextArea
                   label={<Typography.Text className="!text-primary-color">บริเวณ</Typography.Text>}
@@ -349,7 +349,6 @@ const ComplaintContent = (props) => {
                   label={<Typography.Text className="!text-primary-color">ที่ คค.</Typography.Text>}
                   name='document'
                   placeholder='ที่ คค.'
-
                 />
               </Col>
             </Row>

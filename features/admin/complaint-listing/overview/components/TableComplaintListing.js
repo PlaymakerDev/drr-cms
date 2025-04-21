@@ -57,7 +57,7 @@ const TableComplaintListing = (props) => {
       message.error('Download Failed')
     }
 
-  }, [])
+  }, [user.token])
 
 
   const openConfirmDelete = useCallback((record) => {
@@ -176,9 +176,9 @@ const TableComplaintListing = (props) => {
 
           <div className='inline-flex items-center w-full justify-end gap-5'>
             {/* <FilePdfOutlined /> */}
-            {record?.status == 2 &&
+            {(record?.status == 2 || record?.status == 1) &&
               <FilePdfOutlined
-              className="text-xl"
+                className="text-xl"
                 onClick={() => {
                   console.log('the record', record)
                   handleDownload(record?.cid)
