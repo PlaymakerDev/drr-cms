@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm, Form } from '@/components/form'
 import { Button, Divider, message, Typography, Tag } from 'antd'
-import { ComplainantInformation, ComplaintContent, OperationProgress } from '../form'
+import { ComplainantInformation, ComplaintContent, ComplaintTitle, OperationProgress } from '../form'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import usePostAPI from '@/utils/hooks/api/usePostAPI'
@@ -105,6 +105,11 @@ const FormContent = (props) => {
 
   const form = useForm({
     initialValues: {
+      topic_header: data?.topic_header || 'สำนักงานเลขานุการกรม กลุ่มบริหารข้อมูลข่าวสารและเรื่องราวร้องทุกข์ โทร. ๐ ๒๕๕๑ ๕๒๐๐',
+      certify_by: data?.certify_by || '',
+      certify_role: data?.certify_role || '',
+      officer_tel: data?.officer_tel || '',
+      officer_email: data?.officer_email || '',
       source_type: data?.source_type || '',
       date_received: data?.date_received ? dayjs(data?.date_received) : dayjs(),
       anonymous: data?.anonymous ? [true] : [false],
@@ -147,18 +152,30 @@ const FormContent = (props) => {
       attachment_received5: data?.attachment_received5 || null
     },
     rules: {
-      phone_number: {
-        isAllowed: {
-          func: (value) => {
-            if (value.length) {
-              return formValidator.validatePhoneNumber(value);
-            } else {
-              return true
-            }
-          },
-          msg: "validate_phone_numnber_incorrect"
-        }
-      },
+      // phone_number: {
+      //   isAllowed: {
+      //     func: (value) => {
+      //       if (value.length) {
+      //         return formValidator.validatePhoneNumber(value);
+      //       } else {
+      //         return true
+      //       }
+      //     },
+      //     msg: "validate_phone_numnber_incorrect"
+      //   }
+      // },
+      // officer_tel: {
+      //   isAllowed: {
+      //     func: (value) => {
+      //       if (value.length) {
+      //         return formValidator.validatePhoneNumber(value);
+      //       } else {
+      //         return true
+      //       }
+      //     },
+      //     msg: "validate_phone_numnber_incorrect"
+      //   }
+      // },
     },
     // blackList: !id || data?.status == '1' ? ['date_closed', 'explanation_result', 'progress_file'] : []
     blackList: id && data?.status == '3' ? '*' : !id || data?.status == '1' ? ['date_closed', 'explanation_result', 'progress_file'] : []
@@ -171,6 +188,11 @@ const FormContent = (props) => {
   const buildValue = useCallback((values, next) => {
     const body = {
       json_value: {
+        topic_header: values.topic_header,
+        certify_by: values.certify_by,
+        certify_role: values.certify_role,
+        officer_tel: values.officer_tel,
+        officer_email: values.officer_email,
         source_type: values.source_type,
         // date_received: values.date_received ? dayjs(values.date_received).format('YYYY-MM-DD') : '',
         date_received: values.date_received ? dayjs(values.date_received).format('YYYY-MM-DDT00:00:00+7:00') : '',
@@ -223,7 +245,7 @@ const FormContent = (props) => {
       }
     }
     console.log('body ', body);
-    // next(body)
+    next(body)
   }, [])
 
   const handlerSubmit = useCallback(async (values, next) => {
@@ -395,6 +417,15 @@ const FormContent = (props) => {
               : null}
           </div>
         </div>
+      </section>
+      <section>
+        <ComplaintTitle
+          handlerChange={handlerChange}
+          values={values}
+          errors={errors}
+          id={id}
+          data={data}
+        />
       </section>
       <section className='mt-5'>
         <ComplainantInformation

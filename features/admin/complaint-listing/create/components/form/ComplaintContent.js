@@ -136,6 +136,40 @@ const ComplaintContent = (props) => {
       <section className='mt-5'>
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
+            <Field.Input
+              label={<Typography.Text className="!text-primary-color">ชื่อ-นามสกุล ผู้รับผิดชอบ</Typography.Text>}
+              name='certify_by'
+              placeholder='ชื่อ-นามสกุล ผู้รับผิดชอบ'
+            />
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
+            <Field.Input
+              label={<Typography.Text className="!text-primary-color">ตำแหน่งผู้รับผิดชอบ</Typography.Text>}
+              name='certify_role'
+              placeholder='ตำแหน่งผู้รับผิดชอบ'
+            />
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
+            <Field.Input
+              label={<Typography.Text className="!text-primary-color">เบอร์โทรศัพท์ (ผู้รับผิดชอบ)</Typography.Text>}
+              name='officer_tel'
+              placeholder='เบอร์โทรศัพท์ (ผู้รับผิดชอบ)'
+              // maxLength={10}
+              onChange={(name, value) => {
+                handlerChange({
+                  [name]: value.replace(/[^0-9]/g, '')
+                })
+              }}
+            />
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
+            <Field.Input
+              label={<Typography.Text className="!text-primary-color">อีเมลผู้รับผิดชอบ</Typography.Text>}
+              name='officer_email'
+              placeholder='อีเมลผู้รับผิดชอบ'
+            />
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Select
               label={<Typography.Text className="!text-primary-color">หมวดหมู่</Typography.Text>}
               name='category_type'
@@ -181,8 +215,6 @@ const ComplaintContent = (props) => {
                 // placeholder='อื่นๆ'
                 maxLength={255}
                 placeholder='กรุณากรอกไม่เกิน 255 ตัวอักษร'
-                
-               
                 disabled={((values.category_type == '1' && values.complaint_type == '12') || (values.category_type == '2' && values.complaint_type == '8')) ? false : true} />
             </Col>
           }
@@ -256,7 +288,6 @@ const ComplaintContent = (props) => {
               label={<Typography.Text className="!text-primary-color">สายทาง</Typography.Text>}
               name='road'
               placeholder='กก.1234'
-
             />
           </Col>
         </Row>
@@ -264,7 +295,7 @@ const ComplaintContent = (props) => {
       <section className='mt-5'>
         <Row gutter={[16, 16]}>
           {/* <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}> */}
-            {/* <iframe
+          {/* <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=100.7657%2C13.7162%2C100.7913%2C13.7458&amp;layer=mapnik"
               width="100%"
               height="200"
@@ -275,7 +306,7 @@ const ComplaintContent = (props) => {
               loading="lazy"
               className="rounded-3xl"
             /> */}
-            {/* {renderMap} */}
+          {/* {renderMap} */}
           {/* </Col> */}
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
             <Row gutter={[16, 16]}>
@@ -315,7 +346,6 @@ const ComplaintContent = (props) => {
                   name='area'
                   placeholder='กรุณากรอกไม่เกิน 255 ตัวอักษร'
                   maxLength={255}
-
                 />
               </Col>
             </Row>

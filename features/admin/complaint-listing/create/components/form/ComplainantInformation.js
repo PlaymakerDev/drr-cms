@@ -92,7 +92,6 @@ const ComplainantInformation = (props) => {
                 name='first_name'
                 placeholder='ชื่อ'
                 disabled={id && data.status == '3' || values.anonymous[0]}
-
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
@@ -101,7 +100,6 @@ const ComplainantInformation = (props) => {
                 name='last_name'
                 placeholder='นามสกุล'
                 disabled={id && data.status == '3' || values.anonymous[0]}
-
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
@@ -115,7 +113,6 @@ const ComplainantInformation = (props) => {
                     [name]: value.replace(/[^0-9]/g, '')
                   })
                 }}
-
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
