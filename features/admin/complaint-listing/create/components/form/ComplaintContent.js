@@ -138,14 +138,14 @@ const ComplaintContent = (props) => {
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Input
               label={<Typography.Text className="!text-primary-color">ชื่อ-นามสกุล ผู้รับผิดชอบ</Typography.Text>}
-              name='certify_by'
+              name='certifier_by'
               placeholder='ชื่อ-นามสกุล ผู้รับผิดชอบ'
             />
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={6} xxl={6}>
             <Field.Input
               label={<Typography.Text className="!text-primary-color">ตำแหน่งผู้รับผิดชอบ</Typography.Text>}
-              name='certify_role'
+              name='certifier_role'
               placeholder='ตำแหน่งผู้รับผิดชอบ'
             />
           </Col>

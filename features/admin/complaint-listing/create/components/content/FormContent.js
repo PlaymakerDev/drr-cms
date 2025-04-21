@@ -106,8 +106,8 @@ const FormContent = (props) => {
   const form = useForm({
     initialValues: {
       topic_header: data?.topic_header || 'สำนักงานเลขานุการกรม กลุ่มบริหารข้อมูลข่าวสารและเรื่องราวร้องทุกข์ โทร. ๐ ๒๕๕๑ ๕๒๐๐',
-      certify_by: data?.certify_by || '',
-      certify_role: data?.certify_role || '',
+      certifier_by: data?.certifier_by || '',
+      certifier_role: data?.certifier_role || '',
       officer_tel: data?.officer_tel || '',
       officer_email: data?.officer_email || '',
       source_type: data?.source_type || '',
@@ -189,8 +189,8 @@ const FormContent = (props) => {
     const body = {
       json_value: {
         topic_header: values.topic_header,
-        certify_by: values.certify_by,
-        certify_role: values.certify_role,
+        certifier_by: values.certifier_by,
+        certifier_role: values.certifier_role,
         officer_tel: values.officer_tel,
         officer_email: values.officer_email,
         source_type: values.source_type,
