@@ -91,6 +91,7 @@
   "required_district": "กรุณาระบุเขต/อำเภอ",
   "required_subdistrict": "กรุณาระบุแขวง/ตำบล",
   "required_postcode": "ระบุรหัสไปรษณีย์",
+  "required_area": "ระบุบริเวณ",
   "required_carblock": "กรุณาระบุเลขตัวถังรถ",
   "required_car_frontend_image": "กรุณาระบุภาพรถด้านหน้า",
   "required_car_backend_image": "กรุณาระบุภาพรถด้านหลัง",

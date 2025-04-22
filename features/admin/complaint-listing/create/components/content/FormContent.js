@@ -152,6 +152,27 @@ const FormContent = (props) => {
       attachment_received5: data?.attachment_received5 || null
     },
     rules: {
+      first_name: {
+        required: 'required_first_name'
+      },
+      last_name: {
+        required: 'required_last_name'
+      },
+      phone_number: {
+        required: 'required_phone_number'
+      },
+      province: {
+        required: 'required_province'
+      },
+      district: {
+        required: 'required_district'
+      },
+      sub_district: {
+        required: 'required_subdistrict'
+      },
+      area: {
+        required: 'required_area'
+      },
       // phone_number: {
       //   isAllowed: {
       //     func: (value) => {
@@ -394,7 +415,7 @@ const FormContent = (props) => {
         <div className='flex flex-wrap justify-between items-center gap-5'>
           <div className='flex flex-wrap  items-center gap-5'>
             <div className='basis-full sm:basis-auto flex items-center gap-3 flex-wrap'>
-              <Typography.Title level={5} className='!m-0 !text-primary-color'>แบบรับเรื่องร้องเรียน</Typography.Title>
+              <Typography.Title level={4} className='!m-0 !text-primary-color'>แบบรับเรื่องร้องเรียน</Typography.Title>
               {id ?
                 <Tag color={BADGE_CONFIG[data?.status]?.color}>{BADGE_CONFIG[data?.status]?.text}</Tag> :
                 null

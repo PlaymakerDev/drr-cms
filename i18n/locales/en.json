@@ -92,6 +92,7 @@
   "required_district": "District is required",
   "required_subdistrict": "Sub District is required",
   "required_postcode": "Postcode is required",
+  "required_area": "Area is required",
   "required_carblock": "car number is required",
   "required_car_frontend_image": "Car Frontend Image is required",
   "required_car_backend_image": "Car Backend Image is required",
