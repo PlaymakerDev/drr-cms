@@ -7,10 +7,12 @@ import buddhistEra from 'dayjs/plugin/buddhistEra'
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(buddhistEra)
-dayjs.extend(customParseFormat);   
+dayjs.extend(customParseFormat);
 
 const ComplaintProgressChart = (props) => {
   const { data } = props;
+
+  console.log("data>>>", data)
 
   const renderLabels = useMemo(() => {
     const labels = [];
@@ -21,7 +23,7 @@ const ComplaintProgressChart = (props) => {
       labels
     }
   }, [data]);
-  
+
   const mutableData = JSON.parse(JSON.stringify(data));
 
   return (
@@ -31,10 +33,10 @@ const ComplaintProgressChart = (props) => {
         options={{
           grid: {
             padding: {
-              left:0,
-              right:0,
+              left: 0,
+              right: 0,
               top: 0,
-              bottom:-40
+              bottom: -40
             }
           },
           chart: {
@@ -70,16 +72,17 @@ const ComplaintProgressChart = (props) => {
           fill: {
             opacity: 1,
           },
-          colors: ["#0075E9", "#43BE6D"],
+          // colors: ["#0075E9", "#43BE6D"],
+          colors: ["#F1E14A", "#0075E9", "#43BE6D"],
           legend: {
-            position:'bottom',
-            offsetY:'25',
+            position: 'bottom',
+            offsetY: '25',
             markers: {
-                size: 16,
-                shape: 'line',
-                 strokeWidth: 6,
-              }
-            },
+              size: 16,
+              shape: 'line',
+              strokeWidth: 6,
+            }
+          },
         }}
         height={200}
         type="bar"

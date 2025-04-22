@@ -7,7 +7,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(buddhistEra)
 dayjs.extend(customParseFormat);
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });  
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const ComplaintComparisonChart = (props) => {
   const { data } = props;
@@ -21,9 +21,9 @@ const ComplaintComparisonChart = (props) => {
 
   const formattedCategories = categories.map(label => {
     const date = dayjs(label);
-        const buddhistYear = date.format('BBBB'); 
-        return buddhistYear;
-        });
+    const buddhistYear = date.format('BBBB');
+    return buddhistYear;
+  });
   return (
     <div className='!h-full'>
       <Chart
@@ -66,12 +66,13 @@ const ComplaintComparisonChart = (props) => {
             colors: ['transparent'],
           },
           xaxis: {
-            categories: formattedCategories, 
+            categories: formattedCategories,
           },
           fill: {
             opacity: 1,
           },
-          colors: ['#0075E9', '#43BE6D'],
+          // colors: ['#0075E9', '#43BE6D'],
+          colors: ["#F1E14A", "#0075E9", "#43BE6D"],
           legend: {
             position: 'bottom',
             offsetY: '25',
