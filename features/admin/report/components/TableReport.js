@@ -24,9 +24,9 @@ const TableReport = (props) => {
       },
     },
     {
-      title: "ยุติ(รายการ)",
-      key: "status_3",
-      dataIndex: "status_3",
+      title: "รับเรื่อง (รายการ) ",
+      key: "status_1",
+      dataIndex: "status_1",
       width: 200,
       align: 'center',
       render: (item) => {
@@ -37,9 +37,22 @@ const TableReport = (props) => {
       },
     },
     {
-      title: "กำลังดำเนินการ(รายการ) ",
+      title: "กำลังดำเนินการ (รายการ) ",
       key: "status_2",
       dataIndex: "status_2",
+      width: 200,
+      align: 'center',
+      render: (item) => {
+        if (item) {
+          return item
+        }
+        return '-'
+      },
+    },
+    {
+      title: "ยุติ (รายการ)",
+      key: "status_3",
+      dataIndex: "status_3",
       width: 200,
       align: 'center',
       render: (item) => {
