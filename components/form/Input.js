@@ -32,6 +32,7 @@ const TextInput = (props) => {
     inputError,
     inputWarning,
     inputLoading,
+    // whiteLabel = false,
     ...propsInput
   } = props
   const { locale } = useRouter()
@@ -94,6 +95,7 @@ const TextInput = (props) => {
   return (
     <div className={`${styles.container} ${_error ? 'a-error' : ''}`}>
       {!!label && (
+        // <label className={whiteLabel ? `${styles.label_white}` : `${styles.label}`} htmlFor={name} title={label}>
         <label className={`${styles.label}`} htmlFor={name} title={label}>
           {!!_required && <span className={`${styles.star}`}>*</span>}
           {label}

@@ -11,6 +11,16 @@
   margin-bottom: 6px;
 }
 
+/* .label {
+  color: rgba(59, 60, 75, 0.9);
+  margin-bottom: 6px;
+}
+
+.label_white {
+  color: var(--primary-color);
+  margin-bottom: 6px;
+} */
+
 .star {
   color: #ff4d4f;
 }
