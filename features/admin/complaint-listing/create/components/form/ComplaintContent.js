@@ -16,6 +16,7 @@ import {
 import { useAppDispatch } from '@/store/hooks'
 import dynamic from 'next/dynamic'
 import { FileOutlined, FileTextOutlined } from '@ant-design/icons'
+import { phoneFormat } from '@/utils/phoneFormat'
 const Map = dynamic(() => import('@/components/map/Map.js'), { ssr: false })
 
 const ComplaintContent = (props) => {
@@ -156,8 +157,10 @@ const ComplaintContent = (props) => {
               placeholder='เบอร์โทรศัพท์ (ผู้รับผิดชอบ)'
               // maxLength={10}
               onChange={(name, value) => {
+                 const formatValue = phoneFormat(value)
                 handlerChange({
-                  [name]: value.replace(/[^0-9]/g, '')
+                  // [name]: value.replace(/[^0-9]/g, '')
+                  [name]: formatValue
                 })
               }}
             />
@@ -421,7 +424,6 @@ const ComplaintContent = (props) => {
                 iconRender={iconRender} // เพิ่ม iconRender ที่นี่
                 label={<Typography.Text className='!text-primary-color'>เลือกไฟล์</Typography.Text>}
               />
-
             </section>
           </Col>
         </Row>

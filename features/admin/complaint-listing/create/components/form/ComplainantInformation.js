@@ -3,6 +3,7 @@ import { Col, Row, Typography } from 'antd'
 import { Field } from '@/components/form'
 import useGetAPI from '@/utils/hooks/api/useGetAPI'
 import { getDropdownSourceType } from '@/store/features/masterSlice'
+import { phoneFormat } from '@/utils/phoneFormat'
 
 const ComplainantInformation = (props) => {
   const { values, errors, handlerChange, id, data } = props
@@ -109,8 +110,10 @@ const ComplainantInformation = (props) => {
                 placeholder='เบอร์โทรศัพท์ (ผู้ร้องเรียน)'
                 // maxLength={10}
                 onChange={(name, value) => {
+                  const formatValue = phoneFormat(value)
                   handlerChange({
-                    [name]: value.replace(/[^0-9]/g, '')
+                    // [name]: value.replace(/[^0-9]/g, '')
+                    [name]: formatValue
                   })
                 }}
               />
