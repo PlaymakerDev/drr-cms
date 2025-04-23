@@ -50,15 +50,15 @@ const FormLogin = (props) => {
   }, [])
 
   const handlerSubmit = useCallback((values) => {
-    if(values?.remember[0] === true){
+    if (values?.remember[0] === true) {
       document.getElementById('remember_me').value = true;
-    }else{
+    } else {
       document.getElementById('remember_me').value = false;
     }
     (document.getElementById('role'))?.setAttribute?.('value', ROLE);
     (document.getElementById('token'))?.setAttribute?.('value', token);
     (document.getElementById('form-login'))?.submit();
-    
+
   }, [token])
 
   const errorMessage = useMemo(() => {
@@ -127,6 +127,8 @@ const FormLogin = (props) => {
                 type='primary'
                 size='large'
                 className='!h-12 !bg-[#004F9D] hover:!bg-[#3977b4]'
+                disabled={form.submitting}
+                loading={form.submitting}
               >
                 เข้าสู่ระบบ
               </Button>
