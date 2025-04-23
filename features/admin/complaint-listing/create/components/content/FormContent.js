@@ -155,9 +155,9 @@ const FormContent = (props) => {
       first_name: {
         required: 'required_first_name'
       },
-      last_name: {
-        required: 'required_last_name'
-      },
+      // last_name: {
+      //   required: 'required_last_name'
+      // },
       phone_number: {
         required: 'required_phone_number'
       },
