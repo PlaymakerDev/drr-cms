@@ -152,6 +152,9 @@ const FormContent = (props) => {
       attachment_received5: data?.attachment_received5 || null
     },
     rules: {
+      source_type: {
+        required: 'required_source_type'
+      },
       first_name: {
         required: 'required_first_name'
       },
@@ -173,6 +176,12 @@ const FormContent = (props) => {
       area: {
         required: 'required_area'
       },
+      complaint_type: {
+        required: 'required_complaint_type'
+      },
+      notified_office: {
+        required: 'required_notified_office'
+      }
       // phone_number: {
       //   isAllowed: {
       //     func: (value) => {

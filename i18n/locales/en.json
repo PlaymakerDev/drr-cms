@@ -141,5 +141,8 @@
   "cmi_policy_effective_date": "กรุณาระบุเริ่มต้นคุ้มครอง (พรบ.)",
   "required_taxnumber": "กรุณาระบุเลขผู้เสียภาษี",
   "required_taxnumber_must": "กรุณาระบุเลขผู้เสียภาษีให้ถูกต้อง",
-  "validate_phone_numnber_incorrect": "Invalid phone number. Please enter a valid phone number."
+  "validate_phone_numnber_incorrect": "Invalid phone number. Please enter a valid phone number.",
+  "required_source_type": "Source Type is required",
+  "required_complaint_type": "Complaint Type is required",
+  "required_notified_office": "Notified Office is required"
 }
