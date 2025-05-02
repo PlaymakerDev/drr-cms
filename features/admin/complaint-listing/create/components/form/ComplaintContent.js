@@ -20,7 +20,7 @@ import { phoneFormat } from '@/utils/phoneFormat'
 const Map = dynamic(() => import('@/components/map/Map.js'), { ssr: false })
 
 const ComplaintContent = (props) => {
-  const { values, errors, handlerChange, id, data } = props
+  const { values, errors, handlerChange, id, data, form } = props
   const dispatch = useAppDispatch()
   // USE GET
   const [apiGetProvince, loadingProvince, province] = useGetAPI('overlay', {
@@ -157,7 +157,7 @@ const ComplaintContent = (props) => {
               placeholder='เบอร์โทรศัพท์ (ผู้รับผิดชอบ)'
               // maxLength={10}
               onChange={(name, value) => {
-                 const formatValue = phoneFormat(value)
+                const formatValue = phoneFormat(value)
                 handlerChange({
                   // [name]: value.replace(/[^0-9]/g, '')
                   [name]: formatValue
@@ -237,7 +237,27 @@ const ComplaintContent = (props) => {
               showSearch
               optionFilterProp="children"
               filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
-              onChange={(name, value) => {
+              onChange={(name, value, all) => {
+                // console.log(all)
+                // if (value == 0) {
+                //   const getPlaceholder = province.data?.find((item) => item.id === value)
+                //   dispatch(clearDistrict({ data: [] }))
+                //   dispatch(clearSubDistrict({ data: [] }))
+                //   handlerChange({
+                //     [name]: String(getPlaceholder.name_th),
+                //     district: '',
+                //     sub_district: ''
+                //   })
+                //   // const getValue = province.data?.find(item => item.name_th === getPlaceholder.name_th)
+                // } else {
+                //   dispatch(clearDistrict({ data: [] }))
+                //   dispatch(clearSubDistrict({ data: [] }))
+                //   handlerChange({
+                //     [name]: value,
+                //     district: '',
+                //     sub_district: ''
+                //   })
+                // }
                 dispatch(clearDistrict({ data: [] }))
                 dispatch(clearSubDistrict({ data: [] }))
                 handlerChange({

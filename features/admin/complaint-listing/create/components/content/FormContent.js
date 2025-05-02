@@ -161,9 +161,9 @@ const FormContent = (props) => {
       // last_name: {
       //   required: 'required_last_name'
       // },
-      phone_number: {
-        required: 'required_phone_number'
-      },
+      // phone_number: {
+      //   required: 'required_phone_number'
+      // },
       province: {
         required: 'required_province'
       },
@@ -208,7 +208,46 @@ const FormContent = (props) => {
       // },
     },
     // blackList: !id || data?.status == '1' ? ['date_closed', 'explanation_result', 'progress_file'] : []
-    blackList: id && data?.status == '3' ? '*' : !id || data?.status == '1' ? ['date_closed', 'explanation_result', 'progress_file'] : []
+    // blackList: id && data?.status == '3' ? '*' : !id || data?.status == '1' ? ['date_closed', 'explanation_result', 'progress_file'] : []
+    blackList: id && data?.status == '3' ? [
+      'topic_header',
+      'certifier_by',
+      'certifier_role',
+      'officer_tel',
+      'officer_email',
+      'source_type',
+      'date_received',
+      'anonymous',
+      'first_name',
+      'last_name',
+      'phone_number',
+      'additional_contact',
+      'category_type',
+      'complaint_type',
+      'complaint_other',
+      'province',
+      'district',
+      'sub_district',
+      'road',
+      'latitude',
+      'longitude',
+      'area',
+      'notified_office',
+      'document',
+      'date_closed',
+      'complaint_file',
+      'progress_file',
+      'attachment_closed1',
+      'attachment_closed2',
+      'attachment_closed3',
+      'attachment_closed4',
+      'attachment_closed5',
+      'attachment_received1',
+      'attachment_received2',
+      'attachment_received3',
+      'attachment_received4',
+      'attachment_received5'
+    ] : !id || data?.status == '1' ? ['date_closed', 'explanation_result', 'progress_file'] : [],
   })
 
   const { values, errors, handlerChange } = form
@@ -497,18 +536,18 @@ const FormContent = (props) => {
           >
             ยกเลิก
           </Button>
-          {id && data.status == '3' ? null :
-            <Button
-              type='primary'
-              htmlType='submit'
-              size='large'
-              className='!w-full lg:!w-auto'
-              // DISABLE WHILE LOADING
-              loading={loadingPost}
-            >
-              บันทึก
-            </Button>
-          }
+          {/* {id && data.status == '3' ? null : */}
+          <Button
+            type='primary'
+            htmlType='submit'
+            size='large'
+            className='!w-full lg:!w-auto'
+            // DISABLE WHILE LOADING
+            loading={loadingPost}
+          >
+            บันทึก
+          </Button>
+          {/* } */}
         </div>
       </section>
     </Form>

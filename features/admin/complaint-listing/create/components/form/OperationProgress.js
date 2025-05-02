@@ -40,6 +40,8 @@ const OperationProgress = (props) => {
               name='explanation_result'
               placeholder='คำชี้แจง/ผลปฏิบัติ'
               className="!h-36"
+              showCount
+              maxLength={500}
             />
           </Col>
           <Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
