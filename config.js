@@ -10,7 +10,7 @@ export default {
     description_web: "Ergo back office description",
     og_image: process.env.NEXT_PUBLIC_HOST + "/images/logo.png",
     token_secret: process.env.TOKEN_SECRET,
-    source_type_image: process.env.NEXT_PUBLIC_SOURCE_TYPE || 'http://localhost:8003/api/v1/source_type/image/',
+    source_type_image: process.env.NEXT_PUBLIC_SOURCE_TYPE || 'http://localhost:8003/api/v1/source_type/image',
     // hostBackendArticle: process.env.NEXT_PUBLIC_HOST_BACKEND_ARTICLE || 'http://localhost:3306'
   },
   production: {
